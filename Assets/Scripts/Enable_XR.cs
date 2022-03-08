@@ -40,7 +40,7 @@ public class Enable_XR : MonoBehaviour
             //e.g. some depth testing or environment reflection
         } 
 
-        else if (usedDevice == DeviceList.Vive)
+        else if (usedDevice == DeviceList.OpenXR_ZED)
         {
             //XR-Code for Vive / ZED Mini
         }
