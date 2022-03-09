@@ -38,12 +38,14 @@ namespace VarjoExample
                 triggerDown = false;
                 Drop();
             }
+
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Pickable") || other.gameObject.CompareTag("Fracture"))
             {
+                Debug.Log("Touched and added interactable on " + other.gameObject.name);
                 contactedInteractables.Add(other.gameObject.GetComponent<Interactable>());
             }
         }
@@ -52,6 +54,8 @@ namespace VarjoExample
         {
             if (other.gameObject.CompareTag("Pickable") || other.gameObject.CompareTag("Fracture"))
             {
+                Debug.Log("Let go and removed interactable on " + other.gameObject.name);
+
                 contactedInteractables.Remove(other.gameObject.GetComponent<Interactable>());
             }
         }
@@ -60,23 +64,31 @@ namespace VarjoExample
         {
             currentInteractable = GetNearestInteractable();
 
+
             if (!currentInteractable)
             {
                 return;
             }
 
-            // Drop interactable if already held
+            // Axel: Commeted this code because it disabled the functionality - not quite sure why to have this one anyway 
+            /*Drop interactable if already held
             if (currentInteractable.activeHand)
             {
                 currentInteractable.activeHand.Drop();
+            }*/
+
+            // Axel: In order to have less calls to fixedJoint, check if already has a rigidbody
+            if (!fixedJoint.connectedBody)
+            {
+                // Attach
+                heldObjectBody = currentInteractable.GetComponent<Rigidbody>();
+                fixedJoint.connectedBody = heldObjectBody;
             }
 
-            // Attach
-            heldObjectBody = currentInteractable.GetComponent<Rigidbody>();
-            fixedJoint.connectedBody = heldObjectBody;
 
+            // Axel: Same as active hand code above
             // Set active hand
-            currentInteractable.activeHand = this;
+            //currentInteractable.activeHand = this;
         }
 
         public void Drop()
@@ -92,9 +104,10 @@ namespace VarjoExample
             heldObjectBody.velocity = xrRig.TransformVector(controller.DeviceVelocity);
             heldObjectBody.angularVelocity = xrRig.TransformDirection(controller.DeviceAngularVelocity);
 
+            // Axel: Same as active hand code above
             // Clear
-            currentInteractable.activeHand = null;
-            currentInteractable = null;
+            //currentInteractable.activeHand = null;
+            //currentInteractable = null;
         }
 
         private Interactable GetNearestInteractable()
