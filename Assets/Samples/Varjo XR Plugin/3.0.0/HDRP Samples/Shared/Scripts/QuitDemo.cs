@@ -2,12 +2,18 @@
 
 public class QuitDemo : MonoBehaviour
 {
-    public KeyCode quitDemo = KeyCode.Escape;
+    public KeyCode quitPreview = KeyCode.Escape;
     void Update()
     {
-        if (Input.GetKey(quitDemo))
+        if (Input.GetKey(quitPreview))
         {
-            Application.Quit();
+            #if UNITY_EDITOR
+                        // Application.Quit() does not work in the editor so
+                        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+                        UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                     Application.Quit();
+            #endif
         }
     }
 }

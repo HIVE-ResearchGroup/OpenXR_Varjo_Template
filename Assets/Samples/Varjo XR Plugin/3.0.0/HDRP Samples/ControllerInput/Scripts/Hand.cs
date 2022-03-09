@@ -45,8 +45,6 @@ namespace VarjoExample
             if (other.gameObject.CompareTag("Pickable") || other.gameObject.CompareTag("Fracture"))
             {
                 contactedInteractables.Add(other.gameObject.GetComponent<Interactable>());
-
-                Debug.LogError("WHAT");
             }
         }
 
