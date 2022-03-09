@@ -24,6 +24,6 @@ MonoBehaviour:
   SessionPriority: 0
   SubmitDepth: 1
   DepthSorting: 0
-  DepthTestRange: 0
+  DepthTestRange: 1
   DepthTestNearZ: 0
-  DepthTestFarZ: 1
+  DepthTestFarZ: 0.800000011920929
