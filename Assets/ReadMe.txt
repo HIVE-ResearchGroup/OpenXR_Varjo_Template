@@ -25,4 +25,6 @@ Um den einzelnen Controllern eine Funktion zuzweisen, so fügt man am besten dem
 
 Eine komplette Auflistung der Tasten lässt sich im Script "Controller.cs" finden.
 
-
+Hilfreiche Hinweise:
+- Um sich zu teleportieren, welches auf "primaryButton" gelegt wurde, muss bei einem HTC Controller der Button über dem Touchpad gedrückt werden.
+- Um Objekte aufzuheben und zu bewegen muss bei einem HTC Vive Controller der Trigger-Button (hinten) gedrückt werden um zum Fallen lassen
