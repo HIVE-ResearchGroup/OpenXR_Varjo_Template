@@ -23,7 +23,7 @@ MonoBehaviour:
   OcclusionMesh: 1
   SessionPriority: 0
   SubmitDepth: 1
-  DepthSorting: 0
-  DepthTestRange: 1
+  DepthSorting: 1
+  DepthTestRange: 0
   DepthTestNearZ: 0
   DepthTestFarZ: 0.800000011920929

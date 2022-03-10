@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DeviceList // your custom enumeration
+
+// Axel Bauer, Varjo Dev Team
+// 2022
+public enum DeviceList
 {
     None,
     OpenXR_ZED,
