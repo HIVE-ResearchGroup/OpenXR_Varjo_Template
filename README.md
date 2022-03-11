@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-# OpenXR_Varjo_Template
-
-This project focuses on combining two workflows (OpenXR and Varjo SDK) into one project.
-Please have a look at the SampleScene to find out more.
-=======
 # OpenXR_Varjo_Template
 
 ## Introduction
@@ -27,4 +21,3 @@ For more information about the useage, please have a look at the README inside t
 - Interestingly, there is an offset between the input tracking of the Varjo SDK and OpenXR. This offset (as you might've read above) is managed insidethe AR_VR_Toggle-Script. If ever the offset is getting changed in the future, these values should be adjusted inside this script.
 - Sky and Fog Volume: I tweaked the it slightly in order to match the requirements of the Varjo SDK. (Now, the focus-rectangle shouldn't be visible). If the scene doesn't match your lighting conditions, you may turn the exposure down inside the Sky and Fog Volume.
 - When watching closely, there is a slight flicker when jump-focusing your eyes on different object with the Varjo headset. It seems that the headset is responsible for this behaviour, as the focus-display either is not balanced enough with the rest of the display or (more likely) Unity. Unfortunately, I haven't found a solution to this problem yet but one Varjo setting (Project Settings -> XR Plug-in Management -> Varjo), in order to activate/deactivate "Forveated Rendering". This option controls if the focus of the display should be restricted on a small rectangle (checked - increases performance) or should cover the whole display (unchecked). You may uncheck it for a smoother experience but maybe not the best performance.
->>>>>>> Stashed changes
