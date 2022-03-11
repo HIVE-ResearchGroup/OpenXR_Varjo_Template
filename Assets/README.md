@@ -52,7 +52,7 @@ A complete listing of the controller-controls can be found inside the script "Co
 
 # How to increase performance
 In this template, there are three main factors 
-- Forveated Rendering
-- Single Pass / Multipass
-- Reflection probe
+- Forveated Rendering: Have a look on "Noticable mentions".
+- Single Pass / Multipass: Using Single Pass, parts of the image for both eyes are reused for the other eye.
+- Reflection probe: In order to make use of the environment reflections, the reflection probe updates the reflection "realtime".
 

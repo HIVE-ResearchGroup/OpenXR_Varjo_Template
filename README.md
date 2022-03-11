@@ -15,7 +15,7 @@ There is one main file managing this transition: The deviceManager object, conta
 For more information about the useage, please have a look at the README inside the Asset-folder.
 
 
-# Noticeable mentions
+## Noticeable mentions
 
 - It's possible that SteamVR (regarding input and tracking using the Varjo headset, even outside the project) might have some issues after switching headsets. In this case, either restart the headset using the Varjo Base Program or/and restart SteamVR. If it won't appear, try starting SteamVR from inside the Varjo-Base-Program. If that won't do, restart your computer. 
 - Interestingly, there is an offset between the input tracking of the Varjo SDK and OpenXR. This offset (as you might've read above) is managed insidethe AR_VR_Toggle-Script. If ever the offset is getting changed in the future, these values should be adjusted inside this script.
