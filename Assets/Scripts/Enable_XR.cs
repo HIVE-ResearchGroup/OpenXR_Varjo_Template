@@ -292,10 +292,14 @@ public class Enable_XR : MonoBehaviour
 
     void OnDisable()
     {
-        enableDepthTesting = false;
-        enableEnvironmentReflections = false;
-        videoSeeThrough = false;
-        Varjo.XR.VarjoRendering.SetOpaque(originalOpaqueValue);
-        UpdateVarjoFeatures();
+
+        if (usedDevice == DeviceList.Varjo)
+        {
+            enableDepthTesting = false;
+            enableEnvironmentReflections = false;
+            videoSeeThrough = false;
+            Varjo.XR.VarjoRendering.SetOpaque(originalOpaqueValue);
+            UpdateVarjoFeatures();
+        }
     }
 }
