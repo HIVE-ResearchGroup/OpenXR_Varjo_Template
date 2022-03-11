@@ -904,6 +904,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 469199681}
     - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: gripButton
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
       propertyPath: triggerGeo
       value: 
       objectReference: {fileID: 469199675}
@@ -919,6 +923,14 @@ PrefabInstance:
       propertyPath: menubuttonGeo
       value: 
       objectReference: {fileID: 469199679}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: primaryButton
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: triggerButton
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
       propertyPath: bodyGameobject
       value: 
@@ -939,6 +951,14 @@ PrefabInstance:
       propertyPath: controllerMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 5b14d809baeeab2408cdcbe12707ca29, type: 2}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: primary2DAxisClick
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: primary2DAxisTouch
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
       propertyPath: touchPadGameobject
       value: 
@@ -970,6 +990,11 @@ PrefabInstance:
     - target: {fileID: 148796211722224161, guid: cff1a64a12aa2294a919bb341b01e2d0,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 535280991371294751, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
@@ -1056,6 +1081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102104154720872955, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8123481095739858321, guid: cff1a64a12aa2294a919bb341b01e2d0,
         type: 3}
@@ -1418,6 +1448,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7102104154720872955, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8123481095739858321, guid: cff1a64a12aa2294a919bb341b01e2d0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1742,6 +1777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: {fileID: 469199682}
   rightController: {fileID: 682081927}
+  ArVrScript: {fileID: 1342569361}
 --- !u!114 &996930872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2550,6 +2586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usedDevice: 0
+  leftController: {fileID: 469199682}
+  rightController: {fileID: 682081927}
 --- !u!4 &1342569359
 Transform:
   m_ObjectHideFlags: 0
@@ -2578,7 +2616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xrCamera: {fileID: 326390411}
-  setGroundTransparent: 1
+  setGroundTransparent: 0
   shadowCatcher: {fileID: 2100000, guid: 36dbdfd9cae5c4f41af10bab79a96cc0, type: 2}
   VREyeOffset: 0
   enableDepthTesting: 1
