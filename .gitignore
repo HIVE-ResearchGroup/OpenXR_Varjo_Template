@@ -61,3 +61,4 @@ crashlytics-build.properties
 .vscode/settings.json
 .DS_Store
 .vsconfig
+tracker_logger.txt
