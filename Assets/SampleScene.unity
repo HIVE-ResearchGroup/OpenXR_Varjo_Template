@@ -968,8 +968,6 @@ MonoBehaviour:
   _temporalWarpingMode: 0
   _customWarpAdjustment: 17
   _updateHandInPrecull: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1 &363520623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 46d3f3c1c91f91047901395158572fc3,
@@ -1055,7 +1053,6 @@ Transform:
   m_Father: {fileID: 782956656}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1001 &469199673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2068,13 +2065,8 @@ Transform:
   m_Children:
   - {fileID: 1423977474}
   - {fileID: 1973830973}
-<<<<<<< Updated upstream
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-=======
   m_Father: {fileID: 2074249801}
   m_RootOrder: 7
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1155645740
 GameObject:
@@ -2270,13 +2262,8 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-<<<<<<< Updated upstream
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-=======
   m_Father: {fileID: 2074249801}
   m_RootOrder: 8
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 36.506, y: -6.849, z: 93.216}
 --- !u!114 &1183470266
 MonoBehaviour:
@@ -3635,13 +3622,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-<<<<<<< Updated upstream
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-=======
   m_Father: {fileID: 2074249801}
   m_RootOrder: 9
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2013410473
 GameObject:
@@ -3689,9 +3671,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< Updated upstream
-  m_RootOrder: 2
-=======
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2040086462
@@ -3813,7 +3792,6 @@ Transform:
   - {fileID: 2007222332}
   m_Father: {fileID: 0}
   m_RootOrder: 5
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2144992038 stripped
 Transform:
