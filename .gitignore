@@ -62,3 +62,7 @@ crashlytics-build.properties
 .DS_Store
 .vsconfig
 tracker_logger.txt
+*.log
+performance_log.txt
+server_log.txt
+user_logger.txt
