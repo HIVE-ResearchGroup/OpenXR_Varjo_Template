@@ -35,10 +35,13 @@ public class Enable_XR : MonoBehaviour
     public bool enableLeapFunctionality;
 
     [Header("SteamVR Variables")]
-    public GameObject SteamVRPrefab;
+    public GameObject SteamVRPlayer;
+    public GameObject SteamVRCamera;
 
     [Header("ZEDMini Variables")]
-    public GameObject ZedMiniPrefab;
+    public GameObject ZedMiniPlayer;
+    public GameObject ZedMiniLeftEye;
+    public GameObject ZedMiniRightEye;
 
     private bool videoSeeThrough;
     private HDAdditionalCameraData HDCameraData;
@@ -134,6 +137,7 @@ public class Enable_XR : MonoBehaviour
 
     void VarjoStartup()
     {
+        Destroy(ZedMiniPlayer);
 
         //Enabling AR mode
         if (xrMode == XRmode.AR)
@@ -293,18 +297,29 @@ public class Enable_XR : MonoBehaviour
 
     void ViveZedStartup()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        if (players.Length > 0)
-            for (uint i = 0; i < players.Length; i++)
-                Destroy(players[i]);
-        
+        //if (players.Length > 0)
+        //    for (uint i = 0; i < players.Length; i++)
+        //        Destroy(players[i]);
+
+
         if (xrMode == XRmode.VR)
         {
-            GameObject.Instantiate(SteamVRPrefab);
+            //GameObject.Instantiate(SteamVRPrefab);
+
+            SteamVRCamera.GetComponent<Camera>().enabled = true;
+            Destroy(ZedMiniPlayer);
+            
+
         } else if (xrMode == XRmode.AR)
         {
-            GameObject.Instantiate(ZedMiniPrefab);
+            //GameObject.Instantiate(ZedMiniPrefab);
+            ZedMiniLeftEye.GetComponent<Camera>().enabled = true;
+            ZedMiniRightEye.GetComponent<Camera>().enabled = true;
+
+            Destroy(SteamVRCamera);
+
         }
     }
 
