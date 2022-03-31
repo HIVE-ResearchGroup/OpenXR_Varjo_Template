@@ -562,6 +562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -609,6 +613,10 @@ PrefabInstance:
     - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_AllowMSAA
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401046, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: grabGripAction.actionPath
+      value: /actions/zed-default/in/Grab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
@@ -1468,7 +1476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f94de8ca4424b4cbeeeda5464875e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedDevice: 2
+  usedDevice: 1
 --- !u!4 &1342569359
 Transform:
   m_ObjectHideFlags: 0
@@ -1503,6 +1511,9 @@ MonoBehaviour:
   enableDepthTesting: 1
   enableEnvironmentReflections: 0
   enableLeapFunctionality: 1
+  SteamVRPrefab: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+  ZedMiniPrefab: {fileID: 1603769914748404, guid: e13ee7e0790c7d243b7aa67fe604acac,
+    type: 3}
   defaultSky: {fileID: 8900000, guid: 1c03f883dd6879442b66f83430ea610b, type: 3}
   m_skyboxProfile: {fileID: 11400000, guid: b9fc1b0365bc88e40b2900cc175368b9, type: 2}
   reflectionRefreshRate: 30
@@ -1533,7 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60365d84dd5439143ae4883099ec0fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedMode: 0
+  selectedMode: 1
 --- !u!114 &1342569362
 MonoBehaviour:
   m_ObjectHideFlags: 0

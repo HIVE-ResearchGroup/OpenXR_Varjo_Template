@@ -34,6 +34,12 @@ public class Enable_XR : MonoBehaviour
     public bool enableEnvironmentReflections;
     public bool enableLeapFunctionality;
 
+    [Header("SteamVR Variables")]
+    public GameObject SteamVRPrefab;
+
+    [Header("ZEDMini Variables")]
+    public GameObject ZedMiniPrefab;
+
     private bool videoSeeThrough;
     private HDAdditionalCameraData HDCameraData;
     private bool originalOpaqueValue;
@@ -287,7 +293,19 @@ public class Enable_XR : MonoBehaviour
 
     void ViveZedStartup()
     {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
+        if (players.Length > 0)
+            for (uint i = 0; i < players.Length; i++)
+                Destroy(players[i]);
+        
+        if (xrMode == XRmode.VR)
+        {
+            GameObject.Instantiate(SteamVRPrefab);
+        } else if (xrMode == XRmode.AR)
+        {
+            GameObject.Instantiate(ZedMiniPrefab);
+        }
     }
 
     void OnDisable()
