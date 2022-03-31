@@ -161,7 +161,7 @@ public class Enable_XR : MonoBehaviour
 
 
         //Enable RealTime Reflections
-            cubemapEventListenerSet = onCubemapUpdate.GetPersistentEventCount() > 0;
+            /*cubemapEventListenerSet = onCubemapUpdate.GetPersistentEventCount() > 0;
             if (XRGeneralSettings.Instance != null && XRGeneralSettings.Instance.Manager != null)
             {
                 var loader = XRGeneralSettings.Instance.Manager.activeLoader as Varjo.XR.VarjoLoader;
@@ -177,7 +177,7 @@ public class Enable_XR : MonoBehaviour
             Varjo.XR.VarjoRendering.SetOpaque(false);
             cubemapEventListenerSet = onCubemapUpdate.GetPersistentEventCount() > 0;
             HDCameraData = xrCamera.GetComponent<HDAdditionalCameraData>();
-
+            */
 
 
             if (!m_skyboxProfile.TryGet(out volumeSky))

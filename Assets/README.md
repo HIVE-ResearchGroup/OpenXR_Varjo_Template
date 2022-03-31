@@ -1,3 +1,7 @@
+# Make sure that you only use OpenVR Loader inside Unity and have OpenVR compability enabled inside VarjoBase!
+
+# Right now, only the AR feature of the Varjo system is supported
+
 # Useage
 
 ## DeviceManager Script
