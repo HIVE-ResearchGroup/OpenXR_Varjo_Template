@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearColorMode: 0
-  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  backgroundColorHDR: {r: 0, g: 0, b: 0, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f94de8ca4424b4cbeeeda5464875e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedDevice: 1
+  usedDevice: 2
 --- !u!4 &1342569359
 Transform:
   m_ObjectHideFlags: 0
@@ -1501,7 +1501,7 @@ MonoBehaviour:
   shadowCatcher: {fileID: 2100000, guid: 36dbdfd9cae5c4f41af10bab79a96cc0, type: 2}
   VREyeOffset: 0
   enableDepthTesting: 1
-  enableEnvironmentReflections: 1
+  enableEnvironmentReflections: 0
   enableLeapFunctionality: 1
   defaultSky: {fileID: 8900000, guid: 1c03f883dd6879442b66f83430ea610b, type: 3}
   m_skyboxProfile: {fileID: 11400000, guid: b9fc1b0365bc88e40b2900cc175368b9, type: 2}
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60365d84dd5439143ae4883099ec0fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedMode: 1
+  selectedMode: 0
 --- !u!114 &1342569362
 MonoBehaviour:
   m_ObjectHideFlags: 0
