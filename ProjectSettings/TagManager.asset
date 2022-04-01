@@ -41,7 +41,7 @@ TagManager:
   - 
   - 
   - arlayer
-  - 
+  - framelayer
   m_SortingLayers:
   - name: Default
     uniqueID: 0

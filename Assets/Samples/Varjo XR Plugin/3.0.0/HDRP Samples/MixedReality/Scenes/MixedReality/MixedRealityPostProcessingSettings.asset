@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   enable:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 1
   localClouds:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   earthCurvature:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   cloudTiling:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1}
@@ -59,7 +59,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   cloudPreset:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   cumulusMap:
     m_OverrideState: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   shadows:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   shadowResolution:
     m_OverrideState: 0
@@ -343,25 +343,25 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   meteringMode:
-    m_OverrideState: 0
-    m_Value: 2
+    m_OverrideState: 1
+    m_Value: 0
   luminanceSource:
     m_OverrideState: 0
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 6.5
+    m_Value: 13.047457
   compensation:
     m_OverrideState: 0
     m_Value: 0
   limitMin:
-    m_OverrideState: 0
-    m_Value: -10
+    m_OverrideState: 1
+    m_Value: 13.210169
   limitMax:
     m_OverrideState: 1
-    m_Value: 8.5
+    m_Value: 13.442796
   curveMap:
     m_OverrideState: 0
     m_Value:
@@ -581,10 +581,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   quality:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   enabled:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   enabledTransparent:
     m_OverrideState: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.9
   reflectSky:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   usedAlgorithm:
     m_OverrideState: 0
@@ -614,7 +614,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.75
   m_RayMaxIterations:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 32
   rayMiss:
     m_OverrideState: 0
@@ -745,6 +745,7 @@ MonoBehaviour:
   - {fileID: -9030040721114606171}
   - {fileID: -3710784847779162845}
   - {fileID: 8883723885678434687}
+  - {fileID: 1850169278471318814}
 --- !u!114 &1452777369599508381
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -763,10 +764,10 @@ MonoBehaviour:
     m_Value: 1
   cloudType:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   skyAmbientMode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   windOrientation:
     m_OverrideState: 0
     m_Value: 0
@@ -774,6 +775,49 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 100
   fogType:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &1850169278471318814
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ddcec8a8eb2d684d833ac8f5d26aebd, type: 3}
+  m_Name: HDShadowSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  maxShadowDistance:
+    m_OverrideState: 1
+    m_Value: 50
+  directionalTransmissionMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  cascadeShadowSplitCount:
+    m_OverrideState: 0
+    m_Value: 4
+  cascadeShadowSplit0:
+    m_OverrideState: 0
+    m_Value: 0.05
+  cascadeShadowSplit1:
+    m_OverrideState: 0
+    m_Value: 0.15
+  cascadeShadowSplit2:
+    m_OverrideState: 0
+    m_Value: 0.3
+  cascadeShadowBorder0:
+    m_OverrideState: 0
+    m_Value: 0
+  cascadeShadowBorder1:
+    m_OverrideState: 0
+    m_Value: 0
+  cascadeShadowBorder2:
+    m_OverrideState: 0
+    m_Value: 0
+  cascadeShadowBorder3:
     m_OverrideState: 0
     m_Value: 0
 --- !u!114 &6455574185000254167
@@ -878,7 +922,7 @@ MonoBehaviour:
     m_Value: 0
   multiplier:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 10000
   upperHemisphereLuxValue:
     m_OverrideState: 0
     m_Value: 0.4660715

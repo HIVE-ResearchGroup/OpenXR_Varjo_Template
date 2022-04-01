@@ -35,10 +35,14 @@ public class Enable_XR : MonoBehaviour
     public bool enableLeapFunctionality;
 
     [Header("SteamVR Variables")]
+    public GameObject SteamVRPrefab;
+
     public GameObject SteamVRPlayer;
     public GameObject SteamVRCamera;
 
     [Header("ZEDMini Variables")]
+    public GameObject ZedMiniPrefab;
+
     public GameObject ZedMiniPlayer;
     public GameObject ZedMiniLeftEye;
     public GameObject ZedMiniRightEye;
@@ -74,7 +78,6 @@ public class Enable_XR : MonoBehaviour
     void Start()
     {
         usedDevice = this.GetComponent<DeviceManager>().usedDevice;
-        HDCameraData = xrCamera.GetComponent<HDAdditionalCameraData>();
         xrMode = this.GetComponent<AR_VR_Toggle>().selectedMode;
         selectedXrMode = xrMode;
 
@@ -137,7 +140,10 @@ public class Enable_XR : MonoBehaviour
 
     void VarjoStartup()
     {
-        Destroy(ZedMiniPlayer);
+        Instantiate(SteamVRPrefab);
+        xrCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
+        HDCameraData = xrCamera.GetComponent<HDAdditionalCameraData>();
+
 
         //Enabling AR mode
         if (xrMode == XRmode.AR)
@@ -306,19 +312,21 @@ public class Enable_XR : MonoBehaviour
 
         if (xrMode == XRmode.VR)
         {
-            //GameObject.Instantiate(SteamVRPrefab);
+            GameObject.Instantiate(SteamVRPrefab);
 
+            /*SteamVRCamera.GetComponent<Camera>().enabled = false;
             SteamVRCamera.GetComponent<Camera>().enabled = true;
-            Destroy(ZedMiniPlayer);
+
+            Destroy(ZedMiniPlayer);*/
             
 
         } else if (xrMode == XRmode.AR)
         {
-            //GameObject.Instantiate(ZedMiniPrefab);
-            ZedMiniLeftEye.GetComponent<Camera>().enabled = true;
+            GameObject.Instantiate(ZedMiniPrefab);
+            /*ZedMiniLeftEye.GetComponent<Camera>().enabled = true;
             ZedMiniRightEye.GetComponent<Camera>().enabled = true;
 
-            Destroy(SteamVRCamera);
+            Destroy(SteamVRCamera);*/
 
         }
     }
