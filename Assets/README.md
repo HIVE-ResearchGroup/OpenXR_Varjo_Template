@@ -17,10 +17,15 @@ After, go to the deviceManager script and set the "Used Device" setting matching
 ## Enable_XR Script
 This script is the most complicated script in the project. It loads the specific scripts and functionality for the headsets depending on the selected environment-type (see AR_VR_Toggle).
 
-Notice: In order to use the "make ground invisible"-functionality, please make sure to name your ground like in the template.
-
 ## AR_VR_Toggle Script
 Sets the environment-type and could be used by external scripts to change the environment during runtime. (Can also be used to change the environment for testing purposes during a live-preview.)
+It's even possible to switch between AR and VR during runtime usind the "T" key.
+
+## Controller Manager Script
+This script makes sure that the controllers are setup correctly. It covers the controller offset between Varjo tracking and OpenXR tracking (Vive) as well as disabling the controllers when switching to AR mode.
+
+## Load ARVR Objects to Mode Script
+This script manages the display of objects related to the used display mode. You'll also find the option to turn the ground invisible (and act as a shadow catcher) with this script.
 
 
 ## How to adapt the controller
@@ -59,3 +64,5 @@ In this template, there are three main factors
 - Single Pass / Multipass: Using Single Pass, parts of the image for both eyes are reused for the other eye.
 - Reflection probe: In order to make use of the environment reflections, the reflection probe updates the reflection "realtime".
 
+# How to make objects visible to either VR or AR
+Please make use of the specific layers.

@@ -24,8 +24,6 @@ public class Enable_XR : MonoBehaviour
 
     //Varjo devices - maybe reuse them for ZED?
     public Camera xrCamera;
-    public bool setGroundTransparent;
-    public Material shadowCatcher;
 
     [Header("Varjo Variables")]
     [Range(0f, 1.0f)]
@@ -70,9 +68,6 @@ public class Enable_XR : MonoBehaviour
         selectedXrMode = xrMode;
 
 
-        SetGroundTransparent();
-
-
         if (usedDevice == DeviceList.Varjo)
         {
             VarjoStartup();
@@ -93,30 +88,6 @@ public class Enable_XR : MonoBehaviour
         if (usedDevice == DeviceList.Varjo)
         {
             UpdateVarjoFeatures();
-        }
-    }
-
-    void SetGroundTransparent()
-    {
-        //Replacing ground with transparent layer
-        if (setGroundTransparent)
-        {
-            if (shadowCatcher != null)
-            {
-                GameObject ground = GameObject.Find("Ground");
-                if (ground != null)
-                {
-                    ground.GetComponent<Renderer>().material = shadowCatcher;
-                }
-                else
-                {
-                    Debug.LogError("Enable_XR: Couldn't find GameObject with the name ground!");
-                }
-            }
-            else
-            {
-                Debug.LogError("Enable_XR: Please assign the according material in order to set the ground transparent!");
-            }
         }
     }
 

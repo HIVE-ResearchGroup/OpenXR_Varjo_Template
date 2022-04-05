@@ -6,7 +6,8 @@ using UnityEngine.XR;
 
 using UnityEngine;
 
-
+// Axel Bauer, Varjo Dev Team
+// 2022
 public enum ControllerVisible
 {
    True,
@@ -17,15 +18,15 @@ public class ControllerManager : MonoBehaviour
 {
     public GameObject leftController;
     public GameObject rightController;
-    public ControllerVisible visiblityHandler;
+    public ControllerVisible currentlyVisible;
     [Header("Overrides visibilityHandler:")]
     public bool setInvisibleInAR = true;
 
-    private bool controllersVisible = true; //initial true because all mesh renderers are also set true by default
-    private XRmode xrMode;
-    private DeviceList usedDevice;
-    private DeviceManager dm;
-    private AR_VR_Toggle avt;
+    private bool m_controllersVisible = true; //initial true because all mesh renderers are also set true by default
+    private XRmode m_xrMode;
+    private DeviceList m_usedDevice;
+    private DeviceManager m_dm;
+    private AR_VR_Toggle m_avt;
 
     XRNode XRNodeLeftHand = XRNode.LeftHand;
     XRNode XRNodeRightHand = XRNode.RightHand;
@@ -37,19 +38,19 @@ public class ControllerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dm = this.gameObject.GetComponent<DeviceManager>();
-        avt = this.gameObject.GetComponent<AR_VR_Toggle>();
+        m_dm = this.gameObject.GetComponent<DeviceManager>();
+        m_avt = this.gameObject.GetComponent<AR_VR_Toggle>();
 
-        if (!dm)
+        if (!m_dm)
         {
             Debug.LogError("ControllerManager: DeviceManager not found on this object!");
         } else
         {
-            usedDevice = dm.usedDevice;
+            m_usedDevice = m_dm.usedDevice;
         }
 
 
-        if (!avt)
+        if (!m_avt)
         {
             Debug.LogError("ControllerManager: AR_VR_Toggle not found on this object!");
         }
@@ -66,43 +67,13 @@ public class ControllerManager : MonoBehaviour
         }
 
 
-        // Covering controller offset
-        if (usedDevice == DeviceList.Varjo)
-        {
-
-            //new position
-            leftController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
-            rightController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
-
-            //updated boxCollider -> physics
-            leftController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.09f);
-            rightController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.09f);
-
-            //updated SphereCollider -> grabbing
-            leftController.GetComponent<SphereCollider>().center = new Vector3(0f, 0f, 0f);
-            rightController.GetComponent<SphereCollider>().center = new Vector3(0f, 0f, 0f);
-        }
-        else if (usedDevice == DeviceList.OpenXR_ZED)
-        {
-            //new position
-            leftController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0.08f);
-            rightController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0.08f);
-
-            //updated boxCollider -> physics
-            leftController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.01f);
-            rightController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.01f);
-
-            //updated SphereCollider -> grabbing
-            leftController.GetComponent<SphereCollider>().center = new Vector3(0.0f, 0f, 0.08f);
-            rightController.GetComponent<SphereCollider>().center = new Vector3(0.0f, 0f, 0.08f);
-        }
+        setControllerOffset();
     }
 
     // Update is called once per frame
     void Update()
     {
-        xrMode = avt.selectedMode;
-        
+        m_xrMode = m_avt.selectedMode;
 
         // Check if wether a controller needs to be completely deactivated
         GetDevice(XRNodeLeftHand, leftController);
@@ -111,26 +82,60 @@ public class ControllerManager : MonoBehaviour
         bool tempVisibility = checkVisibilty();
 
         // Check if there is a visibility state change
-        if (controllersVisible != tempVisibility)
+        if (m_controllersVisible != tempVisibility)
         {
             setVisibility(tempVisibility);
-            controllersVisible = tempVisibility;
+            m_controllersVisible = tempVisibility;
+        }
+    }
+
+    void setControllerOffset()
+    {
+        // Covering controller offset
+        if (m_usedDevice == DeviceList.Varjo)
+        {
+
+            // new position
+            leftController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
+            rightController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
+
+            // updated boxCollider -> physics
+            leftController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.09f);
+            rightController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.09f);
+
+            // updated SphereCollider -> grabbing
+            leftController.GetComponent<SphereCollider>().center = new Vector3(0f, 0f, 0f);
+            rightController.GetComponent<SphereCollider>().center = new Vector3(0f, 0f, 0f);
+        }
+        else if (m_usedDevice == DeviceList.OpenXR_ZED)// probably for all OpenXR devices
+        {
+            // new position
+            leftController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0.08f);
+            rightController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0.08f);
+
+            // updated boxCollider -> physics
+            leftController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.01f);
+            rightController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.01f);
+
+            // updated SphereCollider -> grabbing
+            leftController.GetComponent<SphereCollider>().center = new Vector3(0.0f, 0f, 0.08f);
+            rightController.GetComponent<SphereCollider>().center = new Vector3(0.0f, 0f, 0.08f);
         }
     }
 
     bool checkVisibilty()
     {
-        if (setInvisibleInAR && xrMode == XRmode.AR)
+        if (setInvisibleInAR && m_xrMode == XRmode.AR)
         {
             return false;
         }
 
-        //check user input
-        if (visiblityHandler == ControllerVisible.True)
+        // check user input
+        if (currentlyVisible == ControllerVisible.True)
         {
             return true;
         }
-        else if (visiblityHandler == ControllerVisible.False)
+        else if (currentlyVisible == ControllerVisible.False)
         {
            return false;
         }
