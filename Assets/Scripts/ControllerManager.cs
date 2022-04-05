@@ -24,6 +24,8 @@ public class ControllerManager : MonoBehaviour
     private bool controllersVisible = true; //initial true because all mesh renderers are also set true by default
     private XRmode xrMode;
     private DeviceList usedDevice;
+    private DeviceManager dm;
+    private AR_VR_Toggle avt;
 
     XRNode XRNodeLeftHand = XRNode.LeftHand;
     XRNode XRNodeRightHand = XRNode.RightHand;
@@ -35,7 +37,23 @@ public class ControllerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        usedDevice = this.gameObject.GetComponent<DeviceManager>().usedDevice;
+        dm = this.gameObject.GetComponent<DeviceManager>();
+        avt = this.gameObject.GetComponent<AR_VR_Toggle>();
+
+        if (!dm)
+        {
+            Debug.LogError("ControllerManager: DeviceManager not found on this object!");
+        } else
+        {
+            usedDevice = dm.usedDevice;
+        }
+
+
+        if (!avt)
+        {
+            Debug.LogError("ControllerManager: AR_VR_Toggle not found on this object!");
+        }
+
 
         if (!leftController)
         {
@@ -83,7 +101,7 @@ public class ControllerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xrMode = this.gameObject.GetComponent<AR_VR_Toggle>().selectedMode;
+        xrMode = avt.selectedMode;
         
 
         // Check if wether a controller needs to be completely deactivated
