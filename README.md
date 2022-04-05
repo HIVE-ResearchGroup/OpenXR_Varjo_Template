@@ -12,7 +12,7 @@ There is one main file managing this transition: The deviceManager object, conta
 
 
 ## Useage
-For more information about the useage, please have a look at the [README](./Documentation/architecture.md) inside the Asset-folder.
+For more information about the useage, please have a look at the [README](./Assets/README.md) inside the Asset-folder.
 
 
 ## Noticeable mentions
