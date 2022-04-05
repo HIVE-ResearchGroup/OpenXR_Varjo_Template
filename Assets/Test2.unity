@@ -1742,6 +1742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: {fileID: 469199682}
   rightController: {fileID: 682081927}
+  ArVrScript: {fileID: 0}
 --- !u!114 &996930872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2550,6 +2551,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usedDevice: 2
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
 --- !u!4 &1342569359
 Transform:
   m_ObjectHideFlags: 0
@@ -2580,10 +2583,12 @@ MonoBehaviour:
   xrCamera: {fileID: 326390411}
   setGroundTransparent: 1
   shadowCatcher: {fileID: 2100000, guid: 36dbdfd9cae5c4f41af10bab79a96cc0, type: 2}
-  depthTesting: 1
+  VREyeOffset: 0
+  enableDepthTesting: 0
   enableEnvironmentReflections: 1
   enableLeapFunctionality: 1
   defaultSky: {fileID: 8900000, guid: 1c03f883dd6879442b66f83430ea610b, type: 3}
+  m_skyboxProfile: {fileID: 11400000, guid: b9fc1b0365bc88e40b2900cc175368b9, type: 2}
   reflectionRefreshRate: 30
   onCubemapUpdate:
     m_PersistentCalls:
@@ -2600,7 +2605,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_skyboxProfile: {fileID: 11400000, guid: b9fc1b0365bc88e40b2900cc175368b9, type: 2}
 --- !u!114 &1342569361
 MonoBehaviour:
   m_ObjectHideFlags: 0

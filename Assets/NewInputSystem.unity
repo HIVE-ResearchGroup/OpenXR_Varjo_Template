@@ -1733,7 +1733,6 @@ GameObject:
   m_Component:
   - component: {fileID: 996930868}
   - component: {fileID: 996930867}
-  - component: {fileID: 996930871}
   - component: {fileID: 996930869}
   - component: {fileID: 996930872}
   m_Layer: 0
@@ -1795,21 +1794,6 @@ MonoBehaviour:
   moveSpeed: 5
   turnSpeed: 120
   moveOnXZPlane: 1
---- !u!114 &996930871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996930866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a7d01d86035e974d91d5c98bbfaad3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftController: {fileID: 469199682}
-  rightController: {fileID: 682081927}
-  ArVrScript: {fileID: 1342569361}
 --- !u!114 &996930872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2598,6 +2582,7 @@ GameObject:
   - component: {fileID: 1342569358}
   - component: {fileID: 1342569360}
   - component: {fileID: 1342569361}
+  - component: {fileID: 1342569362}
   m_Layer: 0
   m_Name: DeviceManager
   m_TagString: Untagged
@@ -2617,7 +2602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f94de8ca4424b4cbeeeda5464875e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedDevice: 2
+  usedDevice: 0
   leftController: {fileID: 469199682}
   rightController: {fileID: 682081927}
 --- !u!4 &1342569359
@@ -2685,6 +2670,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedMode: 0
+--- !u!114 &1342569362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342569357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564e030d29fdb15418a8654c8af861e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftController: {fileID: 469199682}
+  rightController: {fileID: 682081927}
+  visiblityHandler: 0
+  setInvisibleInAR: 1
 --- !u!1 &1423977469
 GameObject:
   m_ObjectHideFlags: 0

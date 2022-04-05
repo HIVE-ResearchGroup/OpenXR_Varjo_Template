@@ -2598,6 +2598,7 @@ GameObject:
   - component: {fileID: 1342569358}
   - component: {fileID: 1342569360}
   - component: {fileID: 1342569361}
+  - component: {fileID: 1342569362}
   m_Layer: 0
   m_Name: DeviceManager
   m_TagString: Untagged
@@ -2618,8 +2619,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usedDevice: 0
-  leftController: {fileID: 469199682}
-  rightController: {fileID: 682081927}
 --- !u!4 &1342569359
 Transform:
   m_ObjectHideFlags: 0
@@ -2684,7 +2683,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60365d84dd5439143ae4883099ec0fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedMode: 0
+  selectedMode: 1
+--- !u!114 &1342569362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342569357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564e030d29fdb15418a8654c8af861e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftController: {fileID: 469199682}
+  rightController: {fileID: 682081927}
+  visiblityHandler: 0
+  setInvisibleInAR: 1
 --- !u!1 &1423977469
 GameObject:
   m_ObjectHideFlags: 0
