@@ -32,7 +32,7 @@ public class Enable_XR : MonoBehaviour
     public bool enableEnvironmentReflections;
     public bool enableLeapFunctionality;
 
-    private bool videoSeeThrough;
+    //private bool videoSeeThrough;
     private HDAdditionalCameraData HDCameraData;
     private bool originalOpaqueValue;
     private bool metadataStreamEnabled = false;
@@ -103,7 +103,7 @@ public class Enable_XR : MonoBehaviour
         //Enabling AR mode
         if (xrMode == XRmode.AR)
         {
-            videoSeeThrough = true;
+            //videoSeeThrough = true;
             Varjo.XR.VarjoMixedReality.StartRender();
             Varjo.XR.VarjoRendering.SetOpaque(false);
 
@@ -174,13 +174,13 @@ public class Enable_XR : MonoBehaviour
     {
         if (xrMode != selectedXrMode)
         {
-            if (xrMode == XRmode.AR && videoSeeThrough)
+            if (xrMode == XRmode.AR) // && videoSeeThrough)
             {
                 Varjo.XR.VarjoMixedReality.StartRender();
                 if (HDCameraData)
                     HDCameraData.clearColorMode = HDAdditionalCameraData.ClearColorMode.Color;
             }
-            else if (xrMode == XRmode.VR || !videoSeeThrough)
+            else if (xrMode == XRmode.VR) // || !videoSeeThrough)
             {
                 Varjo.XR.VarjoMixedReality.StopRender();
                 if (HDCameraData)
@@ -268,7 +268,7 @@ public class Enable_XR : MonoBehaviour
         {
             enableDepthTesting = false;
             enableEnvironmentReflections = false;
-            videoSeeThrough = false;
+            //videoSeeThrough = false;
             Varjo.XR.VarjoRendering.SetOpaque(originalOpaqueValue);
             UpdateVarjoFeatures();
         }

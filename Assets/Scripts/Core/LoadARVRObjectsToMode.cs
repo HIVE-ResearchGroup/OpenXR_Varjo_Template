@@ -12,9 +12,14 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     public Material shadowCatcher;
     public bool setTransparentInAR = true;
     public bool setGroundTransparent;
+    
 
     private AR_VR_Toggle avt;
     private XRmode m_XrMode;
+    private XRmode m_storedXrMode;
+    private bool m_storedGroundTransparent;
+    private bool m_storedTransparentInAR;
+
     private Material m_InitialMaterial;
 
     private GameObject[] m_arObjects;
@@ -24,6 +29,11 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     void Start()
     {
         avt = this.gameObject.GetComponent<AR_VR_Toggle>();
+        m_XrMode = avt.selectedMode;
+        m_storedXrMode = m_XrMode;
+        m_storedTransparentInAR = setGroundTransparent;
+
+        m_storedGroundTransparent = setGroundTransparent;
 
         if (!avt)
         {
@@ -31,32 +41,40 @@ public class LoadARVRObjectsToMode : MonoBehaviour
         }
 
         groundInit();
+        setGround(setGroundTransparent);
         m_arObjects = FindGameObjectsWithLayer(7);// hardcoded number - not a good solution and might change it later
         m_vrObjects = FindGameObjectsWithLayer(6);
+        updateObjects();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         m_XrMode = avt.selectedMode;
 
-        ///////////////////////////////////////////////////////////////////////////// TODO set these objects not every frame ....
-        // set objects
-        if (m_XrMode == XRmode.AR)
-        {
-            setObjects(m_arObjects, true);
-            setObjects(m_vrObjects, false);
-
-        } else if (m_XrMode == XRmode.VR)
-        {
-            setObjects(m_arObjects, false);
-            setObjects(m_vrObjects, true);
-        }
 
 
         //set ground
-        setGround(setGroundTransparent);
+        if (setGroundTransparent != m_storedGroundTransparent) // Check if this value changed regarding ground
+        {
+
+            setGround(setGroundTransparent);
+            m_storedGroundTransparent = setGroundTransparent;
+
+        } else if (m_storedTransparentInAR != setTransparentInAR) // Check if this value changed regarding ground
+        {
+            setGround(setGroundTransparent);
+            m_storedTransparentInAR = setTransparentInAR;
+        } 
+        
+        else if (m_storedXrMode != m_XrMode) //set objects
+        {
+            updateObjects();
+            setGround(setGroundTransparent);
+            m_storedGroundTransparent = setGroundTransparent;
+
+            m_storedXrMode = m_XrMode;
+        }
     }
 
     void groundInit()
@@ -110,6 +128,24 @@ public class LoadARVRObjectsToMode : MonoBehaviour
         }
     }
 
+    // Checks which updates should be updated
+    void updateObjects()
+    {
+        if (m_XrMode == XRmode.AR)
+        {
+            setObjects(m_arObjects, true);
+            setObjects(m_vrObjects, false);
+
+        }
+        else if (m_XrMode == XRmode.VR)
+        {
+            setObjects(m_arObjects, false);
+            setObjects(m_vrObjects, true);
+        }
+
+    }
+
+    // Updates the objects regarding the mode
     void setObjects(GameObject[] goArray, bool state)
     {
         if (goArray != null)

@@ -384,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CameraFloorOffsetObject: {fileID: 5633134295194596813}
   m_RequestedTrackingMode: 0
-  m_TrackingOriginMode: 1
+  m_TrackingOriginMode: 2
   m_TrackingSpace: 0
   m_CameraYOffset: 1.36144
 --- !u!114 &5633134294854924439
