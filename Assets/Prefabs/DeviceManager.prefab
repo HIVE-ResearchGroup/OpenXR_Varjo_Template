@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedMode: 1
+  inputDelay: 2
 --- !u!114 &1723340320100817061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xrCamera: {fileID: 0}
-  VREyeOffset: 0
+  VREyeOffset: 1
   enableDepthTesting: 1
   enableEnvironmentReflections: 1
   enableLeapFunctionality: 1
