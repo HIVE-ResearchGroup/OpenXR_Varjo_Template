@@ -14,8 +14,8 @@ public class FreeMovement : MonoBehaviour
 
     void Update()
     {
-        float turnLeft = Input.GetKey(KeyCode.Z) ? -1.0f : 0.0f;
-        float turnRight = Input.GetKey(KeyCode.X) ? 1.0f : 0.0f;
+        float turnLeft = Input.GetKey(KeyCode.X) ? -1.0f : 0.0f;
+        float turnRight = Input.GetKey(KeyCode.C) ? 1.0f : 0.0f;
 
         float forward = Input.GetKey(KeyCode.W) ? 1.0f : 0.0f;
         float backward = Input.GetKey(KeyCode.S) ? 1.0f : 0.0f;
