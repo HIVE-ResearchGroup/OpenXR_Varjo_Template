@@ -4,6 +4,13 @@
 This project focuses on combining two workflows (OpenXR and Varjo SDK) into one project and making it easy to switch between those two headset just as by ticking two checkboxes.
 
 
+## Dependencies
+- Varjo SDK
+- HDRP Pipeline
+- Unity 2021.2.12
+In order to use the template, the Varjo SDK has to be imported into your project. Make sure to not delete/move the "Samples" folder when porting/developing in/to your active directory. The template is quite flexible as it will always get the most up to date version of the controllers of the SDK. Consider that when updating the Varjo SDK.
+
+
 ## Structure
 There is one main file managing this transition: The deviceManager object, containing three scripts:
 - Device Manager
