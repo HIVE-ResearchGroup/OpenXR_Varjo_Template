@@ -144,15 +144,9 @@ public class Enable_XR : MonoBehaviour
                 HDCameraData.clearColorMode = HDAdditionalCameraData.ClearColorMode.Color;
 #endif
 
-            // TODO - this somehow still doesn't work
-#if USING_URP
+#if !USING_HDRP
             if (HDCameraData)
-                HDCameraData.backgroundColor = Camera.ClearColorMode.Color;
-#endif
-
-#if !USING_URP && !USING_HDRP
-            if (HDCameraData)
-                HDCameraData.backgroundColor = CameraClearFlags.SolidColor;
+                HDCameraData.clearFlags = CameraClearFlags.SolidColor;
 #endif
         }
 
@@ -225,15 +219,9 @@ public class Enable_XR : MonoBehaviour
                     HDCameraData.clearColorMode = HDAdditionalCameraData.ClearColorMode.Color;
 #endif
 
-                // TODO - this somehow still doesn't work
-#if USING_URP
+#if !USING_HDRP
             if (HDCameraData)
-                HDCameraData.backgroundColor = Camera.ClearColorMode.Color;
-#endif
-
-#if !USING_URP && !USING_HDRP
-            if (HDCameraData)
-                HDCameraData.backgroundColor = CameraClearFlags.SolidColor;
+                HDCameraData.clearFlags = CameraClearFlags.SolidColor;
 #endif
 
             }
@@ -246,15 +234,9 @@ public class Enable_XR : MonoBehaviour
                     HDCameraData.clearColorMode = HDAdditionalCameraData.ClearColorMode.Sky;
 #endif
 
-                // TODO - this somehow still doesn't work
-#if USING_URP
+#if !USING_HDRP
             if (HDCameraData)
-                HDCameraData.backgroundColor = Camera.ClearColorMode.Skybox;
-#endif
-
-#if !USING_URP && !USING_HDRP
-            if (HDCameraData)
-                HDCameraData.backgroundColor = CameraClearFlags.Skybox;
+                HDCameraData.clearFlags = CameraClearFlags.Skybox;
 #endif
             }
             selectedXrMode = xrMode;
@@ -340,7 +322,9 @@ public class Enable_XR : MonoBehaviour
         if (usedDevice == DeviceList.Varjo)
         {
             enableDepthTesting = false;
+#if USING_HDRP
             enableEnvironmentReflections = false;
+#endif
             //videoSeeThrough = false;
             Varjo.XR.VarjoRendering.SetOpaque(originalOpaqueValue);
             UpdateVarjoFeatures();
