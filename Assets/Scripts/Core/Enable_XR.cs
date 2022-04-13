@@ -5,8 +5,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.XR.Management;
+
+#if USING_HDRP
+using UnityEngine.Rendering.HighDefinition;
+#endif
+#if USING_URP
+using UnityEngine.Rendering.Universal;
+#endif
 
 
 // Axel Bauer, Varjo Dev Team
@@ -29,12 +35,25 @@ public class Enable_XR : MonoBehaviour
     [Range(0f, 1.0f)]
     public float VREyeOffset = 0.0f;
     public bool enableDepthTesting;
+
+#if USING_HDRP
     public bool enableEnvironmentReflections;
+#endif
+
     public bool enableLeapFunctionality;
 
-    //private bool videoSeeThrough;
+#if USING_HDRP
     private HDAdditionalCameraData HDCameraData;
+#endif
+#if !USING_HDRP
+    private Camera HDCameraData;
+#endif
+
+
+    //private bool videoSeeThrough;
     private bool originalOpaqueValue;
+
+#if USING_HDRP
     private bool metadataStreamEnabled = false;
     private Varjo.XR.VarjoCameraMetadataStream.VarjoCameraMetadataFrame metadataFrame;
     private HDRISky volumeSky = null;
@@ -51,7 +70,7 @@ public class Enable_XR : MonoBehaviour
     public VolumeProfile m_skyboxProfile = null;
     public int reflectionRefreshRate = 30;
     public CubemapEvent onCubemapUpdate = new CubemapEvent();
-
+#endif
 
     //[Header("Vive Variables")]
 
@@ -63,15 +82,24 @@ public class Enable_XR : MonoBehaviour
     void Start()
     {
         usedDevice = this.GetComponent<DeviceManager>().usedDevice;
+
+
+#if USING_HDRP
         HDCameraData = xrCamera.GetComponent<HDAdditionalCameraData>();
+#endif
+
+#if !USING_HDRP
+        HDCameraData = xrCamera.GetComponent<Camera>();
+#endif
+
+
         xrMode = this.GetComponent<AR_VR_Toggle>().selectedMode;
         selectedXrMode = xrMode;
-
 
         if (usedDevice == DeviceList.Varjo)
         {
             VarjoStartup();
-        } 
+        }
 
         else if (usedDevice == DeviceList.OpenXR_ZED)
         {
@@ -94,7 +122,10 @@ public class Enable_XR : MonoBehaviour
     void UpdateVarjoFeatures()
     {
         UpdateVideoSeeThrough();
+
+#if USING_HDRP
         UpdateEnvironmentReflections();
+#endif
     }
 
     void VarjoStartup()
@@ -108,9 +139,21 @@ public class Enable_XR : MonoBehaviour
             Varjo.XR.VarjoRendering.SetOpaque(false);
 
             // TODO: There are some examples not in need of the following line - check, if there's another way around
+#if USING_HDRP
             if (HDCameraData)
                 HDCameraData.clearColorMode = HDAdditionalCameraData.ClearColorMode.Color;
+#endif
 
+            // TODO - this somehow still doesn't work
+#if USING_URP
+            if (HDCameraData)
+                HDCameraData.backgroundColor = Camera.ClearColorMode.Color;
+#endif
+
+#if !USING_URP && !USING_HDRP
+            if (HDCameraData)
+                HDCameraData.backgroundColor = CameraClearFlags.SolidColor;
+#endif
         }
 
         //Enable visible hands
@@ -130,41 +173,40 @@ public class Enable_XR : MonoBehaviour
 
 
 
-
+#if USING_HDRP
         //Enable RealTime Reflections
-            cubemapEventListenerSet = onCubemapUpdate.GetPersistentEventCount() > 0;
-            if (XRGeneralSettings.Instance != null && XRGeneralSettings.Instance.Manager != null)
-            {
-                var loader = XRGeneralSettings.Instance.Manager.activeLoader as Varjo.XR.VarjoLoader;
-                cameraSubsystem = loader.cameraSubsystem as Varjo.XR.VarjoCameraSubsystem;
-            }
+        cubemapEventListenerSet = onCubemapUpdate.GetPersistentEventCount() > 0;
+        if (XRGeneralSettings.Instance != null && XRGeneralSettings.Instance.Manager != null)
+        {
+            var loader = XRGeneralSettings.Instance.Manager.activeLoader as Varjo.XR.VarjoLoader;
+            cameraSubsystem = loader.cameraSubsystem as Varjo.XR.VarjoCameraSubsystem;
+        }
 
-            if (cameraSubsystem != null)
-            {
-                cameraSubsystem.Start();
-            }
+        if (cameraSubsystem != null)
+        {
+            cameraSubsystem.Start();
+        }
 
-            originalOpaqueValue = Varjo.XR.VarjoRendering.GetOpaque();
-            Varjo.XR.VarjoRendering.SetOpaque(false);
-            cubemapEventListenerSet = onCubemapUpdate.GetPersistentEventCount() > 0;
-            HDCameraData = xrCamera.GetComponent<HDAdditionalCameraData>();
+        originalOpaqueValue = Varjo.XR.VarjoRendering.GetOpaque();
+        Varjo.XR.VarjoRendering.SetOpaque(false);
+        cubemapEventListenerSet = onCubemapUpdate.GetPersistentEventCount() > 0;
 
+        //TODO check how this will react in SRP or URP
+        if (!m_skyboxProfile.TryGet(out volumeSky))
+        {
+            volumeSky = m_skyboxProfile.Add<HDRISky>(true);
+        }
 
+        if (!m_skyboxProfile.TryGet(out volumeExposure))
+        {
+            volumeExposure = m_skyboxProfile.Add<Exposure>(true);
+        }
 
-            if (!m_skyboxProfile.TryGet(out volumeSky))
-            {
-                volumeSky = m_skyboxProfile.Add<HDRISky>(true);
-            }
-
-            if (!m_skyboxProfile.TryGet(out volumeExposure))
-            {
-                volumeExposure = m_skyboxProfile.Add<Exposure>(true);
-            }
-
-            if (!m_skyboxProfile.TryGet(out volumeVSTWhiteBalance))
-            {
-                volumeVSTWhiteBalance = m_skyboxProfile.Add<VSTWhiteBalance>(true);
-            }
+        if (!m_skyboxProfile.TryGet(out volumeVSTWhiteBalance))
+        {
+            volumeVSTWhiteBalance = m_skyboxProfile.Add<VSTWhiteBalance>(true);
+        }
+#endif
 
         // Set Eye Offset
         Varjo.XR.VarjoMixedReality.SetVRViewOffset(VREyeOffset);
@@ -177,19 +219,50 @@ public class Enable_XR : MonoBehaviour
             if (xrMode == XRmode.AR) // && videoSeeThrough)
             {
                 Varjo.XR.VarjoMixedReality.StartRender();
+
+#if USING_HDRP
                 if (HDCameraData)
                     HDCameraData.clearColorMode = HDAdditionalCameraData.ClearColorMode.Color;
+#endif
+
+                // TODO - this somehow still doesn't work
+#if USING_URP
+            if (HDCameraData)
+                HDCameraData.backgroundColor = Camera.ClearColorMode.Color;
+#endif
+
+#if !USING_URP && !USING_HDRP
+            if (HDCameraData)
+                HDCameraData.backgroundColor = CameraClearFlags.SolidColor;
+#endif
+
             }
             else if (xrMode == XRmode.VR) // || !videoSeeThrough)
             {
                 Varjo.XR.VarjoMixedReality.StopRender();
+
+#if USING_HDRP
                 if (HDCameraData)
                     HDCameraData.clearColorMode = HDAdditionalCameraData.ClearColorMode.Sky;
+#endif
+
+                // TODO - this somehow still doesn't work
+#if USING_URP
+            if (HDCameraData)
+                HDCameraData.backgroundColor = Camera.ClearColorMode.Skybox;
+#endif
+
+#if !USING_URP && !USING_HDRP
+            if (HDCameraData)
+                HDCameraData.backgroundColor = CameraClearFlags.Skybox;
+#endif
             }
             selectedXrMode = xrMode;
         }
- 
+
     }
+
+#if USING_HDRP
 
     void UpdateEnvironmentReflections()
     {
@@ -254,7 +327,7 @@ public class Enable_XR : MonoBehaviour
         }
 
     }
-
+#endif
 
     void ViveZedStartup()
     {
