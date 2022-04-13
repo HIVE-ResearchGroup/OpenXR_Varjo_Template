@@ -3239,6 +3239,11 @@ PrefabInstance:
       objectReference: {fileID: 1282472698}
     - target: {fileID: 1723340320100817063, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817063, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
       propertyPath: leftController
       value: 
       objectReference: {fileID: 1075023899}
