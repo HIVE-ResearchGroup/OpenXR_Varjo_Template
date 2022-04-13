@@ -8,9 +8,12 @@ This project focuses on combining two workflows (OpenXR and Varjo SDK) into one 
 - Varjo SDK
     - In order to use the template, the Varjo SDK has to be imported into your project. Make sure to not delete/move the "Samples" folder when porting/developing in/to your active directory. The template is quite flexible as it will always get the most up to date version of the controllers of the SDK. Consider that when updating the Varjo SDK.
 - HDRP Pipeline
-- Unity 2021.2.12
+- Unity 2021.2.12*
 
+### What about other render pipelines?
+It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. If you still want to continue, please export the prefabs and the scripts (scenes are also possible) from the template as an Asset and import it in your preferred environment. Notice that with the current release, you will have to import the Varjo samples in your project as well in order to get the latest version of the controller. Doing that, you might have to delete some scripts inside the Sample folder as they not support other pipelines. Furthermore, you might will have to create a new ShadowCatcher material for the ground as the one used in the template is created for HDRP.
 
+Please don't forget to create the used layers (ARObjects, VRObjects) and the used tags (Fracture, Pickable), as well to set the Opaque value inside the Varjo SDK to false.
 
 ## Structure
 There is one main file managing this transition: The deviceManager object, containing three scripts:
