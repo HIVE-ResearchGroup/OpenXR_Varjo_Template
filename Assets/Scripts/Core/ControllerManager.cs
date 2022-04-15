@@ -107,7 +107,7 @@ public class ControllerManager : MonoBehaviour
             leftController.GetComponent<SphereCollider>().center = new Vector3(0f, 0f, 0f);
             rightController.GetComponent<SphereCollider>().center = new Vector3(0f, 0f, 0f);
         }
-        else if (m_usedDevice == DeviceList.OpenXR_ZED)// probably for all OpenXR devices
+        else if (m_usedDevice == DeviceList.OpenXR)// probably for all OpenXR devices
         {
             // new position
             leftController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0.08f);

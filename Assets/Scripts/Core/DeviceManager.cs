@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public enum DeviceList
 {
     None,
-    OpenXR_ZED,
+    OpenXR,
     Varjo
 };
 

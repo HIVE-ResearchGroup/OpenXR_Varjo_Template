@@ -101,9 +101,9 @@ public class Enable_XR : MonoBehaviour
             VarjoStartup();
         }
 
-        else if (usedDevice == DeviceList.OpenXR_ZED)
+        else if (usedDevice == DeviceList.OpenXR)
         {
-            ViveZedStartup();
+            OpenXRStartup();
         }
 
     }
@@ -311,7 +311,7 @@ public class Enable_XR : MonoBehaviour
     }
 #endif
 
-    void ViveZedStartup()
+    void OpenXRStartup()
     {
 
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 // Axel Bauer, Varjo Dev Team
@@ -13,10 +14,8 @@ public enum XRmode
 
 public class AR_VR_Toggle : MonoBehaviour
 {
-
     public XRmode selectedMode;
-    public float inputDelay = 2.0f;
-    private bool m_ToggleActivated = false;
+    public InputAction XRToggleAction;
 
     // Start is called before the first frame update
     void Start()
@@ -25,35 +24,31 @@ public class AR_VR_Toggle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
 
-        // Better switch to event based in the future
-
-        if (Input.GetKeyDown(KeyCode.T) && !m_ToggleActivated)
-        {
-            m_ToggleActivated = true;
-            Toggle();
-            StartCoroutine(ChangeTimer());
-        }
+        XRToggleAction.performed +=
+            ctx =>
+            {
+                switch (selectedMode)
+                {
+                    case XRmode.AR:
+                        selectedMode = XRmode.VR;
+                        break;
+                    case XRmode.VR:
+                        selectedMode = XRmode.AR;
+                        break;
+                }
+            };
     }
 
-    void Toggle()
+    private void OnEnable()
     {
-        switch (selectedMode)
-        {
-            case XRmode.AR: selectedMode = XRmode.VR;
-                break;
-            case XRmode.VR: selectedMode = XRmode.AR;
-                break;
-        }
-
+        XRToggleAction.Enable();
     }
 
-    IEnumerator ChangeTimer()
+    private void OnDisable()
     {
-        yield return new WaitForSeconds(inputDelay);
-        m_ToggleActivated = false;
-
+        XRToggleAction.Disable();
     }
 }
