@@ -1807,6 +1807,16 @@ PrefabInstance:
       propertyPath: selectedMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: XRToggleAction.m_Id
+      value: b754a147-fd76-4d7b-ae0f-8e7521d64c5f
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: XRToggleAction.m_Name
+      value: XR Toggle
+      objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: xrCamera
