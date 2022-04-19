@@ -26,7 +26,6 @@ public class ControllerAction : MonoBehaviour
             if (!inputHandlerTeleporter)
             {
                 inputHandlerPointer = true;
-                Debug.Log("showPointer started");
                 //Code for turining the ray interactor into pointer settings
                 xri.lineType = XRRayInteractor.LineType.StraightLine;
                 xri.enableUIInteraction = true;
@@ -40,7 +39,6 @@ public class ControllerAction : MonoBehaviour
 
         showPointer.canceled += ctx =>
         {
-            Debug.Log("showPointer canceled");
             inputHandlerPointer = false;
         };
 
@@ -49,7 +47,6 @@ public class ControllerAction : MonoBehaviour
             if (!inputHandlerPointer)
             {
                 inputHandlerTeleporter = true;
-                Debug.Log("showTeleporter started");
                 //Code for turnign the ray interactor into teleporter settings
                 xri.lineType = XRRayInteractor.LineType.ProjectileCurve;
                 xri.enableUIInteraction = false;
@@ -62,7 +59,6 @@ public class ControllerAction : MonoBehaviour
         showTeleporter.canceled += ctx =>
         {
             inputHandlerTeleporter = false;
-            Debug.Log("showTeleporter canceled");
         };
     }
 

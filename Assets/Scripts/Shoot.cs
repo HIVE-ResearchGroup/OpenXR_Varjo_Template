@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class Shoot : MonoBehaviour
 {
@@ -9,8 +10,6 @@ public class Shoot : MonoBehaviour
     public Transform projectileOrigin;
     public InputAction shootingAction;
 
-
-    bool buttonDown;
     float energy;
     Rigidbody rb;
     GameObject projectile;
@@ -27,19 +26,26 @@ public class Shoot : MonoBehaviour
 
         shootingAction.performed += ctx =>
         {
-            energy = energy + Time.deltaTime * energyFactor;
-        };
 
-        shootingAction.canceled += ctx =>
-        {
+            if (ctx.interaction is SlowTapInteraction)
+            {
+                energy = (float)(ctx.duration) * energyFactor;
+            }
+
             if (projectile && rb)
             {
                 rb.isKinematic = false;
                 projectile.transform.parent = null;
                 rb.AddForce(projectileOrigin.transform.forward * energy, ForceMode.Impulse);
             }
-            buttonDown = false;
             energy = 0f;
+        };
+
+        shootingAction.canceled += ctx =>
+        { //if pressed too fast
+            rb.isKinematic = false;
+            projectile.transform.parent = null;
+            rb.AddForce(projectileOrigin.transform.forward * energy, ForceMode.Impulse);
         };
     }
 
@@ -53,39 +59,3 @@ public class Shoot : MonoBehaviour
         shootingAction.Disable();
     }
 }
-
-
-/*void Start()
-    {
-        controller = GetComponent<Controller>();
-    }
-
-    void Update()
-    {
-        if (controller.Primary2DAxisClick)
-        {
-            if (!buttonDown)
-            {
-                // Button is pressed, projectile is created
-
-            }
-            else
-            {
-                // Button is held down, projectile gets energy
-                energy = energy + Time.deltaTime * energyFactor;
-            }
-        }
-        else if (!controller.Primary2DAxisClick && buttonDown)
-        {
-            // Button is released, projectile is released
-            if (projectile && rb)
-            {
-                rb.isKinematic = false;
-                projectile.transform.parent = null;
-                rb.AddForce(projectileOrigin.transform.forward * energy, ForceMode.Impulse);
-            }
-            buttonDown = false;
-            energy = 0f;
-        }
-    }
-}*/
