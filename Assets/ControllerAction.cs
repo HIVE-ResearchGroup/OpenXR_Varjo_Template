@@ -11,6 +11,7 @@ public class ControllerAction : MonoBehaviour
     public InputAction showPointer;
 
     private XRRayInteractor xri;
+    private bool inputHandler = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,34 +22,45 @@ public class ControllerAction : MonoBehaviour
     {
         showPointer.started += ctx =>
         {
-            Debug.Log("showPointer started");
-            //Code for turining the ray interactor into pointer settings
-            xri.lineType = XRRayInteractor.LineType.StraightLine;
-            xri.enableUIInteraction = true;
+            if (!inputHandler)
+            {
+                inputHandler = true;
+                Debug.Log("showPointer started");
+                //Code for turining the ray interactor into pointer settings
+                xri.lineType = XRRayInteractor.LineType.StraightLine;
+                xri.enableUIInteraction = true;
 
-            xri.interactionLayers = InteractionLayerMask.GetMask("Default");
+                xri.interactionLayers = InteractionLayerMask.GetMask("Default");
 
-            //xri.raycastMask;
+                //xri.raycastMask;
+            }
+
         };
 
         showPointer.canceled += ctx =>
         {
             Debug.Log("showPointer canceled");
+            inputHandler = false;
         };
 
         showTeleporter.started += ctx =>
         {
-            Debug.Log("showTeleporter started");
-            //Code for turnign the ray interactor into teleporter settings
-            xri.lineType = XRRayInteractor.LineType.ProjectileCurve;
-            xri.enableUIInteraction = false;
+            if (!inputHandler)
+            {
+                inputHandler = true;
+                Debug.Log("showTeleporter started");
+                //Code for turnign the ray interactor into teleporter settings
+                xri.lineType = XRRayInteractor.LineType.ProjectileCurve;
+                xri.enableUIInteraction = false;
 
-            xri.interactionLayers = InteractionLayerMask.GetMask("Raycasts");
-            //xri.raycastMask;
+                xri.interactionLayers = InteractionLayerMask.GetMask("Raycasts");
+                //xri.raycastMask;
+                }
         };
 
         showTeleporter.canceled += ctx =>
         {
+            inputHandler = false;
             Debug.Log("showTeleporter canceled");
         };
     }
