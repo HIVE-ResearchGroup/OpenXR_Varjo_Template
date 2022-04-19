@@ -844,6 +844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500664999}
   - component: {fileID: 500664998}
+  - component: {fileID: 500665000}
   m_Layer: 0
   m_Name: XR Interaction Manager
   m_TagString: Untagged
@@ -878,6 +879,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &500665000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500664997}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d66b4f6da380f4b863503a1e49fe1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyFactor: 0
+  projectilePrefab: {fileID: 7266448677533076554, guid: a8853a6b76589b4438d2e589710ee788,
+    type: 3}
+  projectileOrigin: {fileID: 1735181201}
+  shootingAction:
+    m_Name: Shooting
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 710795fc-c085-44f7-8be3-cd97285d2c75
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 679ccd86-a0e1-418f-9d62-756ee87f7de7
+      m_Path: <XRController>{LeftHand}/trackpadClicked
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shooting
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &1075023899
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +944,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1735181201}
   m_Father: {fileID: 1667777429}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1217,16 +1252,16 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 837a41a7-87b9-4199-83b0-03552037ce91
-      m_Path: <XRController>{LeftHand}/trigger
+      m_Id: 82136ab3-267b-4aee-84af-8400ab325c5d
+      m_Path: <XRController>{LeftHand}/trackpadTouched
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Action
       m_Flags: 0
     - m_Name: 
-      m_Id: 82136ab3-267b-4aee-84af-8400ab325c5d
-      m_Path: <XRController>{LeftHand}/trackpadTouched
+      m_Id: 31458066-2e9c-4e7a-8d6d-925d00e33b6b
+      m_Path: <XRController>{LeftHand}/primary
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -1797,6 +1832,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 1259414780}
+--- !u!1 &1260662534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260662535}
+  m_Layer: 0
+  m_Name: ProjectileOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1260662535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260662534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1674591944}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1282472697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,9 +2514,9 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: ca304137-73b9-4a22-939f-f9c6cd52faf9
-      m_Path: <XRController>{RightHand}/trigger
-      m_Interactions: Press
+      m_Id: 3982d866-c3e7-46a6-b998-aa173b521e9a
+      m_Path: <XRController>{RightHand}/primary
+      m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Show Teleporter
@@ -3032,9 +3098,9 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: e74ee7a7-f768-45d0-a403-7c33701f7d08
-      m_Path: <XRController>{LeftHand}/trigger
-      m_Interactions: Hold
+      m_Id: 93b7f927-c29c-4624-947b-d99a06bf19ad
+      m_Path: <XRController>{LeftHand}/primary
+      m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Show Teleporter
@@ -3626,7 +3692,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1260662535}
   m_Father: {fileID: 1667777429}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3933,16 +4000,16 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 837a41a7-87b9-4199-83b0-03552037ce91
-      m_Path: <XRController>{RightHand}/trigger
+      m_Id: 82136ab3-267b-4aee-84af-8400ab325c5d
+      m_Path: <XRController>{RightHand}/trackpadTouched
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Action
       m_Flags: 0
     - m_Name: 
-      m_Id: 82136ab3-267b-4aee-84af-8400ab325c5d
-      m_Path: <XRController>{RightHand}/trackpadTouched
+      m_Id: 81d57f1b-1a11-41cd-b878-477d7443ef70
+      m_Path: <XRController>{RightHand}/primary
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -3979,6 +4046,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1735181200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1735181201}
+  m_Layer: 0
+  m_Name: ProjectileOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1735181201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735181200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1075023900}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1973830972
 GameObject:
   m_ObjectHideFlags: 0
