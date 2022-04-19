@@ -3034,7 +3034,7 @@ MonoBehaviour:
     - m_Name: 
       m_Id: e74ee7a7-f768-45d0-a403-7c33701f7d08
       m_Path: <XRController>{LeftHand}/trigger
-      m_Interactions: 
+      m_Interactions: Hold
       m_Processors: 
       m_Groups: 
       m_Action: Show Teleporter
@@ -4464,6 +4464,11 @@ PrefabInstance:
       propertyPath: xrCamera
       value: 
       objectReference: {fileID: 48702071}
+    - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: enableDepthTesting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: onCubemapUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target

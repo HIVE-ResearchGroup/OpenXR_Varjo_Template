@@ -11,7 +11,8 @@ public class ControllerAction : MonoBehaviour
     public InputAction showPointer;
 
     private XRRayInteractor xri;
-    private bool inputHandler = false;
+    private bool inputHandlerPointer = false;
+    private bool inputHandlerTeleporter = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,9 @@ public class ControllerAction : MonoBehaviour
     {
         showPointer.started += ctx =>
         {
-            if (!inputHandler)
+            if (!inputHandlerTeleporter)
             {
-                inputHandler = true;
+                inputHandlerPointer = true;
                 Debug.Log("showPointer started");
                 //Code for turining the ray interactor into pointer settings
                 xri.lineType = XRRayInteractor.LineType.StraightLine;
@@ -40,14 +41,14 @@ public class ControllerAction : MonoBehaviour
         showPointer.canceled += ctx =>
         {
             Debug.Log("showPointer canceled");
-            inputHandler = false;
+            inputHandlerPointer = false;
         };
 
         showTeleporter.started += ctx =>
         {
-            if (!inputHandler)
+            if (!inputHandlerPointer)
             {
-                inputHandler = true;
+                inputHandlerTeleporter = true;
                 Debug.Log("showTeleporter started");
                 //Code for turnign the ray interactor into teleporter settings
                 xri.lineType = XRRayInteractor.LineType.ProjectileCurve;
@@ -60,7 +61,7 @@ public class ControllerAction : MonoBehaviour
 
         showTeleporter.canceled += ctx =>
         {
-            inputHandler = false;
+            inputHandlerTeleporter = false;
             Debug.Log("showTeleporter canceled");
         };
     }
