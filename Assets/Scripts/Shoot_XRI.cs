@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
-public class Shoot_New : MonoBehaviour
+public class Shoot_XRI : MonoBehaviour
 {
     public float energyFactor;
     public GameObject projectilePrefab;

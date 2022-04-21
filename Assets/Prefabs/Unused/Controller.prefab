@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1497616254833105214}
-  - component: {fileID: 2028317802}
-  - component: {fileID: 2028317801}
+  - component: {fileID: 3316331677721546367}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -34,25 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2028317802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6804620189419661334}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Device: 1
-  m_PoseSource: 4
-  m_PoseProviderComponent: {fileID: 0}
-  m_TrackingType: 0
-  m_UpdateType: 0
-  m_UseRelativeTransform: 0
---- !u!114 &2028317801
+--- !u!114 &3316331677721546367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,10 +42,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 6804620189419661334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b8ff083eb83eb46a21f58a2bd933e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 25e1d006fffadb64ab4e4832ac5ce893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   XRNode: 4
+  triggerAction:
+    m_Name: Trigger
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 31134207-3baa-471c-bed5-e3f4fca3cdbf
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  triggerButtonAction:
+    m_Name: Trigger Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1cdceaa6-095f-492e-9137-9d554e168927
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  gripButtonAction:
+    m_Name: Grip Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e31b6ac7-1b57-486d-bd29-6ab5e85390dc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  primary2DAxisTouchAction:
+    m_Name: Primary 2D Axis Touch
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b6db24d7-77ef-450a-8487-f9081f3df077
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  primary2DAxisClickAction:
+    m_Name: Primary 2D Axis Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c28fc5f1-57e7-4aab-8199-d6debe1e4038
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  primaryButtonAction:
+    m_Name: Primary Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e5388eb9-a78b-4c2c-8b30-80538ceceb61
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   controller: {fileID: 6112765411644693480}
   bodyGameobject: {fileID: 6974485216875383649}
   touchPadGameobject: {fileID: 6812917172197353519}
@@ -72,10 +107,10 @@ MonoBehaviour:
   triggerGameobject: {fileID: 1490042127076934285}
   systemButtonGameobject: {fileID: 148796211722224161}
   gripButtonGameobject: {fileID: 387157597057455049}
-  controllerMaterial: {fileID: 2100000, guid: 5b14d809baeeab2408cdcbe12707ca29, type: 2}
-  buttonPressedMaterial: {fileID: 2100000, guid: b683cb38ee7561248886e5852a96da19,
+  controllerMaterial: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+  buttonPressedMaterial: {fileID: 2100000, guid: bd861936e5b66ef4b9411703be874909,
     type: 2}
-  touchpadTouchedMaterial: {fileID: 2100000, guid: 946e7ac5bca00664685b27df1281c7a0,
+  touchpadTouchedMaterial: {fileID: 2100000, guid: 8ae77852f6a01a941862090f821c34cd,
     type: 2}
   triggerButton: 0
   gripButton: 0
@@ -95,6 +130,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: VarjoController
       objectReference: {fileID: 0}
+    - target: {fileID: 1335773025177567490, guid: e2a2b55e2683d3645a99e4724cccba48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 1851567485757380398, guid: e2a2b55e2683d3645a99e4724cccba48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 2330637509292820694, guid: e2a2b55e2683d3645a99e4724cccba48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
     - target: {fileID: 2743610190641549988, guid: e2a2b55e2683d3645a99e4724cccba48,
         type: 3}
       propertyPath: m_RootOrder
@@ -150,6 +200,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3756173557333141198, guid: e2a2b55e2683d3645a99e4724cccba48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 3758813778008099829, guid: e2a2b55e2683d3645a99e4724cccba48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 4895782020356375360, guid: e2a2b55e2683d3645a99e4724cccba48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
     - target: {fileID: 5973013327061355696, guid: e2a2b55e2683d3645a99e4724cccba48,
         type: 3}
       propertyPath: m_IsActive

@@ -62,7 +62,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedMode: 1
-  inputDelay: 2
+  XRToggleAction:
+    m_Name: XR Toggle
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 121478b4-b10d-4913-98ce-844529b321ff
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &1723340320100817061
 MonoBehaviour:
   m_ObjectHideFlags: 0

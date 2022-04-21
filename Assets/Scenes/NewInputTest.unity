@@ -1322,7 +1322,6 @@ GameObject:
   - component: {fileID: 1075023900}
   - component: {fileID: 1075023906}
   - component: {fileID: 1075023902}
-  - component: {fileID: 1075023901}
   - component: {fileID: 1075023907}
   - component: {fileID: 1075023908}
   m_Layer: 0
@@ -1348,19 +1347,6 @@ Transform:
   m_Father: {fileID: 1667777429}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1075023901
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075023899}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.03, z: 0.15}
-  m_Center: {x: 0, y: -0.01, z: -0.09}
 --- !u!135 &1075023902
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1389,7 +1375,8 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 0}
+  m_ModelPrefab: {fileID: 6331511474594507925, guid: ab9a67b177827234c80cff6fc81cec9e,
+    type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
   m_AnimateModel: 0
@@ -4107,7 +4094,6 @@ GameObject:
   - component: {fileID: 1674591944}
   - component: {fileID: 1674591948}
   - component: {fileID: 1674591950}
-  - component: {fileID: 1674591949}
   - component: {fileID: 1674591951}
   - component: {fileID: 1674591952}
   m_Layer: 0
@@ -4148,7 +4134,8 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 0}
+  m_ModelPrefab: {fileID: 6331511474594507925, guid: 6b91f2d67e580404daa55c9b5a16d50e,
+    type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
   m_AnimateModel: 0
@@ -4311,19 +4298,6 @@ MonoBehaviour:
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
---- !u!65 &1674591949
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674591943}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.03, z: 0.15}
-  m_Center: {x: 0, y: -0.01, z: -0.09}
 --- !u!135 &1674591950
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5596,6 +5570,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Shooting
       m_Flags: 0
+    - m_Name: 
+      m_Id: 633c2bbf-33bf-4435-886e-796c745a4823
+      m_Path: <XRController>{RightHand}/trackpadPressed
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shooting
+      m_Flags: 0
     m_Flags: 0
 --- !u!114 &4531772813832952339
 MonoBehaviour:
@@ -5625,6 +5607,14 @@ MonoBehaviour:
       m_Id: 7b6f79c4-d9f4-4e50-aa33-ee72d2eb70da
       m_Path: <XRController>{LeftHand}/trackpadClicked
       m_Interactions: SlowTap(duration=0.1)
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shooting
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2520c098-53f6-4f3b-ae32-4ed801402081
+      m_Path: <XRController>{LeftHand}/trackpadPressed
+      m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Shooting
