@@ -914,10 +914,112 @@ MonoBehaviour:
   m_GameObject: {fileID: 263484118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 892e4cf6478bd42498ac2d7b7e58bed0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeHand: {fileID: 0}
+  m_InteractionManager: {fileID: 500664998}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_SelectMode: 0
+  m_CustomReticle: {fileID: 0}
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_AttachTransform: {fileID: 0}
+  m_AttachEaseInTime: 0.15
+  m_MovementType: 2
+  m_VelocityDamping: 1
+  m_VelocityScale: 1
+  m_AngularVelocityDamping: 1
+  m_AngularVelocityScale: 1
+  m_TrackPosition: 1
+  m_SmoothPosition: 0
+  m_SmoothPositionAmount: 5
+  m_TightenPosition: 0.5
+  m_TrackRotation: 1
+  m_SmoothRotation: 0
+  m_SmoothRotationAmount: 5
+  m_TightenRotation: 0.5
+  m_ThrowOnDetach: 1
+  m_ThrowSmoothingDuration: 0.25
+  m_ThrowSmoothingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_ThrowVelocityScale: 1.5
+  m_ThrowAngularVelocityScale: 1
+  m_ForceGravityOnDetach: 0
+  m_RetainTransformParent: 1
+  m_AttachPointCompatibilityMode: 0
 --- !u!1 &293380311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,8 +1613,8 @@ MonoBehaviour:
   m_PlayAudioClipOnHoverCanceled: 0
   m_AudioClipForOnHoverCanceled: {fileID: 0}
   m_PlayHapticsOnSelectEntered: 1
-  m_HapticSelectEnterIntensity: 1
-  m_HapticSelectEnterDuration: 1
+  m_HapticSelectEnterIntensity: 0.1
+  m_HapticSelectEnterDuration: 0.1
   m_PlayHapticsOnSelectExited: 0
   m_HapticSelectExitIntensity: 0
   m_HapticSelectExitDuration: 0
@@ -1559,6 +1661,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 31458066-2e9c-4e7a-8d6d-925d00e33b6b
       m_Path: <XRController>{LeftHand}/primary
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Action
+      m_Flags: 0
+    - m_Name: 
+      m_Id: ca267ef0-93b1-4807-a6c2-b44d602e7d2b
+      m_Path: <XRController>{LeftHand}/primaryButton
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -2831,6 +2941,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Show Teleporter
       m_Flags: 0
+    - m_Name: 
+      m_Id: 29f9039e-4111-45bf-b222-7e6ac0edb21a
+      m_Path: <XRController>{RightHand}/primaryButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Show Teleporter
+      m_Flags: 0
     m_Flags: 0
   showPointer:
     m_Name: Show Pointer
@@ -3111,7 +3229,7 @@ MonoBehaviour:
   m_AudioClipForOnHoverExited: {fileID: 0}
   m_PlayAudioClipOnHoverCanceled: 0
   m_AudioClipForOnHoverCanceled: {fileID: 0}
-  m_PlayHapticsOnSelectEntered: 1
+  m_PlayHapticsOnSelectEntered: 0
   m_HapticSelectEnterIntensity: 1
   m_HapticSelectEnterDuration: 0.25
   m_PlayHapticsOnSelectExited: 0
@@ -3121,8 +3239,8 @@ MonoBehaviour:
   m_HapticSelectCancelIntensity: 0
   m_HapticSelectCancelDuration: 0
   m_PlayHapticsOnHoverEntered: 1
-  m_HapticHoverEnterIntensity: 0.5
-  m_HapticHoverEnterDuration: 0.5
+  m_HapticHoverEnterIntensity: 0.1
+  m_HapticHoverEnterDuration: 0.1
   m_PlayHapticsOnHoverExited: 0
   m_HapticHoverExitIntensity: 0
   m_HapticHoverExitDuration: 0
@@ -3415,6 +3533,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Show Teleporter
       m_Flags: 0
+    - m_Name: 
+      m_Id: a217b0d2-89e1-4448-8a1c-7b9d35efc6a3
+      m_Path: <XRController>{LeftHand}/primaryButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Show Teleporter
+      m_Flags: 0
     m_Flags: 0
   showPointer:
     m_Name: Show Pointer
@@ -3695,7 +3821,7 @@ MonoBehaviour:
   m_AudioClipForOnHoverExited: {fileID: 0}
   m_PlayAudioClipOnHoverCanceled: 0
   m_AudioClipForOnHoverCanceled: {fileID: 0}
-  m_PlayHapticsOnSelectEntered: 1
+  m_PlayHapticsOnSelectEntered: 0
   m_HapticSelectEnterIntensity: 1
   m_HapticSelectEnterDuration: 0.25
   m_PlayHapticsOnSelectExited: 0
@@ -3705,8 +3831,8 @@ MonoBehaviour:
   m_HapticSelectCancelIntensity: 0
   m_HapticSelectCancelDuration: 0
   m_PlayHapticsOnHoverEntered: 1
-  m_HapticHoverEnterIntensity: 0.5
-  m_HapticHoverEnterDuration: 0.5
+  m_HapticHoverEnterIntensity: 0.1
+  m_HapticHoverEnterDuration: 0.1
   m_PlayHapticsOnHoverExited: 0
   m_HapticHoverExitIntensity: 0
   m_HapticHoverExitDuration: 0
@@ -4272,8 +4398,8 @@ MonoBehaviour:
   m_PlayAudioClipOnHoverCanceled: 0
   m_AudioClipForOnHoverCanceled: {fileID: 0}
   m_PlayHapticsOnSelectEntered: 1
-  m_HapticSelectEnterIntensity: 1
-  m_HapticSelectEnterDuration: 1
+  m_HapticSelectEnterIntensity: 0.1
+  m_HapticSelectEnterDuration: 0.1
   m_PlayHapticsOnSelectExited: 0
   m_HapticSelectExitIntensity: 0
   m_HapticSelectExitDuration: 0
@@ -4320,6 +4446,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 81d57f1b-1a11-41cd-b878-477d7443ef70
       m_Path: <XRController>{RightHand}/primary
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Action
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 806fd8b2-015f-422d-8f37-b8fb4b89651f
+      m_Path: <XRController>{RightHand}/primaryButton
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -5186,7 +5320,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -5201,7 +5335,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[2].m_Id
-      value: 152e0ae1-8374-40a0-b9d2-793033866c93
+      value: be12ea03-386f-48e3-93f1-3c1bbd14645c
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -5211,12 +5345,12 @@ PrefabInstance:
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[1].m_Path
-      value: <XRInputV1::HTC::VIVEControllerProMV>/grippressed
+      value: <XRController>/gripPressed
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[2].m_Path
-      value: <XRController>/menuButton
+      value: <XRController>/gripButton
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -5246,7 +5380,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[2].m_Interactions
-      value: Press
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -5341,7 +5475,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817083, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: usedDevice
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3005721644247719562, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -5456,7 +5590,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: b43c11db-230c-4b68-8618-9462201cb1d4
-      m_Path: <XRController>{RightHand}/trackpadPressed
+      m_Path: <XRController>{RightHand}/trackpadClicked
       m_Interactions: SlowTap(duration=0.1)
       m_Processors: 
       m_Groups: 
@@ -5489,7 +5623,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 7b6f79c4-d9f4-4e50-aa33-ee72d2eb70da
-      m_Path: <XRController>{LeftHand}/trackpadPressed
+      m_Path: <XRController>{LeftHand}/trackpadClicked
       m_Interactions: SlowTap(duration=0.1)
       m_Processors: 
       m_Groups: 
