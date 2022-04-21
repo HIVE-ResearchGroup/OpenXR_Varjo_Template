@@ -67,7 +67,7 @@ public class ControllerManager : MonoBehaviour
         }
 
 
-        setControllerOffset();
+        //setControllerOffset();
     }
 
     // Update is called once per frame
@@ -96,8 +96,8 @@ public class ControllerManager : MonoBehaviour
         {
 
             // new position
-            leftController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
-            rightController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
+            leftController.transform.GetChild(1).GetChild(0).localPosition = new Vector3(0, 0, 0);
+            rightController.transform.GetChild(1).GetChild(0).localPosition = new Vector3(0, 0, 0);
 
             // updated boxCollider -> physics
             leftController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.09f);
@@ -110,8 +110,8 @@ public class ControllerManager : MonoBehaviour
         else if (m_usedDevice == DeviceList.OpenXR)// probably for all OpenXR devices
         {
             // new position
-            leftController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0.08f);
-            rightController.transform.GetChild(0).localPosition = new Vector3(0, 0, 0.08f);
+            leftController.transform.GetChild(1).GetChild(0).localPosition = new Vector3(0, 0, 0.08f);
+            rightController.transform.GetChild(1).GetChild(0).localPosition = new Vector3(0, 0, 0.08f);
 
             // updated boxCollider -> physics
             leftController.GetComponent<BoxCollider>().center = new Vector3(0.0f, -0.01f, -0.01f);
@@ -145,8 +145,8 @@ public class ControllerManager : MonoBehaviour
 
     void setVisibility(bool state)
     {
-        Transform outpointLeft = leftController.transform.GetChild(0);
-        Transform outpointRight = rightController.transform.GetChild(0);
+        Transform outpointLeft = leftController.transform.GetChild(1).GetChild(0).GetChild(0);
+        Transform outpointRight = rightController.transform.GetChild(1).GetChild(0).GetChild(0);
 
         if (!state)
         {
