@@ -39,7 +39,7 @@ There are four possible ways to handle input in the new input system but two are
 - <bold>Action Asset Input</bold>
     - This template uses one Action Asset in order to manage the movement or interaction profile of the HMD. You may find it in the XR Interaction Toolkit folder inside Samples folder.
     - In order to use an Action Asset, the Input Action Manager component has to be added to a game object. (In the template's case, this is the XR Rig)
-    - Additionally to the Action Asset, a script has to define the actions inside the Action Asset. Have a look at [this](https://docs.unity3d.com/Packages/com.unity.inputsystem@0.9/manual/ActionAssets.html#using-input-action-assets) for an example. Finally, you may access the input system doing so:
+    - Additionally to the Action Asset, a script has to define the actions inside the Action Asset. Have a look at [this](https://docs.unity3d.com/Packages/com.unity.inputsystem@0.9/manual/ActionAssets.html#using-input-action-assets) for an example. Note, that you can automatically create such a script inside the Action Asset object. Finally, you may access the input system doing so:
     ```
     private DefinedActionScript m_Controls;
 
