@@ -38,7 +38,7 @@ There are four possible ways to handle input in the new input system but two are
 
 - <bold>Action Asset Input</bold>
     - This template uses one Action Asset in order to manage the movement or interaction profile of the HMD. You may find it in the XR Interaction Toolkit folder inside Samples folder.
-    - In order to use an Action Asset, the Input Action Manager component has to be added to a game object. (In the template's case, this is the XR Rig)
+    - In order to use an Action Asset, the Input Action Manager component has to be added to a game object. (In the template's case, this is the XR Origin (Rig))
     - Additionally to the Action Asset, a script has to define the actions inside the Action Asset. Have a look at [this](https://docs.unity3d.com/Packages/com.unity.inputsystem@0.9/manual/ActionAssets.html#using-input-action-assets) for an example. Note, that you can automatically create such a script inside the Action Asset object. Finally, you may access the input system doing so:
     ```
     private DefinedActionScript m_Controls;
@@ -100,8 +100,11 @@ In order to read a value (for example to access the trigger state):
 ```
 action.ReadValue<T>();
 ```
-In order to get an example useage file (of the Action Input variant), go to the "XR Interaction Manager" object inside the Hierachy/Inspector and have a look at the "Shoot.cs"
+In order to get an example useage file (of the Action Input variant), go to the "XR Interaction Manager" object inside the Hierachy and have a look at the "Shoot.cs"
 For a more in-depth option, have a look at this [guide](https://gamedevbeginner.com/input-in-unity-made-easy-complete-guide-to-the-new-system/#input_system_explained).
+
+### General mentions
+In order to convert your project to the new input system, it is necessary to both import the com.unity.xr.interaction.toolkit and the "XR Plugin Management" plugin. You then need to create a new object: XR -> "XR Origin (Action based)". Make sure to use the Action based variant as this would also use the new Input system. If you use the XRI samples, don't forget to add them on the top right corner of the Inspector when clicking on e.g. XRI Default Continous Turn and to add the "Input Action Manager" component script to your XR Rig.
 
 # How to interact with the environment
 The new Input System needs an "executor" to fully function. In this templates case, this is the trigger. You can use this executor to apply the teleportation, select/grab etc.
