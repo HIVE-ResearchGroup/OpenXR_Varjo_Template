@@ -6,7 +6,7 @@ This project focuses on combining two workflows (OpenXR and Varjo SDK) into one 
 
 ## Dependencies
 - Varjo SDK
-    - In order to use the template, the Varjo SDK has to be imported into your project. Make sure to not delete/move the "Samples" folder when porting/developing in/to your active directory. The template is quite flexible as it will always get the most up to date version of the controllers of the SDK. Consider that when updating the Varjo SDK.
+    - In order to use the template, the Varjo SDK has to be imported into your project. This template does not need the Sample folder to be imported anymore and thus can be operated without. However, you are free to use the Samples in order to get in touch with other Varjo features such as Markers or "Windows". If you search for a version of the template that might be more flexible, have a look at the version release of [0.1.0.](https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/releases/tag/v0.1.0).
 - HDRP Pipeline
 - Unity 2021.2.12*
 
