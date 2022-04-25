@@ -115,6 +115,14 @@ The new Input System needs an "executor" to fully function. In this templates ca
 
 Note that movement-controls on the controller were removed because of the lack of useabilty. If you want to import those controls back again, go to the package manager, XR Interaction Package and reimport the package. Please keep in mind that you will have to set the teleportation controls on both controllers back to "trigger" inside the Interaction asset.
 
+## Differences between Varjo and OpenXR package
+Most importantly, there is no drawback in the functionality of both system - just a difference in the way of handling it. 
+
+- As said above, the touchpad is only supported with the Vive controller. This only applies when developing on OpenXR. It works normally when used with the Varjo package.
+- In OpenXR, the gripPressed with the Index controller is too sensitive. This is not the case with the Varjo package. Also, the secondaryButton (B on an Index controlelr) is not implemented with the Varjo package, yet when pressed, it behaves like a gripPressed.
+
+That means, you can shoot the box demo normally with both controllers using the touchpad when using the Varjo package and instead, switch between AR/VR using the B-button or the gripButtons on both controllers.
+
 # How to increase performance
 In this template, there are three main factors 
 - Forveated Rendering: Have a look on [Noticable mentions](../README.md#noticeable-mentions).
