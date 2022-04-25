@@ -108,9 +108,9 @@ In order to convert your project to the new input system, it is necessary to bot
 
 # How to interact with the environment
 The new Input System needs an "executor" to fully function. In this templates case, this is the trigger. You can use this executor to apply the teleportation, select/grab etc.
-- In order to teleport yourself, press onto the "primaryButton", which is located above the touchpad on a HTC Vive controller or at the "A" button on a Valve Index controller. 
+- In order to teleport yourself, press onto the "primaryButton", which is located above the touchpad on a HTC Vive controller or at the "B" button on a Valve Index controller. 
 - In order to grab objects, use the Trigger-button (back) and release it in order to let the object fall.
-- In order to shoot some cubes with the Vive controller, press and let go on the touchpad or, on the Valve Index controller, press and let go of B. (Please notice that using the Varjo headset, you will also move/click with your mouse like that.)
+- In order to shoot some cubes with the Vive controller, press and let go on the touchpad or, on the Valve Index controller, press and let go of "A". (Please notice that using the Varjo headset, you will also move/click with your mouse like that.)
 - In order to show an (UI/object) pointer to interact with from a certain distance, gently rest your finger on the touchpad.
 
 Note that movement-controls on the controller were removed because of the lack of useabilty. If you want to import those controls back again, go to the package manager, XR Interaction Package and reimport the package. Please keep in mind that you will have to set the teleportation controls on both controllers back to "trigger" inside the Interaction asset.
@@ -119,9 +119,11 @@ Note that movement-controls on the controller were removed because of the lack o
 Most importantly, there is no drawback in the functionality of both system - just a difference in the way of handling it. 
 
 - As said above, the touchpad is only supported with the Vive controller. This only applies when developing on OpenXR. It works normally when used with the Varjo package.
-- In OpenXR, the gripPressed with the Index controller is too sensitive. This is not the case with the Varjo package. Also, the secondaryButton (B on an Index controlelr) is not implemented with the Varjo package, yet when pressed, it behaves like a gripPressed.
+- In OpenXR, the gripPressed with the Index controller is too sensitive. This is not the case with the Varjo package. Also, the secondaryButton (A on an Index controlelr) is not implemented with the Varjo package, yet when pressed, it behaves like a gripPressed.
 
-That means, you can shoot the box demo normally with both controllers using the touchpad when using the Varjo package and instead, switch between AR/VR using the B-button or the gripButtons on both controllers.
+That means, you can shoot the box demo normally with both controllers using the touchpad when using the Varjo package and instead, switch between AR/VR using the A-button or the gripButtons on both controllers.
+
+Also note that the Varjo package doesn't support feedback impuls on hover yet.
 
 # How to increase performance
 In this template, there are three main factors 
