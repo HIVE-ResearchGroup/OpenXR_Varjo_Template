@@ -2878,7 +2878,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: selectedMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -3048,7 +3048,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817083, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: usedDevice
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3005721644247719562, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -3058,7 +3058,7 @@ PrefabInstance:
     - target: {fileID: 3005721644247719562, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: setTransparentInAR
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4cae28f6f3826d49bccf9dcaf022515, type: 3}
