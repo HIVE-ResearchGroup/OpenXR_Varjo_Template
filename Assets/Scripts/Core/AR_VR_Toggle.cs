@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 
 // Axel Bauer, Varjo Dev Team
@@ -39,6 +40,7 @@ public class AR_VR_Toggle : MonoBehaviour
                         selectedMode = XRmode.AR;
                         break;
                 }
+
             };
     }
 

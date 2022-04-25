@@ -2903,12 +2903,22 @@ PrefabInstance:
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[1].m_Id
-      value: 152e0ae1-8374-40a0-b9d2-793033866c93
+      value: be12ea03-386f-48e3-93f1-3c1bbd14645c
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[2].m_Id
-      value: be12ea03-386f-48e3-93f1-3c1bbd14645c
+      value: 8ccc433e-46d3-446d-bf34-3f93a6ac84c3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[3].m_Id
+      value: 88583ef2-0af0-461a-b200-fac338ca3f14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[4].m_Id
+      value: 9edd5043-54d9-4d44-ad93-aeb4028867f4
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -2918,12 +2928,17 @@ PrefabInstance:
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[1].m_Path
-      value: <XRController>/gripPressed
+      value: <XRController>/gripButton
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[2].m_Path
-      value: <XRController>/gripButton
+      value: <XRController>/gripPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[3].m_Path
+      value: <ViveController>/gripPressed
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -2942,13 +2957,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
+      propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[3].m_Action
+      value: XR Toggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[4].m_Action
+      value: XR Toggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[0].m_Interactions
       value: Press
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: XRToggleAction.m_SingletonActionBindings.Array.data[1].m_Interactions
-      value: Press
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -3059,6 +3084,11 @@ PrefabInstance:
         type: 3}
       propertyPath: setTransparentInAR
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005721644247719562, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: setGroundTransparent
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4cae28f6f3826d49bccf9dcaf022515, type: 3}
@@ -3172,7 +3202,7 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 633c2bbf-33bf-4435-886e-796c745a4823
       m_Path: <XRController>{RightHand}/trackpadPressed
-      m_Interactions: 
+      m_Interactions: SlowTap(duration=0.1)
       m_Processors: 
       m_Groups: 
       m_Action: Shooting
@@ -3180,7 +3210,7 @@ MonoBehaviour:
     - m_Name: 
       m_Id: ab445cb0-00c3-4aa5-a340-4671b7345a4a
       m_Path: <XRController>{RightHand}/secondaryButton
-      m_Interactions: 
+      m_Interactions: SlowTap(duration=0.1)
       m_Processors: 
       m_Groups: 
       m_Action: Shooting
@@ -3221,7 +3251,7 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 2520c098-53f6-4f3b-ae32-4ed801402081
       m_Path: <XRController>{LeftHand}/trackpadPressed
-      m_Interactions: 
+      m_Interactions: SlowTap(duration=0.1)
       m_Processors: 
       m_Groups: 
       m_Action: Shooting
@@ -3229,7 +3259,7 @@ MonoBehaviour:
     - m_Name: 
       m_Id: e1de87a1-d31f-4e37-8fb9-fd81f644c813
       m_Path: <XRController>{LeftHand}/secondaryButton
-      m_Interactions: 
+      m_Interactions: SlowTap(duration=0.1)
       m_Processors: 
       m_Groups: 
       m_Action: Shooting
