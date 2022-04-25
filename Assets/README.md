@@ -117,7 +117,7 @@ Note that movement-controls on the controller were removed because of the lack o
 
 # How to increase performance
 In this template, there are three main factors 
-- Forveated Rendering: Have a look on "Noticable mentions".
+- Forveated Rendering: Have a look on [Noticable mentions](../README.md#noticeable-mentions).
 - Single Pass / Multipass: Using Single Pass, parts of the image for both eyes are reused for the other eye.
 - Reflection probe: In order to make use of the environment reflections, the reflection probe updates the reflection "realtime".
 
