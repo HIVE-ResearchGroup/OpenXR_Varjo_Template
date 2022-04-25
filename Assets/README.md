@@ -107,7 +107,7 @@ For a more in-depth option, have a look at this [guide](https://gamedevbeginner.
 The new Input System needs an "executor" to fully function. In this templates case, this is the trigger. You can use this executor to apply the teleportation, select/grab etc.
 - In order to teleport yourself, press onto the "primaryButton", which is located above the touchpad on a HTC Vive controller or at the "A" button on a Valve Index controller. 
 - In order to grab objects, use the Trigger-button (back) and release it in order to let the object fall.
-- In order to shoot some cubes, press and let go on the touchpad. (Please notice that using the Varjo headset, you will also move/click with your mouse like that.)
+- In order to shoot some cubes with the Vive controller, press and let go on the touchpad or, on the Valve Index controller, press and let go of B. (Please notice that using the Varjo headset, you will also move/click with your mouse like that.)
 - In order to show an (UI/object) pointer to interact with from a certain distance, gently rest your finger on the touchpad.
 
 Note that movement-controls on the controller were removed because of the lack of useabilty. If you want to import those controls back again, go to the package manager, XR Interaction Package and reimport the package. Please keep in mind that you will have to set the teleportation controls on both controllers back to "trigger" inside the Interaction asset.
