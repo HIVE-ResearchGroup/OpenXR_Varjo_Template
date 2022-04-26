@@ -159,10 +159,9 @@ public class Enable_XR : MonoBehaviour
         }
 
         //Enable hand interaction compability
-        if (enableLeapFunctionality)
+        if (!enableLeapFunctionality)
         {
-            //xrCamera.gameObject.AddComponent<Leap.Unity.LeapXRServiceProvider>();
-            //xrCamera.gameObject.GetComponent<Leap.Unity.LeapXRServiceProvider>().editTimePose = Leap.TestHandFactory.TestHandPose.HeadMountedB;
+            xrCamera.gameObject.GetComponent<Leap.Unity.LeapXRServiceProvider>().enabled = false;
         }
 
 
