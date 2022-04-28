@@ -11,6 +11,8 @@ This project focuses on combining two workflows (OpenXR and Varjo SDK) into one 
 - Unity 2021.2.12*
 
 ### What about other render pipelines?
+<bold>Release 0.1.0 and 0.2.0: This led to an error in the building which is why only HDRP is supported!</bold>
+
 It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. If you still want to continue, please export the prefabs and the scripts (scenes are also possible) from the template as an Asset and import it in your preferred environment. Notice that with the current release, you will have to import the Varjo samples in your project as well in order to get the latest version of the controller. Doing that, you might have to delete some scripts inside the Sample folder as they not support other pipelines. Furthermore, you might will have to create a new ShadowCatcher material for the ground as the one used in the template is created for HDRP.
 
 Please don't forget to create the used layers (ARObjects, VRObjects) and the used tags (Fracture, Pickable), as well to set the Opaque value inside the Varjo SDK to false.
