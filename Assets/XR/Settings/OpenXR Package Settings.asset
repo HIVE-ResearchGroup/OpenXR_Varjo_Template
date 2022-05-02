@@ -32,7 +32,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056125dd64c0ed540b40a4af74f7b495, type: 3}
   m_Name: RuntimeDebuggerOpenXRFeature Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Runtime Debugger
   version: 1
   featureIdInternal: com.unity.openxr.features.runtimedebugger
@@ -117,6 +117,7 @@ MonoBehaviour:
   features:
   - {fileID: -3856228059757999478}
   - {fileID: -7846878040398210561}
+  - {fileID: 5382262328295026254}
   - {fileID: 9188207630758862328}
   - {fileID: -4309224043839648630}
   - {fileID: 8267939211154546423}
@@ -142,6 +143,26 @@ MonoBehaviour:
   Keys: 01000000
   Values:
   - {fileID: -1049345152324179988}
+--- !u!114 &5382262328295026254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c465bd23c9c4fb442ae89117552a5f3f, type: 3}
+  m_Name: HandTrackingFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Ultraleap Hand Tracking
+  version: 1.0.0
+  featureIdInternal: com.ultraleap.tracking.openxr.feature.handtracking
+  openxrExtensionStrings: XR_EXT_hand_tracking
+  company: Ultraleap
+  priority: 0
+  required: 0
 --- !u!114 &5426001549969837496
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -70,12 +70,9 @@ public class Enable_XR : MonoBehaviour
     public VolumeProfile m_skyboxProfile = null;
     public int reflectionRefreshRate = 30;
     public CubemapEvent onCubemapUpdate = new CubemapEvent();
-//#endif
+    //#endif
 
     //[Header("Vive Variables")]
-
-
-
 
 
     // Start is called before the first frame update

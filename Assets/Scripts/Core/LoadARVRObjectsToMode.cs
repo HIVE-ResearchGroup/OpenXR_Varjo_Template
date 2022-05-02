@@ -26,7 +26,10 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     private GameObject[] m_arObjects;
     private GameObject[] m_vrObjects;
 
-    private HandModelManager m_HandModelManager;
+    [Header("Leap Variables")]
+    public GameObject hands;
+
+    //private HandModelManager m_HandModelManager;
 
 
     private Enable_XR m_XrManager;
@@ -40,9 +43,6 @@ public class LoadARVRObjectsToMode : MonoBehaviour
         m_storedTransparentInAR = setGroundTransparent;
 
         m_storedGroundTransparent = setGroundTransparent;
-
-        m_HandModelManager = GameObject.FindGameObjectWithTag("HandModels").GetComponent<HandModelManager>();
-
 
         m_XrManager = this.GetComponent<Enable_XR>();
 
@@ -179,12 +179,14 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     {
         if (state)
         {
-            m_HandModelManager.EnableGroup("Rigged Hands");
+            hands.SetActive(true);
+            //m_HandModelManager.EnableGroup("Rigged Hands");
 
         }
         else
         {
-            m_HandModelManager.DisableGroup("Rigged Hands");
+            hands.SetActive(false);
+            //m_HandModelManager.DisableGroup("Rigged Hands");
         }
     }
 
