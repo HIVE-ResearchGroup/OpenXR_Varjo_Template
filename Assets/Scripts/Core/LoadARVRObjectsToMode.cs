@@ -177,8 +177,6 @@ public class LoadARVRObjectsToMode : MonoBehaviour
 
     void setHands(bool state)
     {
-        // TODO ---------------------------------------------------------------------------------------------------------------------------- display/not displaying hands
-
         if (state)
         {
             m_HandModelManager.EnableGroup("Rigged Hands");
