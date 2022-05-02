@@ -1388,6 +1388,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1335437949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5633134294185172772, guid: 95aae9647c713684fb80b25d4284fd01,
+    type: 3}
+  m_PrefabInstance: {fileID: 5633134294496841122}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1335437950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335437949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_PositionInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Position
+      m_Type: 0
+      m_ExpectedControlType: Vector3
+      m_Id: 
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 
+        m_Path: <XRHMD>/centerEyePosition
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Position
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_RotationInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Rotation
+      m_Type: 0
+      m_ExpectedControlType: Quaternion
+      m_Id: 
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 
+        m_Path: <XRHMD>/centerEyeRotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PositionAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_RotationAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_HasMigratedActions: 1
 --- !u!114 &1342569361 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
@@ -4077,11 +4156,21 @@ PrefabInstance:
       propertyPath: selectedMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: XRToggleAction.m_Id
+      value: b754a147-fd76-4d7b-ae0f-8e7521d64c5f
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
+        type: 3}
+      propertyPath: XRToggleAction.m_Name
+      value: XR Toggle
+      objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: xrCamera
       value: 
-      objectReference: {fileID: 326390411}
+      objectReference: {fileID: 5633134294496841123}
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: enableLeapFunctionality
@@ -4096,12 +4185,12 @@ PrefabInstance:
         type: 3}
       propertyPath: leftController
       value: 
-      objectReference: {fileID: 469199682}
+      objectReference: {fileID: 5633134294496841125}
     - target: {fileID: 1723340320100817063, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: rightController
       value: 
-      objectReference: {fileID: 682081927}
+      objectReference: {fileID: 5633134294496841124}
     - target: {fileID: 1723340320100817080, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: m_Name
@@ -4165,7 +4254,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817083, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: usedDevice
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3005721644247719562, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}

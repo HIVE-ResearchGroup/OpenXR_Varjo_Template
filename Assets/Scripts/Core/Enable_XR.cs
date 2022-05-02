@@ -101,9 +101,9 @@ public class Enable_XR : MonoBehaviour
             VarjoStartup();
         }
 
-        else if (usedDevice == DeviceList.OpenXR_ZED)
+        else if (usedDevice == DeviceList.OpenXR)
         {
-            ViveZedStartup();
+            OpenXRStartup();
         }
 
     }
@@ -159,9 +159,9 @@ public class Enable_XR : MonoBehaviour
         }
 
         //Enable hand interaction compability
-        if (enableLeapFunctionality)
+        if (!enableLeapFunctionality)
         {
-            //xrCamera.gameObject.AddComponent<Leap.Unity.LeapXRServiceProvider>();
+            xrCamera.gameObject.GetComponent<Leap.Unity.LeapXRServiceProvider>().enabled = false;
             //xrCamera.gameObject.GetComponent<Leap.Unity.LeapXRServiceProvider>().editTimePose = Leap.TestHandFactory.TestHandPose.HeadMountedB;
         }
 
@@ -311,7 +311,7 @@ public class Enable_XR : MonoBehaviour
     }
 //#endif
 
-    void ViveZedStartup()
+    void OpenXRStartup()
     {
 
     }
