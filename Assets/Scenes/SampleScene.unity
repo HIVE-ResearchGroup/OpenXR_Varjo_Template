@@ -4267,6 +4267,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114892109605653334, guid: 33edf201cbc6fe645ad9078697cd2aea,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892109605653334, guid: 33edf201cbc6fe645ad9078697cd2aea,
+        type: 3}
       propertyPath: _autoGenerateLayers
       value: 1
       objectReference: {fileID: 0}
@@ -4499,7 +4504,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: selectedMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817060, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -4619,7 +4624,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: enableLeapFunctionality
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
@@ -4704,7 +4709,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817083, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: usedDevice
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3005721644247719562, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
