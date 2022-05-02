@@ -1,3 +1,5 @@
+using Leap.Unity;
+using Leap.Unity.Interaction;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +14,6 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     public Material shadowCatcher;
     public bool setTransparentInAR = true;
     public bool setGroundTransparent;
-    
 
     private AR_VR_Toggle avt;
     private XRmode m_XrMode;
@@ -25,6 +26,11 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     private GameObject[] m_arObjects;
     private GameObject[] m_vrObjects;
 
+    private HandModelManager m_HandModelManager;
+
+
+    private Enable_XR m_XrManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +40,11 @@ public class LoadARVRObjectsToMode : MonoBehaviour
         m_storedTransparentInAR = setGroundTransparent;
 
         m_storedGroundTransparent = setGroundTransparent;
+
+        m_HandModelManager = GameObject.FindGameObjectWithTag("HandModels").GetComponent<HandModelManager>();
+
+
+        m_XrManager = this.GetComponent<Enable_XR>();
 
         if (!avt)
         {
@@ -100,15 +111,32 @@ public class LoadARVRObjectsToMode : MonoBehaviour
 
     GameObject[] FindGameObjectsWithLayer(int layer) {
 
-        GameObject[] goArray = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        GameObject[] goArray = FindObjectsOfType<GameObject>();
         var goList = new List<GameObject>();
 
+        // iterate over all objects
         for (int i = 0; i < goArray.Length; i++) { 
+
+            // check for layers
             if (goArray[i].layer == layer) { 
                 goList.Add(goArray[i]); 
-            } 
+            }
+
+            // gonna take advantage of this search and attach the leap scripts if needed
+            if (goArray[i].tag == "Pickable" && m_XrManager.enableLeapFunctionality)
+            {
+                // TODO ---------------------------------------------------------------------------------------------------------------------------- gets selected two times
+                if (!goArray[i].GetComponent<InteractionBehaviour>())
+                {
+                    goArray[i].AddComponent<InteractionBehaviour>();
+                }
+                goArray[i].GetComponent<InteractionBehaviour>().allowMultiGrasp = true;
+
+                //Debug.Log("Fuck this shit");
+            }
         } 
         
+        // if there are no objects, return null
         if (goList.Count == 0) { 
             return null; 
         } 
@@ -135,14 +163,31 @@ public class LoadARVRObjectsToMode : MonoBehaviour
         {
             setObjects(m_arObjects, true);
             setObjects(m_vrObjects, false);
+            setHands(false);
 
         }
         else if (m_XrMode == XRmode.VR)
         {
             setObjects(m_arObjects, false);
             setObjects(m_vrObjects, true);
+            setHands(true);
         }
 
+    }
+
+    void setHands(bool state)
+    {
+        // TODO ---------------------------------------------------------------------------------------------------------------------------- display/not displaying hands
+
+        if (state)
+        {
+            m_HandModelManager.EnableGroup("Rigged Hands");
+
+        }
+        else
+        {
+            m_HandModelManager.DisableGroup("Rigged Hands");
+        }
     }
 
     // Updates the objects regarding the mode
