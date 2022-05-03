@@ -119,7 +119,16 @@ public class ControllerManager : MonoBehaviour
         // Check if there is a visibility state change
         if (m_controllersVisible != tempVisibility)
         {
-            setVisibility(tempVisibility);
+            if (leftController.activeSelf)
+            {
+                setVisibility(tempVisibility, leftController);
+            }
+
+            if (rightController.activeSelf)
+            {
+                setVisibility(tempVisibility, rightController);
+            }
+
             m_controllersVisible = tempVisibility;
         }
     }
@@ -178,42 +187,30 @@ public class ControllerManager : MonoBehaviour
         return false;
     }
 
-    void setVisibility(bool state)
+    void setVisibility(bool state, GameObject controller)
     {
-        Transform outpointLeft = leftController.transform.GetChild(1).GetChild(0).GetChild(0);
-        Transform outpointRight = rightController.transform.GetChild(1).GetChild(0).GetChild(0);
+
+        Transform outpoint = controller.transform.GetChild(1).GetChild(0).GetChild(0);
 
         if (!state)
         {
             // NOTE: This code only works with the current XRRig setup! You might need to adapt it, when you change the XRRig prefab!
-            for (int i = 0; i < outpointLeft.childCount; i++)
+            for (int i = 0; i < outpoint.childCount; i++)
             {
-                Transform x = outpointLeft.GetChild(i);
+                Transform x = outpoint.GetChild(i);
                 if (x.gameObject.GetComponent<MeshRenderer>())
                 {
                     x.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
                 }
-
-                Transform y = outpointRight.GetChild(i);
-                if (y.gameObject.GetComponent<MeshRenderer>())
-                {
-                    y.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
-                }
             }
         } else
         {
-            for (int i = 0; i < outpointLeft.childCount; i++)
+            for (int i = 0; i < outpoint.childCount; i++)
             {
-                Transform x = outpointLeft.GetChild(i);
+                Transform x = outpoint.GetChild(i);
                 if (x.gameObject.GetComponent<MeshRenderer>())
                 {
                     x.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-                }
-
-                Transform y = outpointRight.GetChild(i);
-                if (y.gameObject.GetComponent<MeshRenderer>())
-                {
-                    y.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
                 }
             }
         }
