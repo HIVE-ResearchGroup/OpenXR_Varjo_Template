@@ -307,7 +307,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91444608}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 76.0111, y: 13.325934, z: 1}
@@ -4273,22 +4273,22 @@ PrefabInstance:
     - target: {fileID: 114892109605653334, guid: 33edf201cbc6fe645ad9078697cd2aea,
         type: 3}
       propertyPath: _autoGenerateLayers
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114892109605653334, guid: 33edf201cbc6fe645ad9078697cd2aea,
         type: 3}
       propertyPath: _contactBoneLayer.layerIndex
-      value: 11
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114892109605653334, guid: 33edf201cbc6fe645ad9078697cd2aea,
         type: 3}
       propertyPath: _interactionLayer.layerIndex
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114892109605653334, guid: 33edf201cbc6fe645ad9078697cd2aea,
         type: 3}
       propertyPath: _interactionNoContactLayer.layerIndex
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33edf201cbc6fe645ad9078697cd2aea, type: 3}
@@ -4719,7 +4719,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817083, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: usedDevice
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3005721644247719562, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
