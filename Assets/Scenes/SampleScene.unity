@@ -4335,6 +4335,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1390114039288614347, guid: 5d41b62f8fd4dea49b6540b07a76e498,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1390114039288614387, guid: 5d41b62f8fd4dea49b6540b07a76e498,
         type: 3}
       propertyPath: m_InteractionManager
@@ -4419,6 +4424,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RaycastMask.m_Bits
       value: 481
+      objectReference: {fileID: 0}
+    - target: {fileID: 1390114039855014679, guid: 5d41b62f8fd4dea49b6540b07a76e498,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1390114039855014687, guid: 5d41b62f8fd4dea49b6540b07a76e498,
         type: 3}
