@@ -28,9 +28,6 @@ public class ControllerManager : MonoBehaviour
     private DeviceManager m_dm;
     private AR_VR_Toggle m_avt;
 
-    XRNode XRNodeLeftHand = XRNode.LeftHand;
-    XRNode XRNodeRightHand = XRNode.RightHand;
-
     private List<InputDevice> devices = new List<InputDevice>();
     private InputDevice device;
 
@@ -70,14 +67,52 @@ public class ControllerManager : MonoBehaviour
         //setControllerOffset();
     }
 
+    private void OnEnable()
+    {
+        InputDevices.deviceDisconnected += DeviceDisconnected;
+        InputDevices.deviceConnected += DeviceConnected;
+    }
+
+    private void OnDisable()
+    {
+        InputDevices.deviceDisconnected -= DeviceDisconnected;
+        InputDevices.deviceConnected -= DeviceConnected;
+    }
+
+    private void DeviceConnected(InputDevice device)
+    {
+        if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
+        {
+            SetDevice(device, leftController);
+            Debug.Log("Left Hand --- " + device.name + " connected!");
+        }
+
+        if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
+        {
+            SetDevice(device, rightController);
+            Debug.Log("Right Hand --- " + device.name + " connected!");
+        }
+    }
+
+    private void DeviceDisconnected(InputDevice device)
+    {
+        if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
+        {
+            SetDevice(device, leftController);
+            Debug.Log("Left Hand --- " + device.name + " disconnected!");
+        }
+
+        if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
+        {
+            SetDevice(device, rightController);
+            Debug.Log("Right Hand --- " + device.name + " disconnected!");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         m_xrMode = m_avt.selectedMode;
-
-        // Check if wether a controller needs to be completely deactivated
-        GetDevice(XRNodeLeftHand, leftController);
-        GetDevice(XRNodeRightHand, rightController);
 
         bool tempVisibility = checkVisibilty();
 
@@ -184,16 +219,16 @@ public class ControllerManager : MonoBehaviour
         }
     }
 
-    void GetDevice(XRNode Hand, GameObject controller)
+    void SetDevice(InputDevice ip, GameObject controller)
     {
-        InputDevices.GetDevicesAtXRNode(Hand, devices);
-        device = devices.FirstOrDefault();
-        if (!device.isValid)
+        if (!ip.isValid)
         {
+            Debug.Log("Set " + controller.name + " (" + ip.name + ") to false");
             controller.SetActive(false);
         }
         else
         {
+            Debug.Log("Set " + controller.name + " (" + ip.name + ") to true");
             controller.SetActive(true);
         }
     }

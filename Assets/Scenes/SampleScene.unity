@@ -4624,7 +4624,7 @@ PrefabInstance:
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}
       propertyPath: enableLeapFunctionality
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1723340320100817061, guid: c4cae28f6f3826d49bccf9dcaf022515,
         type: 3}

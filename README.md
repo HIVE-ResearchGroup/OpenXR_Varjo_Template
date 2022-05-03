@@ -6,9 +6,9 @@ This project focuses on combining two workflows (OpenXR and Varjo SDK) into one 
 
 ## Dependencies
 - Varjo SDK
-    - In order to use the template, the Varjo SDK has to be imported into your project. This template does not need the Sample folder to be imported anymore and thus can be operated without. However, you are free to use the Samples in order to get in touch with other Varjo features such as Markers or "Windows". If you search for a version of the template that might be more flexible, have a look at the version release of [0.1.0.](https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/releases/tag/v0.2.0).
+    - In order to use the template, the Varjo SDK has to be imported into your project. This template does not need the Sample folder to be imported anymore and thus can be operated without. However, you are free to use the Samples in order to get in touch with other Varjo features such as Markers or "Windows". If you search for a version of the template that might be more flexible, have a look at the version release of [0.2.0.](https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/releases/tag/v0.2.0).
 - HDRP Pipeline
-- Unity 2021.2.12*
+- Unity 2021.3.1*
 
 ### What about other render pipelines?
 <bold>Release 0.1.0 and 0.2.0: This led to an error in the building which is why only HDRP is supported!</bold>
@@ -39,4 +39,5 @@ For more information about the useage, please have a look at the [README](./Asse
 - In some cases, the output to an OpenXR headset might not work on some machines. In this cases, try switching to MultiPass rendering (Project Settings -> XR Plug-in Management -> OpenXR). Note that in this mode, the CPU and power consumption will be higher.
 - By default, the Eye Offset is set to 1 because otherwise, there would be a noticeable object drift of your objects inside your AR scene. If it happens that you notice this behaviour, make sure to check this setting first.
 - <bold>There are interesting differences between the Varjo package and the OpenXR package regarding input! Please have a look at the other [README](./Assets/README.md#differences-between-varjo-and-openxr-package) in this regard!</bold>
+- In OpenXR mode, there is a bug which prevents the controller to disconnect properly which results into the controllers not being able to disable correctly (ControllerManager.cs)
 #### There is an tracking issue with the Varjo system currently - further information will be added into this documentation.
