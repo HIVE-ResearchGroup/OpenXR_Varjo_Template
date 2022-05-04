@@ -88,6 +88,11 @@ public class LoadARVRObjectsToMode : MonoBehaviour
         }
     }
 
+    public void SetGroundTransparent(bool state)
+    {
+        setGroundTransparent = state;
+    }
+
     void groundInit()
     {
         if (!shadowCatcher)

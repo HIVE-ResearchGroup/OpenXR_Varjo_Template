@@ -220,7 +220,6 @@ public class Enable_XR : MonoBehaviour
             if (HDCameraData)
                 HDCameraData.clearFlags = CameraClearFlags.SolidColor;
 #endif*/
-
             }
             else if (xrMode == XRmode.VR) // || !videoSeeThrough)
             {
@@ -235,6 +234,7 @@ public class Enable_XR : MonoBehaviour
             if (HDCameraData)
                 HDCameraData.clearFlags = CameraClearFlags.Skybox;
 #endif*/
+
             }
             selectedXrMode = xrMode;
         }
@@ -326,5 +326,15 @@ public class Enable_XR : MonoBehaviour
             Varjo.XR.VarjoRendering.SetOpaque(originalOpaqueValue);
             UpdateVarjoFeatures();
         }
+    }
+
+    public void SetDepthTesting(bool state)
+    {
+        enableDepthTesting = state;
+    }
+
+    public void SetEnvironmentReflections(bool state)
+    {
+        enableEnvironmentReflections = state;
     }
 }
