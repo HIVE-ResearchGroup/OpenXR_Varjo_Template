@@ -53,4 +53,19 @@ public class AR_VR_Toggle : MonoBehaviour
     {
         XRToggleAction.Disable();
     }
+
+    public void setMode(XRmode mode)
+    {
+        selectedMode = mode;
+    }
+
+    public void setModeToAR()
+    {
+        selectedMode = XRmode.AR;
+    }
+
+    public void setModeToVR()
+    {
+        selectedMode = XRmode.VR;
+    }
 }

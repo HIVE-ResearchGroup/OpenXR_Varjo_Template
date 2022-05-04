@@ -115,6 +115,18 @@ The new Input System needs an "executor" to fully function. In this templates ca
 
 Note that movement-controls on the controller were removed because of the lack of useabilty. If you want to import those controls back again, go to the package manager, XR Interaction Package and reimport the package. Please keep in mind that you will have to set the teleportation controls on both controllers back to "trigger" inside the Interaction asset.
 
+<bold>In order to grab an object, you will have to add the "XR Grab Interactable" component and a "Pickable" tag to the object.</bold>
+
+## How it works
+As the controller should have both the functionality to teleport, point and grab objects directly, the "XR Origin" has both two objects with the "Controller"-ending, as well as two objects with the "Ray"-ending. The Controller objects implement the direct controls (which is why there is a sphere collider - on trigger) and the controller model prefabs (which also have a collider, in order to physically move objects with your controller in your scene), while the Ray objects implement the raycasting (pointer and teleport). Both are activated simultaneously. Since they both are triggered by the "Select" property inside the XRI, they both work the same. 
+
+In order to show/render the line (either pointer or teleporter), an additional script "On Button Press" is added the both Controller-objects. <bold>Note that the actions stated here must contain both the actions for toggling the pointer and the teleporter as it only specifies that the line has to be rendered.</bold>
+
+Talking about raycasters:
+In order for the code to switch between the teleporter line and the pointer line, there is a "Controller Action" script added to the Ray-objects. Here, you can specify which actions should be used in order to change to the teleporter line (and raycast) or the pointer line (and raycast). <bold>Note that you have to make sure that these actions are identically to those stated in the controller objects (OnButtonPress.cs)!</bold>
+Notice that these also only manage the line to be rendered. You still have to use the "Select" action stated in the XRI Action Asset to perform the action.
+
+
 ## Differences between Varjo and OpenXR package
 Most importantly, there is no drawback in the functionality of both system - just a difference in the way of handling it. 
 
@@ -133,3 +145,11 @@ In this template, there are three main factors
 
 # How to make objects visible to either VR or AR
 Please make use of the specific layers.
+
+# How to use hand tracking
+Enable the specific checkbox inside the DeviceManager (Enable_XR.cs) and make sure that your device supports hand tracking. In order for an object to support hand tracking, add the "Pickable" tag to it. Note that this will add a script to the object on startup. This won't support the Input Interaction out of the box, you still need to add the "XR Grab Interactable" script. In order to touch UI elements, those elements need to have two box colliders, a rigidbody and a "Interaction Button" script. One box collider needs to have "is trigger" activated for the Raycasting to work and one box collider needs to have a disabled "is trigger" for the hand gesture to work. Note that you also have to implement "on click" (for the controller useage) AND "on press" (for the hand touch gesture) - ideally with the same event.
+
+You can also change between AR and VR by raising the left palm of your hand and clicking on one of each buttons. This is achieved with the "Attachment Hands" object.
+
+## OpenXR
+There is a OpenXR branch of UltraLeaps handtracking plugin which is in development. In future releases, it could be interesting to add this approach to the template.s
