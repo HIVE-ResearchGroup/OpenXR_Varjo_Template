@@ -22,8 +22,8 @@ MonoBehaviour:
   FlipY: 0
   OcclusionMesh: 1
   SessionPriority: 0
-  SubmitDepth: 1
-  DepthSorting: 1
+  SubmitDepth: 0
+  DepthSorting: 0
   DepthTestRange: 0
   DepthTestNearZ: 0
   DepthTestFarZ: 0.800000011920929

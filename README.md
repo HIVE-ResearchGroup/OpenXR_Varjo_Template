@@ -31,13 +31,16 @@ For more information about the useage, please have a look at the [README](./Asse
 
 
 ## Noticeable mentions
-
-- It's possible that SteamVR (regarding input and tracking using the Varjo headset, even outside the project) might have some issues after switching headsets. In this case, either restart the headset using the Varjo Base Program or/and restart SteamVR. If it won't appear, try starting SteamVR from inside the Varjo-Base-Program. If that won't do, restart your computer.
-- Interestingly, there is an offset between the input tracking of the Varjo SDK and OpenXR. This offset (as you might've read above) is managed insidethe AR_VR_Toggle-Script. If ever the offset is getting changed in the future, these values should be adjusted inside this script.
 - Sky and Fog Volume: I tweaked the it slightly in order to match the requirements of the Varjo SDK. (Now, the focus-rectangle shouldn't be visible). If the scene doesn't match your lighting conditions, you may turn the exposure down inside the Sky and Fog Volume.
 - If there's a slight flickering around your focus displays on your Varjo headset, try adding/changing the override regarding "motion blur" in your project. If this still doesn't help out and don't have the time to further testing, you may deactivate "Forveated Rendering" (Project Settings -> XR Plug-in Management -> Varjo). This option controls if the focus of the display should be restricted on a small rectangle (checked - increases performance) or should cover the whole display (unchecked). You may uncheck it for a smoother experience but maybe get not the best performance.
-- In some cases, the output to an OpenXR headset might not work on some machines. In this cases, try switching to MultiPass rendering (Project Settings -> XR Plug-in Management -> OpenXR). Note that in this mode, the CPU and power consumption will be higher.
 - By default, the Eye Offset is set to 1 because otherwise, there would be a noticeable object drift of your objects inside your AR scene. If it happens that you notice this behaviour, make sure to check this setting first.
+
+
+### Known Issues
+- It's possible that SteamVR (regarding input and tracking using the Varjo headset, even outside the project) might have some issues after switching headsets. In this case, either restart the headset using the Varjo Base Program or/and restart SteamVR. If it won't appear, try starting SteamVR from inside the Varjo-Base-Program. If that won't do, restart your computer.
+- In some cases, the output to an OpenXR headset might not work on some machines. In this cases, try switching to MultiPass rendering (Project Settings -> XR Plug-in Management -> OpenXR). Note that in this mode, the CPU and power consumption will be higher.
+- Interestingly, there is an offset between the input tracking of the Varjo SDK and OpenXR. This offset (as you might've read above) is managed inside the AR_VR_Toggle-Script. If ever the offset is getting changed in the future, these values should be adjusted inside this script.
 - <bold>There are interesting differences between the Varjo package and the OpenXR package regarding input! Please have a look at the other [README](./Assets/README.md#differences-between-varjo-and-openxr-package) in this regard!</bold>
 - In OpenXR mode, there is a bug which prevents the controller to disconnect properly which results into the controllers not being able to disable correctly (ControllerManager.cs)
+
 #### There is an tracking issue with the Varjo system currently - further information will be added into this documentation.
