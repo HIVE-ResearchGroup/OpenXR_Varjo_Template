@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
-    guid: 37475201cc9bbf44b8855a7122fa8488
+    guid: 8acdcd75298a9e84494a5d80b315d4dc
   m_configObjects:
     Varjo.XR.Settings: {fileID: 11400000, guid: 983b875121d228444bcd0e94aa61149d,
       type: 2}
