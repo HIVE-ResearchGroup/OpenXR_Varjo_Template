@@ -12,6 +12,8 @@ To make sure the transition goes well, make sure that there is no headset runnin
 
 #### Do not launch the program with both SDKs activated!
 
+(The XR Plugin Management Tool loads the SDKs in alphabetically order. Though it is possible to change this order to e.g. always load the Varjo SDK first in order to support all the features, this can lead to unexpected behaviours and is not recommended.)
+
 After, go to the deviceManager script and set the "Used Device" setting matching your headset and the already set SDK. Now you should be way to go! If needed, start SteamVR and/or Varjo Base and plug in your headset. If everything is running (and you didn't forget to re-connect your controllers), feel free to start the template!
 
 ## Enable_XR Script
