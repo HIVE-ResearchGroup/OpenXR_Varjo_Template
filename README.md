@@ -42,5 +42,8 @@ For more information about the useage, please have a look at the [README](./Asse
 - Interestingly, there is an offset between the input tracking of the Varjo SDK and OpenXR. This offset (as you might've read above) is managed inside the AR_VR_Toggle-Script. If ever the offset is getting changed in the future, these values should be adjusted inside this script.
 - <bold>There are interesting differences between the Varjo package and the OpenXR package regarding input! Please have a look at the other [README](./Assets/README.md#differences-between-varjo-and-openxr-package) in this regard!</bold>
 - In OpenXR mode, there is a bug which prevents the controller to disconnect properly which results into the controllers not being able to disable correctly (ControllerManager.cs)
+- AR_VR_Toggle: Since there is a delay in switching the depth testing on and off, the implementation is made that depth testing is enabled on startup when checked. This leads to an error in the Varjo SDK that depth testing is also enabled inside VR. This should resolve when switching to AR and back again to VR. It is thus mostly recommended to start your scene in AR when using depth testing or deactivate it when using VR. Of course you might also use this behaviour in VR to interact with your real hands but not recommended as it could be fixed in a future release.
 
 #### There is an tracking issue with the Varjo system currently - further information will be added into this documentation.
+
+- Refer to the [GitHub](https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/issues) page for further information about current issues.

@@ -24,9 +24,9 @@ public class Enable_XR : MonoBehaviour
     public class CubemapEvent : UnityEvent { }
 
 
-    private DeviceList usedDevice;
-    private XRmode xrMode;
-    private XRmode selectedXrMode;
+    private DeviceList m_UsedDevice;
+    private XRmode m_XrMode;
+    private XRmode m_StoredXrMode;
 
     //Varjo devices - maybe reuse them for ZED?
     public Camera xrCamera;
@@ -34,6 +34,7 @@ public class Enable_XR : MonoBehaviour
     [Header("Varjo Variables")]
     [Range(0f, 1.0f)]
     public float VREyeOffset = 0.0f;
+    [Header("Depthtesting is only modified on startup")]
     public bool enableDepthTesting;
 
 //#if USING_HDRP
@@ -44,23 +45,26 @@ public class Enable_XR : MonoBehaviour
 
 //#if USING_HDRP
     private HDAdditionalCameraData HDCameraData;
-//#endif
-/*#if !USING_HDRP
-    private Camera HDCameraData;
-#endif*/
+    //#endif
+    /*#if !USING_HDRP
+        private Camera HDCameraData;
+    #endif*/
 
 
-    //private bool videoSeeThrough;
-    private bool originalOpaqueValue;
+    private bool m_OriginalOpaqueValue;
+    private bool m_StoredVideoSeeThrough;
+    private bool m_videoSeeThrough;
 
-//#if USING_HDRP
+
+
+    //#if USING_HDRP
+    private bool m_storedEnvironmentReflections;
     private bool metadataStreamEnabled = false;
     private Varjo.XR.VarjoCameraMetadataStream.VarjoCameraMetadataFrame metadataFrame;
     private HDRISky volumeSky = null;
     private Exposure volumeExposure = null;
     private VSTWhiteBalance volumeVSTWhiteBalance = null;
     private Varjo.XR.VarjoCameraSubsystem cameraSubsystem;
-    private bool environmentReflections;
     private Varjo.XR.VarjoEnvironmentCubemapStream.VarjoEnvironmentCubemapFrame cubemapFrame;
     private bool defaultSkyActive = false;
     private bool cubemapEventListenerSet = false;
@@ -70,7 +74,7 @@ public class Enable_XR : MonoBehaviour
     public VolumeProfile m_skyboxProfile = null;
     public int reflectionRefreshRate = 30;
     public CubemapEvent onCubemapUpdate = new CubemapEvent();
-    //#endif
+//#endif
 
     //[Header("Vive Variables")]
 
@@ -78,7 +82,7 @@ public class Enable_XR : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        usedDevice = this.GetComponent<DeviceManager>().usedDevice;
+        m_UsedDevice = this.GetComponent<DeviceManager>().usedDevice;
 
 
 #if USING_HDRP
@@ -89,16 +93,18 @@ public class Enable_XR : MonoBehaviour
         HDCameraData = xrCamera.GetComponent<Camera>();
 #endif*/
 
+        // Load and set Mode Variables
+        m_XrMode = this.GetComponent<AR_VR_Toggle>().selectedMode;
+        setModeVariables();
 
-        xrMode = this.GetComponent<AR_VR_Toggle>().selectedMode;
-        selectedXrMode = xrMode;
 
-        if (usedDevice == DeviceList.Varjo)
+        // Set StartUp function
+        if (m_UsedDevice == DeviceList.Varjo)
         {
             VarjoStartup();
         }
 
-        else if (usedDevice == DeviceList.OpenXR)
+        else if (m_UsedDevice == DeviceList.OpenXR)
         {
             OpenXRStartup();
         }
@@ -108,12 +114,40 @@ public class Enable_XR : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xrMode = this.GetComponent<AR_VR_Toggle>().selectedMode;
+        m_XrMode = this.GetComponent<AR_VR_Toggle>().selectedMode;
+        setModeVariables();
 
-        if (usedDevice == DeviceList.Varjo)
+
+        if (m_UsedDevice == DeviceList.Varjo)
         {
             UpdateVarjoFeatures();
         }
+
+    }
+
+    void setModeVariables()
+    {
+        if (m_StoredXrMode != m_XrMode)
+        {
+            if (m_XrMode == XRmode.AR) //if Mode set to AR
+            {
+                m_videoSeeThrough = true;
+//#if USING_HDRP
+                enableEnvironmentReflections = true;
+//#endif
+            }
+            else if (m_XrMode == XRmode.VR) // if Mode set to VR
+            {
+                m_videoSeeThrough = false;
+
+//#if USING_HDRP
+                enableEnvironmentReflections = false;
+//#endif
+            }
+
+            m_StoredXrMode = m_XrMode;
+        }
+        
     }
 
     void UpdateVarjoFeatures()
@@ -125,11 +159,17 @@ public class Enable_XR : MonoBehaviour
 //#endif
     }
 
+
+
+
+
+
     void VarjoStartup()
     {
 
+
         //Enabling AR mode
-        if (xrMode == XRmode.AR)
+        if (m_videoSeeThrough)
         {
             //videoSeeThrough = true;
             Varjo.XR.VarjoMixedReality.StartRender();
@@ -178,7 +218,7 @@ public class Enable_XR : MonoBehaviour
             cameraSubsystem.Start();
         }
 
-        originalOpaqueValue = Varjo.XR.VarjoRendering.GetOpaque();
+        m_OriginalOpaqueValue = Varjo.XR.VarjoRendering.GetOpaque();
         Varjo.XR.VarjoRendering.SetOpaque(false);
         cubemapEventListenerSet = onCubemapUpdate.GetPersistentEventCount() > 0;
 
@@ -205,11 +245,12 @@ public class Enable_XR : MonoBehaviour
 
     void UpdateVideoSeeThrough()
     {
-        if (xrMode != selectedXrMode)
+        if (m_videoSeeThrough != m_StoredVideoSeeThrough)
         {
-            if (xrMode == XRmode.AR) // && videoSeeThrough)
+            if (m_videoSeeThrough)
             {
                 Varjo.XR.VarjoMixedReality.StartRender();
+                Varjo.XR.VarjoRendering.SetOpaque(false);
 
 //#if USING_HDRP
                 if (HDCameraData)
@@ -221,11 +262,12 @@ public class Enable_XR : MonoBehaviour
                 HDCameraData.clearFlags = CameraClearFlags.SolidColor;
 #endif*/
             }
-            else if (xrMode == XRmode.VR) // || !videoSeeThrough)
+            else
             {
                 Varjo.XR.VarjoMixedReality.StopRender();
+                Varjo.XR.VarjoRendering.SetOpaque(true);
 
-//#if USING_HDRP
+                //#if USING_HDRP
                 if (HDCameraData)
                     HDCameraData.clearColorMode = HDAdditionalCameraData.ClearColorMode.Sky;
 //#endif
@@ -236,22 +278,21 @@ public class Enable_XR : MonoBehaviour
 #endif*/
 
             }
-            selectedXrMode = xrMode;
+            m_StoredVideoSeeThrough = m_videoSeeThrough;
         }
-
     }
 
 //#if USING_HDRP
 
     void UpdateEnvironmentReflections()
     {
-        if (environmentReflections != enableEnvironmentReflections && xrMode == XRmode.AR)
+        if (m_storedEnvironmentReflections != enableEnvironmentReflections)
         {
             if (enableEnvironmentReflections)
             {
                 if (Varjo.XR.VarjoMixedReality.environmentCubemapStream.IsSupported())
                 {
-                    environmentReflections = Varjo.XR.VarjoMixedReality.environmentCubemapStream.Start();
+                    m_storedEnvironmentReflections = Varjo.XR.VarjoMixedReality.environmentCubemapStream.Start();
                 }
 
                 if (!cameraSubsystem.IsMetadataStreamEnabled)
@@ -265,10 +306,10 @@ public class Enable_XR : MonoBehaviour
                 Varjo.XR.VarjoMixedReality.environmentCubemapStream.Stop();
                 cameraSubsystem.DisableMetadataStream();
             }
-            environmentReflections = enableEnvironmentReflections;
+            m_storedEnvironmentReflections = enableEnvironmentReflections;
         }
 
-        if (enableEnvironmentReflections && metadataStreamEnabled && xrMode == XRmode.AR)
+        if (enableEnvironmentReflections && metadataStreamEnabled)
         {
             if (Varjo.XR.VarjoMixedReality.environmentCubemapStream.hasNewFrame && cameraSubsystem.MetadataStream.hasNewFrame)
             {
@@ -310,27 +351,22 @@ public class Enable_XR : MonoBehaviour
 
     void OpenXRStartup()
     {
-
+        // intentionally left empty
     }
 
     void OnDisable()
     {
 
-        if (usedDevice == DeviceList.Varjo)
+        if (m_UsedDevice == DeviceList.Varjo)
         {
             enableDepthTesting = false;
 //#if USING_HDRP
             enableEnvironmentReflections = false;
 //#endif
-            //videoSeeThrough = false;
-            Varjo.XR.VarjoRendering.SetOpaque(originalOpaqueValue);
+            m_videoSeeThrough = false;
+            Varjo.XR.VarjoRendering.SetOpaque(m_OriginalOpaqueValue);
             UpdateVarjoFeatures();
         }
-    }
-
-    public void SetDepthTesting(bool state)
-    {
-        enableDepthTesting = state;
     }
 
     public void SetEnvironmentReflections(bool state)

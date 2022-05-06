@@ -20,6 +20,7 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     private XRmode m_storedXrMode;
     private bool m_storedGroundTransparent;
     private bool m_storedTransparentInAR;
+    private bool m_storedHandsTransparent;
 
     private Material m_InitialMaterial;
 
@@ -28,6 +29,7 @@ public class LoadARVRObjectsToMode : MonoBehaviour
 
     [Header("Leap Variables")]
     public GameObject hands;
+    public bool setHandsTransparent;
 
     //private HandModelManager m_HandModelManager;
 
@@ -41,8 +43,7 @@ public class LoadARVRObjectsToMode : MonoBehaviour
         m_XrMode = avt.selectedMode;
         m_storedXrMode = m_XrMode;
         m_storedTransparentInAR = setGroundTransparent;
-
-        m_storedGroundTransparent = setGroundTransparent;
+        m_storedHandsTransparent = setHandsTransparent;
 
         m_XrManager = this.GetComponent<Enable_XR>();
 
@@ -53,6 +54,7 @@ public class LoadARVRObjectsToMode : MonoBehaviour
 
         groundInit();
         setGround(setGroundTransparent);
+        setHands(!setHandsTransparent);
         m_arObjects = FindGameObjectsWithLayer(7);// hardcoded number - not a good solution and might change it later
         m_vrObjects = FindGameObjectsWithLayer(6);
         updateObjects();
@@ -63,7 +65,11 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     {
         m_XrMode = avt.selectedMode;
 
-
+        if (m_storedHandsTransparent != setHandsTransparent)
+        {
+            updateObjects();
+            m_storedHandsTransparent = setHandsTransparent;
+        }
 
         //set ground
         if (setGroundTransparent != m_storedGroundTransparent) // Check if this value changed regarding ground
@@ -91,6 +97,11 @@ public class LoadARVRObjectsToMode : MonoBehaviour
     public void SetGroundTransparent(bool state)
     {
         setGroundTransparent = state;
+    }
+
+    public void SetHandsTransparent(bool state)
+    {
+        setHandsTransparent = state;
     }
 
     void groundInit()
@@ -175,7 +186,14 @@ public class LoadARVRObjectsToMode : MonoBehaviour
         {
             setObjects(m_arObjects, false);
             setObjects(m_vrObjects, true);
-            setHands(true);
+
+            if (setHandsTransparent)
+            {
+                setHands(false);
+            } else
+            {
+                setHands(true);
+            }
         }
 
     }
