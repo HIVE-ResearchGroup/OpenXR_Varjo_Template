@@ -95,6 +95,7 @@ public class Enable_XR : MonoBehaviour
 
         // Load and set Mode Variables
         m_XrMode = this.GetComponent<AR_VR_Toggle>().selectedMode;
+        m_StoredXrMode = (m_XrMode == XRmode.AR) ? XRmode.VR : XRmode.AR;
         setModeVariables();
 
 
