@@ -90,6 +90,8 @@ public class ControllerManager : MonoBehaviour
         }
     }
 
+    // ----------------------------------------------------------------------------------- CHANGE VISIBILTY OF CONTROLLERS
+
     public void setVisibility(bool state) //a public function that can be used externally to modify the visibilty
     {
         currentlyVisible = state;
@@ -120,6 +122,7 @@ public class ControllerManager : MonoBehaviour
         }
     }
 
+    // ----------------------------------------------------------------------------------- COMMON FUNCTION
     private bool checkVisibilty()
     {
         if (setInvisibleInAR && m_xrMode == XRmode.AR)
@@ -131,6 +134,8 @@ public class ControllerManager : MonoBehaviour
         return currentlyVisible;
     }
 
+    // ----------------------------------------------------------------------------------- DEACTIVATE / ACTIVATE CONTROLLERS
+
     private void setDevice(InputDevice ip, GameObject controller)
     {
         if (!ip.isValid)
@@ -141,8 +146,9 @@ public class ControllerManager : MonoBehaviour
         else
         {
             Debug.Log("Set " + controller.name + " (" + ip.name + ") to true");
-            controller.SetActive(true);
+            controller.SetActive(true); 
         }
+        m_controllersVisible = !m_controllersVisible;// trigger a check for visibility
     }
 
     private void OnEnable()
