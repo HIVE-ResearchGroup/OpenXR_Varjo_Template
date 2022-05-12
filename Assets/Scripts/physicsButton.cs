@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class physicsButton : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class physicsButton : MonoBehaviour
     private ConfigurableJoint _joint;
 
     public UnityEvent onPressed, onReleased;
+    public InputAction externalTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,26 @@ public class physicsButton : MonoBehaviour
         {
             Released();
         }
+    }
+
+    private void Awake()
+    {
+        externalTrigger.started += ctx =>
+        {
+            Pressed();
+        };
+
+        //released not needed since threshold won't change and automatically trigger "Released" inside update()
+    }
+
+    private void OnEnable()
+    {
+        externalTrigger.Enable();
+    }
+
+    private void OnDisable()
+    {
+        externalTrigger.Disable();
     }
 
     private void Pressed()

@@ -41,7 +41,6 @@ public class Enable_XR : MonoBehaviour
     public bool enableEnvironmentReflections;
 //#endif
 
-    public bool enableLeapFunctionality;
 
 //#if USING_HDRP
     private HDAdditionalCameraData HDCameraData;
@@ -49,6 +48,11 @@ public class Enable_XR : MonoBehaviour
     /*#if !USING_HDRP
         private Camera HDCameraData;
     #endif*/
+
+
+    [Header("Leap Variables")]
+    public bool enableLeapFunctionality;
+
 
 
     private bool m_OriginalOpaqueValue;
@@ -108,6 +112,14 @@ public class Enable_XR : MonoBehaviour
         else if (m_UsedDevice == DeviceList.OpenXR)
         {
             OpenXRStartup();
+        }
+
+
+        //Enable hand interaction compability
+        if (!enableLeapFunctionality)
+        {
+            xrCamera.gameObject.GetComponent<Leap.Unity.LeapXRServiceProvider>().enabled = false;
+            //xrCamera.gameObject.GetComponent<Leap.Unity.LeapXRServiceProvider>().editTimePose = Leap.TestHandFactory.TestHandPose.HeadMountedB;
         }
 
     }
@@ -196,14 +208,6 @@ public class Enable_XR : MonoBehaviour
             Varjo.XR.VarjoRendering.SetDepthSorting(true);
         }
 
-        //Enable hand interaction compability
-        if (!enableLeapFunctionality)
-        {
-            xrCamera.gameObject.GetComponent<Leap.Unity.LeapXRServiceProvider>().enabled = false;
-            //xrCamera.gameObject.GetComponent<Leap.Unity.LeapXRServiceProvider>().editTimePose = Leap.TestHandFactory.TestHandPose.HeadMountedB;
-        }
-
-
 
 //#if USING_HDRP
         //Enable RealTime Reflections
@@ -284,7 +288,6 @@ public class Enable_XR : MonoBehaviour
     }
 
 //#if USING_HDRP
-
     void UpdateEnvironmentReflections()
     {
         if (m_storedEnvironmentReflections != enableEnvironmentReflections)

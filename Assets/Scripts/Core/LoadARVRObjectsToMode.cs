@@ -24,8 +24,11 @@ public class LoadARVRObjectsToMode : MonoBehaviour
 
     private Material m_InitialMaterial;
 
-    private GameObject[] m_arObjects;
-    private GameObject[] m_vrObjects;
+    [HideInInspector]
+    public static GameObject[] m_arObjects;
+
+    [HideInInspector]
+    public static GameObject[] m_vrObjects;
 
     [Header("Leap Variables")]
     public GameObject hands;

@@ -143,7 +143,8 @@ Also note that the Varjo package doesn't support feedback impuls on hover yet.
 In this template, there are three main factors 
 - Forveated Rendering: Have a look on [Noticable mentions](../README.md#noticeable-mentions).
 - Single Pass / Multipass: Using Single Pass, parts of the image for both eyes are reused for the other eye.
-- Reflection probe: In order to make use of the environment reflections, the reflection probe updates the reflection "realtime".
+- Delete Reflection probe: In order to make use of the environment reflections, the reflection probe updates the reflection "realtime".
+- Set ShadowResolution of the "Sun" object to other than "Ultra" and/or go to ProjectSettings -> HDRP -> Quality -> Shadows -> Filtering Quality and set the value to Medium or Low.
 
 # How to make objects visible to either VR or AR
 Please make use of the specific layers.
