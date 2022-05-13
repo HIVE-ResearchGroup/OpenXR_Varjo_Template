@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7318179826651402828}
   - component: {fileID: 7318179826651402830}
   - component: {fileID: 6616802485151306851}
-  - component: {fileID: 8243255434518661863}
+  - component: {fileID: 302799831335621242}
   m_Layer: 0
   m_Name: DeviceManager
   m_TagString: Untagged
@@ -164,7 +164,8 @@ MonoBehaviour:
   setTransparentInAR: 1
   setGroundTransparent: 0
   hands: {fileID: 0}
---- !u!114 &8243255434518661863
+  setHandsTransparent: 0
+--- !u!114 &302799831335621242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,7 +174,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7318179826651402833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d850809da70ffd3489ecf5460a4e1b12, type: 3}
+  m_Script: {fileID: 11500000, guid: 521603e9b55e0064dbacc50f7d0ddb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitPreview: 27
+  quitAction:
+    m_Name: Quit
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5a69c05b-208d-402f-b216-b0e0a23bfda0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f3a6b249-6a9a-4ec5-8129-ae118cf71bfe
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Quit
+      m_Flags: 0
+    m_Flags: 0

@@ -19,9 +19,7 @@ It features:
 - Unity 2021.3.1*
 
 ### What about other render pipelines?
-<bold>Release 0.1.0 and 0.2.0: This led to an error in the building which is why only HDRP is supported!</bold>
-
-It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. If you still want to continue, please export the prefabs and the scripts (scenes are also possible) from the template as an Asset and import it in your preferred environment. Notice that with the current release, you will have to import the Varjo samples in your project as well in order to get the latest version of the controller. Doing that, you might have to delete some scripts inside the Sample folder as they not support other pipelines. Furthermore, you might will have to create a new ShadowCatcher material for the ground as the one used in the template is created for HDRP.
+It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. If you still want to continue, please export the prefabs and the scripts (scenes are also possible) from the template as an Asset and import it in your preferred environment. (Or use the Asset coming with every release.) Furthermore, you might will have to create a new ShadowCatcher material for the ground as the one used in the template is created for HDRP and might need to change the colour of the Camera Background flag inside the camera object to black.
 
 Please don't forget to create the used layers (ARObjects [layer 6], VRObjects [layer 7]) and the used tags (Fracture, Pickable), as well to set the Opaque value inside the Varjo SDK to false.
 
@@ -43,6 +41,7 @@ For more information about the useage, please have a look at the [README](./Asse
 - If there's a slight flickering around your focus displays on your Varjo headset, try adding/changing the override regarding "motion blur" in your project. If this still doesn't help out and don't have the time to further testing, you may deactivate "Forveated Rendering" (Project Settings -> XR Plug-in Management -> Varjo). This option controls if the focus of the display should be restricted on a small rectangle (checked - increases performance) or should cover the whole display (unchecked). You may uncheck it for a smoother experience but maybe get not the best performance.
 - By default, the Eye Offset is set to 1 because otherwise, there would be a noticeable object drift of your objects inside your AR scene. If it happens that you notice this behaviour, make sure to check this setting first.
 - Since this project uses the HDRP pipeline, you probably should get used in using the physical based lighting setup (have a look at this [tutorial](https://www.youtube.com/watch?v=yqCHiZrgKzs)). Right now, the Exposure (inside the Post Process Volume) is set (statically because of VR quality reasons) to 6.5 which resembles a sunset brightness and the Sun object light being set to 1300 lux which however should be set to 111,000 lux to resemble a real sun. This was done to resemble an indoor lighting situation.
+- When setting the shadow resolution of the directional light to "Ultra" the transparent ground material will be visible.
 
 
 ### Known Issues

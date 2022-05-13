@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DestroyByPosition : MonoBehaviour
+public class Varjo_DestroyByPosition : MonoBehaviour
 {
     public float destroyPositionY = -10;
     void Update()

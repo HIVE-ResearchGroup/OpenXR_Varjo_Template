@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class Varjo_Explosion : MonoBehaviour
 {
     public float blastradius = 0.5f;
     public float explosionForce = 500f;

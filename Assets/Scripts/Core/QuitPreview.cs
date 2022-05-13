@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class QuitPreview : MonoBehaviour
 {
+
+    public InputAction quitAction;
     // Start is called before the first frame update
-    void Start()
+
+
+    private void OnEnable()
     {
-        
+        quitAction.Enable();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
+        quitAction.Disable();
+    }
 
+    void Awake()
+    {
+        quitAction.started += ctx =>
+        {
+#if UNITY_EDITOR
+            // Application.Quit() does not work in the editor so
+            // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                     Application.Quit();
+#endif
+        };
     }
 }
