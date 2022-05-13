@@ -17,7 +17,10 @@ public class physicsButton : MonoBehaviour
     private ConfigurableJoint _joint;
 
     public UnityEvent onPressed, onReleased;
+
+    public bool ToggleWithRay;
     public InputAction externalTrigger;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,8 @@ public class physicsButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIfOutOfBounce();
+
         if (!_isPressed && GetValue() + threshold > 1)
         {
             Pressed();
@@ -60,6 +65,14 @@ public class physicsButton : MonoBehaviour
         externalTrigger.Disable();
     }
 
+    public void SimulatePress()
+    {
+        if (ToggleWithRay)
+        {
+            Pressed();
+        }
+    }
+
     private void Pressed()
     {
         _isPressed = true;
@@ -67,7 +80,7 @@ public class physicsButton : MonoBehaviour
         Debug.Log("Pressed");
     }
 
-    private void Released()
+    public void Released()
     {
         _isPressed = false;
         onPressed.Invoke();
@@ -83,5 +96,33 @@ public class physicsButton : MonoBehaviour
             value = 0;
         }
         return Mathf.Clamp(value, -1f, 1f);
+    }
+
+    private void CheckIfOutOfBounce()
+    {
+        Vector3 pos = this.transform.localPosition;
+
+        if (this.transform.localPosition.x > 0.001 || this.transform.localPosition.x < -0.001 || this.transform.localPosition.z < -0.001 || this.transform.localPosition.z > 0.001) //if pushing the button top/bottom/left/right
+        {
+
+            if (this.transform.localPosition.y <= 0f)//if that happens when pressed or glitching when pressed
+            {
+                this.transform.localPosition = new Vector3(0f, 0f, 0f); //keep calm!
+                Debug.Log("Keep calm");
+            } else
+            {
+                this.transform.localPosition = new Vector3(0f, 0.013f, 0f); //jump back to init position
+            }
+        }
+
+        if (this.transform.localPosition.y > 0.15) //max zone (forward)
+        {
+            this.transform.localPosition = new Vector3(0f, 0.14f, 0f);
+        }
+
+        if (this.transform.localPosition.y < -0.001) //min zone (backward)
+        {
+            this.transform.localPosition = new Vector3(0f, 0f, 0f);
+        }
     }
 }

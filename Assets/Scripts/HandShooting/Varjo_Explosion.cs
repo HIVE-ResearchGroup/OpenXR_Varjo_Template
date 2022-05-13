@@ -13,7 +13,7 @@ public class Varjo_Explosion : MonoBehaviour
 
         foreach (Collider objectInRange in collidersFracturing)
         {
-            Fracture fracture = objectInRange.GetComponent<Fracture>();
+            Varjo_Fracture fracture = objectInRange.GetComponent<Varjo_Fracture>();
             if (fracture != null)
             {
                 fracture.Destroy();
