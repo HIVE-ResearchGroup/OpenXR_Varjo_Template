@@ -16,7 +16,7 @@ It features:
 - Varjo SDK
     - In order to use the template, the Varjo SDK has to be imported into your project. This template does not need the Sample folder to be imported anymore and thus can be operated without. However, you are free to use the Samples in order to get in touch with other Varjo features such as Markers or "Windows". If you search for a version of the template that might be more flexible, have a look at the version release of [0.2.0.](https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/releases/tag/v0.2.0).
 - HDRP Pipeline
-- Unity 2021.3.1*
+- Unity 2021.3.2*
 
 ### What about other render pipelines?
 It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. If you still want to continue, please export the prefabs and the scripts (scenes are also possible) from the template as an Asset and import it in your preferred environment. (Or use the Asset coming with every release.) Furthermore, you might will have to create a new ShadowCatcher material for the ground as the one used in the template is created for HDRP and might need to change the colour of the Camera Background flag inside the camera object to black.
