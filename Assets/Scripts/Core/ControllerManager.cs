@@ -16,7 +16,7 @@ public class ControllerManager : MonoBehaviour
 {
     public GameObject leftController;
     public GameObject rightController;
-    public bool currentlyVisible = true;
+    public bool setVisible = true;
     [Header("Overrides visibilityHandler:")]
     public bool setInvisibleInAR = true;
 
@@ -94,7 +94,7 @@ public class ControllerManager : MonoBehaviour
 
     public void setVisibility(bool state) //a public function that can be used externally to modify the visibilty
     {
-        currentlyVisible = state;
+        setVisible = state;
     }
 
     private void setVisibility(bool state, Transform outpoint) //performs the visibiltiy action
@@ -131,7 +131,7 @@ public class ControllerManager : MonoBehaviour
         }
 
         // check user input
-        return currentlyVisible;
+        return setVisible;
     }
 
     // ----------------------------------------------------------------------------------- DEACTIVATE / ACTIVATE CONTROLLERS

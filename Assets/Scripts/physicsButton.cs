@@ -108,7 +108,6 @@ public class physicsButton : MonoBehaviour
             if (this.transform.localPosition.y <= 0f)//if that happens when pressed or glitching when pressed
             {
                 this.transform.localPosition = new Vector3(0f, 0f, 0f); //keep calm!
-                Debug.Log("Keep calm");
             } else
             {
                 this.transform.localPosition = new Vector3(0f, 0.013f, 0f); //jump back to init position
