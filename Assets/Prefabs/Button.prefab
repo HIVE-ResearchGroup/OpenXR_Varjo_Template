@@ -413,7 +413,7 @@ MonoBehaviour:
   onReleased:
     m_PersistentCalls:
       m_Calls: []
-  distanceControl: 0
+  ToggleWithRay: 1
   externalTrigger:
     m_Name: External Trigger
     m_Type: 0

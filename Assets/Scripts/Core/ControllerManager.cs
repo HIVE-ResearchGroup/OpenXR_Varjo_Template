@@ -1,10 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
-
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -12,188 +6,163 @@ using UnityEngine.XR.Interaction.Toolkit;
 // 2022
 
 
-public class ControllerManager : MonoBehaviour
+namespace Core
 {
-    public GameObject leftController;
-    public GameObject rightController;
-    public bool setVisible = true;
-    [Header("Overrides visibilityHandler:")]
-    public bool setInvisibleInAR = true;
-
-    private bool m_controllersVisible = true; //initial true because all mesh renderers are also set true by default
-    private XRmode m_xrMode;
-    private DeviceList m_usedDevice;
-    private DeviceManager m_dm;
-    private AR_VR_Toggle m_avt;
-
-    private ActionBasedController leftControllerScript;
-    private ActionBasedController rightControllerScript;
-
-    // Start is called before the first frame update
-    void Start()
+    public class ControllerManager : MonoBehaviour
     {
-        m_dm = this.gameObject.GetComponent<DeviceManager>();
-        m_avt = this.gameObject.GetComponent<AR_VR_Toggle>();
+        public GameObject leftController;
+        public GameObject rightController;
+        public bool setVisible = true;
+        [Header("Overrides visibilityHandler:")]
+        public bool setInvisibleInAR = true;
 
-        if (!m_dm)
+        private bool _controllersVisible = true; //initial true because all mesh renderers are also set true by default
+
+        private ActionBasedController leftControllerScript;
+        private ActionBasedController rightControllerScript;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Debug.LogError("ControllerManager: DeviceManager not found on this object!");
-        } else
-        {
-            m_usedDevice = m_dm.usedDevice;
-        }
 
-
-        if (!m_avt)
-        {
-            Debug.LogError("ControllerManager: AR_VR_Toggle not found on this object!");
-        }
-
-
-        if (!leftController)
-        {
-            Debug.LogError("ControllerManager: Please assign the leftController object!");
-        } 
-
-        if (!rightController)
-        {
-            Debug.LogError("ControllerManager: Please assign the rightController object!");
-        }
-
-        leftControllerScript = leftController.GetComponent<ActionBasedController>();
-        rightControllerScript = rightController.GetComponent<ActionBasedController>();
-
-        //setControllerOffset();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        m_xrMode = m_avt.selectedMode; // get the current mode
-
-        bool tempVisibility = checkVisibilty();
-
-        // Check if there is a visibility state change
-        if (m_controllersVisible != tempVisibility)
-        {
-            if (leftController.activeSelf)
+            if (!leftController)
             {
-                setVisibility(tempVisibility, leftControllerScript.model.GetChild(0));//first child in order to get the object and not the parent
+                Debug.LogError("ControllerManager: Please assign the leftController object!");
+            } 
+
+            if (!rightController)
+            {
+                Debug.LogError("ControllerManager: Please assign the rightController object!");
             }
 
-            if (rightController.activeSelf)
-            {
-                setVisibility(tempVisibility, rightControllerScript.model.GetChild(0));//first child in order to get the object and not the parent
-            }
+            leftControllerScript = leftController.GetComponent<ActionBasedController>();
+            rightControllerScript = rightController.GetComponent<ActionBasedController>();
 
-            m_controllersVisible = tempVisibility;
-        }
-    }
-
-    // ----------------------------------------------------------------------------------- CHANGE VISIBILTY OF CONTROLLERS
-
-    public void setVisibility(bool state) //a public function that can be used externally to modify the visibilty
-    {
-        setVisible = state;
-    }
-
-    private void setVisibility(bool state, Transform outpoint) //performs the visibiltiy action
-    {
-        // set visibility to state
-        if (outpoint.gameObject.GetComponent<MeshRenderer>())
-        {
-            if (!state)
-            {
-                outpoint.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
-            } else
-            {
-                outpoint.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-            }
-
+            //setControllerOffset();
         }
 
-        // check if there are children who need to be set as well - consider storing this information in startup to reduce transition times
-        if (outpoint.childCount > 0)
+        // Update is called once per frame
+        void Update()
         {
-            for (int i = 0; i < outpoint.childCount; i++)
+            bool tempVisibility = checkVisibilty();
+
+            // Check if there is a visibility state change
+            if (_controllersVisible != tempVisibility)
             {
-                setVisibility(state, outpoint.GetChild(i));
+                if (leftController.activeSelf)
+                {
+                    setVisibility(tempVisibility, leftControllerScript.model.GetChild(0));//first child in order to get the object and not the parent
+                }
+
+                if (rightController.activeSelf)
+                {
+                    setVisibility(tempVisibility, rightControllerScript.model.GetChild(0));//first child in order to get the object and not the parent
+                }
+
+                _controllersVisible = tempVisibility;
             }
         }
-    }
 
-    // ----------------------------------------------------------------------------------- COMMON FUNCTION
-    private bool checkVisibilty()
-    {
-        if (setInvisibleInAR && m_xrMode == XRmode.AR)
+        // ----------------------------------------------------------------------------------- CHANGE VISIBILTY OF CONTROLLERS
+
+        public void setVisibility(bool state) //a public function that can be used externally to modify the visibilty
         {
-            return false;
+            setVisible = state;
         }
 
-        // check user input
-        return setVisible;
-    }
-
-    // ----------------------------------------------------------------------------------- DEACTIVATE / ACTIVATE CONTROLLERS
-
-    private void setDevice(InputDevice ip, GameObject controller)
-    {
-        if (!ip.isValid)
+        private void setVisibility(bool state, Transform outpoint) //performs the visibiltiy action
         {
-            Debug.Log("Set " + controller.name + " (" + ip.name + ") to false");
-            controller.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("Set " + controller.name + " (" + ip.name + ") to true");
-            controller.SetActive(true); 
-        }
-        m_controllersVisible = !m_controllersVisible;// trigger a check for visibility
-    }
+            // set visibility to state
+            if (outpoint.gameObject.GetComponent<MeshRenderer>())
+            {
+                outpoint.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = !state ? 
+                    UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly : 
+                    UnityEngine.Rendering.ShadowCastingMode.On;
+            }
 
-    private void OnEnable()
-    {
-        InputDevices.deviceDisconnected += DeviceDisconnected;
-        InputDevices.deviceConnected += DeviceConnected;
-    }
-
-    private void OnDisable()
-    {
-        InputDevices.deviceDisconnected -= DeviceDisconnected;
-        InputDevices.deviceConnected -= DeviceConnected;
-    }
-
-    private void DeviceConnected(InputDevice device)
-    {
-        if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
-        {
-            setDevice(device, leftController);
-            Debug.Log("Left Hand --- " + device.name + " connected!");
+            // check if there are children who need to be set as well - consider storing this information in startup to reduce transition times
+            if (outpoint.childCount > 0)
+            {
+                for (int i = 0; i < outpoint.childCount; i++)
+                {
+                    setVisibility(state, outpoint.GetChild(i));
+                }
+            }
         }
 
-        if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
+        // ----------------------------------------------------------------------------------- COMMON FUNCTION
+        private bool checkVisibilty()
         {
-            setDevice(device, rightController);
-            Debug.Log("Right Hand --- " + device.name + " connected!");
-        }
-    }
+            if (setInvisibleInAR && AR_VR_Toggle.staticSelectedMode == XRmode.AR)
+            {
+                return false;
+            }
 
-    private void DeviceDisconnected(InputDevice device)
-    {
-        if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
-        {
-            setDevice(device, leftController);
-            Debug.Log("Left Hand --- " + device.name + " disconnected!");
+            // check user input
+            return setVisible;
         }
 
-        if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
-        {
-            setDevice(device, rightController);
-            Debug.Log("Right Hand --- " + device.name + " disconnected!");
-        }
-    }
+        // ----------------------------------------------------------------------------------- DEACTIVATE / ACTIVATE CONTROLLERS
 
-    /*private void setControllerOffset()//this needs not to be used anymore
+    
+        private void setDevice(InputDevice ip, GameObject controller)
+        {
+            if (!ip.isValid)
+            {
+                Debug.Log("Set " + controller.name + " (" + ip.name + ") to false");
+                controller.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("Set " + controller.name + " (" + ip.name + ") to true");
+                controller.SetActive(true); 
+            }
+            _controllersVisible = !_controllersVisible;// trigger a check for visibility
+        }
+
+        private void OnEnable()
+        {
+            InputDevices.deviceDisconnected += DeviceDisconnected;
+            InputDevices.deviceConnected += DeviceConnected;
+        }
+
+        private void OnDisable()
+        {
+            InputDevices.deviceDisconnected -= DeviceDisconnected;
+            InputDevices.deviceConnected -= DeviceConnected;
+        }
+
+        private void DeviceConnected(InputDevice device)
+        {
+            if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
+            {
+                setDevice(device, leftController);
+                Debug.Log("Left Hand --- " + device.name + " connected!");
+            }
+
+            if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
+            {
+                setDevice(device, rightController);
+                Debug.Log("Right Hand --- " + device.name + " connected!");
+            }
+        }
+
+        private void DeviceDisconnected(InputDevice device)
+        {
+            if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
+            {
+                setDevice(device, leftController);
+                Debug.Log("Left Hand --- " + device.name + " disconnected!");
+            }
+
+            if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
+            {
+                setDevice(device, rightController);
+                Debug.Log("Right Hand --- " + device.name + " disconnected!");
+            }
+        }
+
+        /*private void setControllerOffset()//this needs not to be used anymore
 {
     // Covering controller offset
     if (m_usedDevice == DeviceList.Varjo)
@@ -226,4 +195,5 @@ public class ControllerManager : MonoBehaviour
         rightController.GetComponent<SphereCollider>().center = new Vector3(0.0f, 0f, 0.08f);
     }
 }*/
+    }
 }

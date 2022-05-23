@@ -1,71 +1,91 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
-
 // Axel Bauer, Varjo Dev Team
 // 2022
-public enum XRmode
+namespace Core
 {
-    AR,
-    VR
-};
-
-public class AR_VR_Toggle : MonoBehaviour
-{
-    public XRmode selectedMode;
-    public InputAction XRToggleAction;
-
-    // Start is called before the first frame update
-    void Start()
+    public enum XRmode
     {
-        Debug.LogWarning("XRMode: You set the mode to " + selectedMode + "!");
-    }
+        AR,
+        VR
+    };
 
-    // Update is called once per frame
-    void Awake()
+    public class AR_VR_Toggle : MonoBehaviour
     {
+        [HideInInspector]
+        public static XRmode staticSelectedMode;
 
-        XRToggleAction.performed +=
-            ctx =>
-            {
-                switch (selectedMode)
+        [SerializeField]
+        private XRmode selectedMode;
+    
+        public InputAction xrToggleAction;
+        public UnityEvent toggleEvent;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            staticSelectedMode = selectedMode;
+            Debug.LogWarning("XRMode: You set the mode to " + staticSelectedMode + "!");
+        }
+
+        // Update is called once per frame
+        void Awake()
+        {
+
+            xrToggleAction.performed +=
+                ctx =>
                 {
-                    case XRmode.AR:
-                        selectedMode = XRmode.VR;
-                        break;
-                    case XRmode.VR:
-                        selectedMode = XRmode.AR;
-                        break;
-                }
+                    switch (staticSelectedMode)
+                    {
+                        case XRmode.AR:
+                            staticSelectedMode = XRmode.VR;
+                            break;
+                        case XRmode.VR:
+                            staticSelectedMode = XRmode.AR;
+                            break;
+                    }
+                
+                    toggleEvent.Invoke();
 
-            };
-    }
+                };
+        }
 
-    private void OnEnable()
-    {
-        XRToggleAction.Enable();
-    }
+        private void OnEnable()
+        {
+            xrToggleAction.Enable();
+        }
 
-    private void OnDisable()
-    {
-        XRToggleAction.Disable();
-    }
+        private void OnDisable()
+        {
+            xrToggleAction.Disable();
+        }
 
-    public void SetMode(XRmode mode)
-    {
-        selectedMode = mode;
-    }
+        public void SetMode(XRmode mode)
+        {
+            staticSelectedMode = mode;
+            toggleEvent.Invoke();
+        }
 
-    public void SetModeToAR()
-    {
-        selectedMode = XRmode.AR;
-    }
+        public void SetModeToAR()
+        {
+            staticSelectedMode = XRmode.AR;
+            toggleEvent.Invoke();
+        }
 
-    public void SetModeToVR()
-    {
-        selectedMode = XRmode.VR;
+        public void SetModeToVR()
+        {
+            staticSelectedMode = XRmode.VR;
+            toggleEvent.Invoke();
+        }
+    
+        void OnValidate()
+        {
+            staticSelectedMode = selectedMode;
+        }
     }
 }

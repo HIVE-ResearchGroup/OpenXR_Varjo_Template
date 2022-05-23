@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class physicsButton : MonoBehaviour
+public class PhysicsButton : MonoBehaviour
 {
 
     [Header("Percentage of the button press that is needed to activate the button")]
@@ -18,7 +18,7 @@ public class physicsButton : MonoBehaviour
 
     public UnityEvent onPressed, onReleased;
 
-    public bool ToggleWithRay;
+    public bool toggleWithRay;
     public InputAction externalTrigger;
 
 
@@ -51,7 +51,6 @@ public class physicsButton : MonoBehaviour
         {
             Pressed();
         };
-
         //released not needed since threshold won't change and automatically trigger "Released" inside update()
     }
 
@@ -67,7 +66,7 @@ public class physicsButton : MonoBehaviour
 
     public void SimulatePress()
     {
-        if (ToggleWithRay)
+        if (toggleWithRay)
         {
             Pressed();
         }
@@ -100,28 +99,28 @@ public class physicsButton : MonoBehaviour
 
     private void CheckIfOutOfBounce()
     {
-        Vector3 pos = this.transform.localPosition;
+        Vector3 pos = transform.localPosition;
 
-        if (this.transform.localPosition.x > 0.001 || this.transform.localPosition.x < -0.001 || this.transform.localPosition.z < -0.001 || this.transform.localPosition.z > 0.001) //if pushing the button top/bottom/left/right
+        if (transform.localPosition.x > 0.001 || transform.localPosition.x < -0.001 || transform.localPosition.z < -0.001 || transform.localPosition.z > 0.001) // if pushing the button top/bottom/left/right
         {
 
-            if (this.transform.localPosition.y <= 0f)//if that happens when pressed or glitching when pressed
+            if (transform.localPosition.y <= 0f)//if that happens when pressed or glitching when pressed
             {
-                this.transform.localPosition = new Vector3(0f, 0f, 0f); //keep calm!
+                transform.localPosition = new Vector3(0f, 0f, 0f); //keep calm!
             } else
             {
-                this.transform.localPosition = new Vector3(0f, 0.013f, 0f); //jump back to init position
+                transform.localPosition = new Vector3(0f, 0.013f, 0f); //jump back to init position
             }
         }
 
-        if (this.transform.localPosition.y > 0.15) //max zone (forward)
+        if (transform.localPosition.y > 0.15) //max zone (forward)
         {
-            this.transform.localPosition = new Vector3(0f, 0.14f, 0f);
+            transform.localPosition = new Vector3(0f, 0.14f, 0f);
         }
 
-        if (this.transform.localPosition.y < -0.001) //min zone (backward)
+        if (transform.localPosition.y < -0.001) //min zone (backward)
         {
-            this.transform.localPosition = new Vector3(0f, 0f, 0f);
+            transform.localPosition = new Vector3(0f, 0f, 0f);
         }
     }
 }

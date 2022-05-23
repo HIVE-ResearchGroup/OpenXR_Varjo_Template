@@ -1,5 +1,7 @@
 # Useage
 
+This template extends the standard rig by the functionality of switching between VR and AR.
+
 ## DeviceManager Script
 
 The deviceManager stores the selected headset and checks, if there is any controller offset that needs to be covered. This script could be used for external scripts to access the current headset.
@@ -9,6 +11,7 @@ To make sure the transition goes well, make sure that there is no headset runnin
 
 - <bold>Vive</bold>: First, go to SteamVR -> Settings -> Developer -> Set SteamVR as OpenXR runtime. Inside Unity, set the runtime to OpenXR. Notice that everytime you'll start another runtime (e.g Varjo) on your system, this setting might change on its own.
 - <bold>Varjo</bold>: Make sure the runtime is set correctly and inside Unity, only the Varjo runtime is selected.
+- <bold>Microsoft</bold>: Just like with Vive, inside Enable_XR set the mode to "OpenXR" and follow [this](https://docs.microsoft.com/de-de/windows/mixed-reality/develop/unity/new-openxr-project-with-mrtk) guide.
 
 #### Do not launch the program with both SDKs activated!
 

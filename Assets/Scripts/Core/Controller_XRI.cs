@@ -10,8 +10,6 @@ using Varjo.XR;
     public class Controller_XRI : MonoBehaviour
     {
         [Header("Select hand")]
-        public XRNode XRNode = XRNode.LeftHand;
-
         public InputAction triggerAction;
         public InputAction triggerButtonAction;
         public InputAction gripButtonAction;

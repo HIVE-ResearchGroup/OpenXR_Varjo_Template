@@ -11,10 +11,10 @@ public class OnButtonPress : MonoBehaviour
     public InputAction action = null;
 
     // When the button is pressed
-    public UnityEvent OnPress = new UnityEvent();
+    public UnityEvent onPress = new UnityEvent();
 
     // When the button is released
-    public UnityEvent OnRelease = new UnityEvent();
+    public UnityEvent onRelease = new UnityEvent();
 
     private void Awake()
     {
@@ -40,11 +40,11 @@ public class OnButtonPress : MonoBehaviour
 
     private void Pressed(InputAction.CallbackContext context)
     {
-        OnPress.Invoke();
+        onPress.Invoke();
     }
 
     private void Released(InputAction.CallbackContext context)
     {
-        OnRelease.Invoke();
+        onRelease.Invoke();
     }
 }
