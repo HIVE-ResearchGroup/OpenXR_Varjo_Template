@@ -57,6 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8994337190085805656}
+  - component: {fileID: 1577839055524616071}
   m_Layer: 0
   m_Name: VarjoFeature
   m_TagString: Untagged
@@ -79,6 +80,71 @@ Transform:
   m_Father: {fileID: 6771894592195447694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1577839055524616071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5567684873654945991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77cb07108dfd43f195d28c24be678d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrEyeOffset: 1
+  enableDepthTesting: 1
+  enableEnvironmentReflections: 0
+  defaultSky: {fileID: 0}
+  skyboxProfile: {fileID: 0}
+  reflectionRefreshRate: 30
+  onCubemapUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6401346437077465544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5652476986786672925}
+  - component: {fileID: 5352452684226869169}
+  m_Layer: 0
+  m_Name: OpenXRFeature
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5652476986786672925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401346437077465544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6771894592195447694}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5352452684226869169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401346437077465544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaca28c3b2c4698b54f3965ae35f0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7190006814488308765
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7318179826651402835}
   - component: {fileID: 302799831335621242}
+  - component: {fileID: 7531430795304436402}
   m_Layer: 0
   m_Name: XR Scene Manager
   m_TagString: Untagged
@@ -268,6 +335,18 @@ MonoBehaviour:
       m_Action: Quit
       m_Flags: 0
     m_Flags: 0
+--- !u!114 &7531430795304436402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318179826651402833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26ed3e6c866b741af2f4f3093b6e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8717893994433693020
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f94de8ca4424b4cbeeeda5464875e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedDevice: 2
+  usedDevice: 0
 --- !u!1 &8756188103560692301
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +422,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8994337190085805656}
+  - {fileID: 5652476986786672925}
   m_Father: {fileID: 7318179826651402835}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -360,25 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xrCamera: {fileID: 0}
   devices:
-  - {fileID: 5567684873654945991}
-  vrEyeOffset: 0
-  enableDepthTesting: 0
-  enableEnvironmentReflections: 0
-  defaultSky: {fileID: 8900000, guid: 1c03f883dd6879442b66f83430ea610b, type: 3}
-  skyboxProfile: {fileID: 11400000, guid: 14b392ee213d25a48b1feddbd9f5a9be, type: 2}
-  reflectionRefreshRate: 30
-  onCubemapUpdate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Rendering.HighDefinition.HDProbe, Unity.RenderPipelines.HighDefinition.Runtime
-        m_MethodName: RequestRenderNextUpdate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - {fileID: 1577839055524616071}
+  - {fileID: 5352452684226869169}
+  loadedDevice: {fileID: 0}
+  enableLeapFunctionality: 0

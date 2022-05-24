@@ -12,12 +12,15 @@ namespace Core
     {
         public GameObject leftController;
         public GameObject rightController;
-        public bool setVisible = true;
+        
+        [SerializeField]
+        private bool setVisible = true;
+        
         [Header("Overrides visibilityHandler:")]
-        public bool setInvisibleInAR = true;
+        [SerializeField]
+        private bool setInvisibleInAR = true;
 
         private bool _controllersVisible = true; //initial true because all mesh renderers are also set true by default
-
         private ActionBasedController leftControllerScript;
         private ActionBasedController rightControllerScript;
 
@@ -93,7 +96,7 @@ namespace Core
         // ----------------------------------------------------------------------------------- COMMON FUNCTION
         private bool checkVisibilty()
         {
-            if (setInvisibleInAR && AR_VR_Toggle.staticSelectedMode == XRmode.AR)
+            if (setInvisibleInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR)
             {
                 return false;
             }

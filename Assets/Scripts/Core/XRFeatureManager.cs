@@ -1,11 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Core.Interfaces;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.XR.Management;
 #if USING_URP
 using UnityEngine.Rendering.Universal;
 #endif
@@ -19,53 +14,30 @@ namespace Core
     public class XRFeatureManager : MonoBehaviour
     {
         //Varjo devices - maybe reuse them for ZED?
-        public Camera xrCamera;
+        [SerializeField]
+        private Camera xrCamera;
         
         public List<AbstractDeviceFeature> devices;
-
-#if USING_HDRP
-        private HDAdditionalCameraData _hdCameraData;
-#endif
-#if !USING_HDRP
-        private Camera _hdCameraData;
-#endif
-
+        
+        [HideInInspector]
+        public AbstractDeviceFeature loadedDevice;
 
         [Header("Leap Variables")] public bool enableLeapFunctionality = false;
 
-
+        private bool _noDeviceLoaded = true;
         
-
         // Start is called before the first frame update
         void Start()
         {
-#if USING_HDRP
-            _hdCameraData = xrCamera.GetComponent<HDAdditionalCameraData>();
-#endif
+            LoadDeviceFeatures();
 
-#if !USING_HDRP
-            _hdCameraData = xrCamera.GetComponent<Camera>();
-#endif
-
-            // Load and set Mode Variables
-            SetModeVariables();
-
-
-            switch (DeviceManager.staticUsedDevice)
+            if (loadedDevice != null)
             {
-                // Set StartUp function
-                case DeviceList.Varjo:
-                    //VarjoStartup();
-                    break;
-                case DeviceList.OpenXR:
-                    //OpenXRStartup();
-                    break;
-                case DeviceList.None:
-                default:
-                    Debug.LogWarning("EnableXR: No device specified - 'no-startup' invoked");
-                    break;
+                // Load and set Mode Variables
+                SetModeVariables();
+                loadedDevice.XRStart();
+                _noDeviceLoaded = false;
             }
-
 
             //Enable hand interaction compability
             if (!enableLeapFunctionality)
@@ -74,18 +46,36 @@ namespace Core
             }
         }
 
-        // Update is called once per frame
+        // Update is called once pe r frame
         void Update()
         {
-            //get the device (which should be set in startup) and call update
-            
+            if (!_noDeviceLoaded)
+                loadedDevice.XRUpdate();   
         }
 
         public void SetModeVariables()
         { 
-            //call mode variables of the current device
+            loadedDevice.SetModeVariables();
         }
 
-        
+        private void LoadDeviceFeatures()
+        {
+            switch (XRSceneManager.Instance.deviceManager.usedDevice)
+            {
+                // Set StartUp function
+                case DeviceList.Varjo:
+                    loadedDevice = devices[0];//hardcoded number, should be changed in the future
+                    break;
+                case DeviceList.OpenXR:
+                    loadedDevice = devices[1];
+                    break;
+                case DeviceList.None:
+                default:
+                    Debug.LogWarning("EnableXR: No device specified - 'no-startup' invoked");
+                    break;
+            }
+        }
+
+
     }
 }

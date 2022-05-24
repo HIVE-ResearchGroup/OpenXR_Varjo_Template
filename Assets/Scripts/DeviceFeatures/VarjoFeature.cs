@@ -23,14 +23,23 @@ namespace DeviceFeatures
         [Header("Depthtesting is only modified on startup")]
         public bool enableDepthTesting;
 
+        
 #if USING_HDRP
-        public bool enableEnvironmentReflections;
+        [SerializeField]
+        private bool enableEnvironmentReflections;
 #endif
         
         private bool _originalOpaqueValue;
         private bool _storedVideoSeeThrough;
         private bool _videoSeeThrough;
-
+        
+        
+#if USING_HDRP
+        private HDAdditionalCameraData _hdCameraData;
+#endif
+#if !USING_HDRP
+        private Camera _hdCameraData;
+#endif
 
 #if USING_HDRP
         private bool _storedEnvironmentReflections;
@@ -52,6 +61,22 @@ namespace DeviceFeatures
         
         public override void XRStart()
         {
+            Camera xrCamera = Camera.main;
+
+            if (xrCamera == null)
+            {
+                Debug.LogError("VarjoFeature: There is no main camera set!");
+                return;
+            }
+            
+#if USING_HDRP
+            _hdCameraData = xrCamera.GetComponent<HDAdditionalCameraData>();
+#endif
+
+#if !USING_HDRP
+            _hdCameraData = xrCamera.GetComponent<Camera>();
+#endif
+            
             //Enabling AR mode
             if (_videoSeeThrough)
             {
@@ -134,14 +159,14 @@ namespace DeviceFeatures
 
         public override void SetModeVariables()
         {
-            if (AR_VR_Toggle.staticSelectedMode == XRmode.AR) //if Mode set to AR
+            if (XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR) //if Mode set to AR
             {
                 _videoSeeThrough = true;
 #if USING_HDRP
                 enableEnvironmentReflections = true;
 #endif
             }
-            else if (AR_VR_Toggle.staticSelectedMode == XRmode.VR) // if Mode set to VR
+            else if (XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.VR) // if Mode set to VR
             {
                 _videoSeeThrough = false;
 #if USING_HDRP
@@ -267,7 +292,7 @@ namespace DeviceFeatures
         
         void OnDisable()
         {
-            if (DeviceManager.staticUsedDevice == DeviceList.Varjo)
+            if (XRSceneManager.Instance.deviceManager.usedDevice == DeviceList.Varjo)
             {
                 enableDepthTesting = false;
 #if USING_HDRP

@@ -13,20 +13,32 @@ namespace Core
         [HideInInspector]
         public static GameObject[] vrObjects;
         
+        
         [Header("Ground Settings")]
-        public GameObject ground;
-        public Material shadowCatcher;
-        public bool setTransparentInAR = true;
-        public bool setGroundTransparent;
+        [SerializeField]
+        private GameObject ground;
+        
+        [SerializeField]
+        private Material shadowCatcher;
+        
+        [SerializeField]
+        private bool setTransparentInAR = true;
+        
+        [SerializeField]
+        private bool setGroundTransparent;
 
         [Header("Leap Variables")]
-        public GameObject hands;
-        public bool setHandsTransparent;
+        [SerializeField]
+        private GameObject hands;
+        
+        [SerializeField]
+        private bool setHandsTransparent;
         
         
         private bool _storedGroundTransparent;
         private bool _storedTransparentInAR;
         private bool _storedHandsTransparent;
+        
         private Renderer _groundRenderer;
         private Material _initialMaterial;
 
@@ -122,7 +134,7 @@ namespace Core
                 }
 
                 // gonna take advantage of this search and attach the leap scripts if needed
-                if (gObject.CompareTag("Pickable")) //&& XRFeatureManager.enableLeapFunctionality)
+                if (gObject.CompareTag("Pickable") && XRSceneManager.Instance.xrFeatureManager.enableLeapFunctionality)
                 {
                     // TODO ---------------------------------------------------------------------------------------------------------------------------- gets selected two times
                     if (!gObject.GetComponent<InteractionBehaviour>())
@@ -143,7 +155,7 @@ namespace Core
 
         private void SetGround()
         {
-            if (setGroundTransparent || setTransparentInAR && AR_VR_Toggle.staticSelectedMode == XRmode.AR)
+            if (setGroundTransparent || setTransparentInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR)
             {
                 _groundRenderer.material = shadowCatcher;
             }
@@ -156,7 +168,7 @@ namespace Core
         // Checks which updates should be updated
         private void UpdateObjects()
         {
-            switch (AR_VR_Toggle.staticSelectedMode)
+            switch (XRSceneManager.Instance.arVRToggle.selectedMode)
             {
                 case XRmode.AR:
                     SetObjects(arObjects, true);
@@ -173,7 +185,7 @@ namespace Core
 
         private void SetHands()
         {
-            switch (AR_VR_Toggle.staticSelectedMode)
+            switch (XRSceneManager.Instance.arVRToggle.selectedMode)
             {
                 case XRmode.AR:
                     hands.SetActive(false);

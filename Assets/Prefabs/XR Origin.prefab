@@ -1802,7 +1802,7 @@ MonoBehaviour:
       m_Action: Action
       m_Flags: 0
     m_Flags: 0
-  OnPress:
+  onPress:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2266851109852475403}
@@ -1817,7 +1817,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnRelease:
+  onRelease:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2266851109852475403}
@@ -3215,7 +3215,7 @@ MonoBehaviour:
       m_Action: Action
       m_Flags: 0
     m_Flags: 0
-  OnPress:
+  onPress:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2266851109005523526}
@@ -3230,7 +3230,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnRelease:
+  onRelease:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2266851109005523526}
