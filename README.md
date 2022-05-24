@@ -3,12 +3,12 @@
 ## Introduction
 This project focuses on combining two workflows (OpenXR and Varjo SDK) into one project and making it easy to switch between those two headset just as by ticking two checkboxes.
 It features:
-- direct- and rayinteractors (for interacting with far away objects as well as grabbing objects),
-- teleportation
+- Direct- and rayinteractors (for interacting with far away objects as well as grabbing objects),
+- Teleportation
 - Ultraleap Handtracking support
-- automatic controller disabling/activating
+- Automatic controller disabling/activating
 - ARobjects/VRobjects toggling (by using layers)
-- the new [Unity XRI](https://docs.unity3d.com/Manual/xr_input.html) (as well as demo scripts),
+- The new [Unity XRI](https://docs.unity3d.com/Manual/xr_input.html) (as well as demo scripts),
 - Varjo features (AR mode, environment reflections)
 
 
@@ -19,21 +19,27 @@ It features:
 - Unity 2021.3.2*
 
 ### What about other render pipelines?
-It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. If you still want to continue, please export the prefabs and the scripts (scenes are also possible) from the template as an Asset and import it in your preferred environment. (Or use the Asset coming with every release.) Furthermore, you might will have to create a new ShadowCatcher material for the ground as the one used in the template is created for HDRP and might need to change the colour of the Camera Background flag inside the camera object to black.
+It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. If you still want to continue, please export the prefabs and the scripts (scenes are also possible) from the template as an Asset and import it in your preferred environment. (Or use the Asset coming with every release.) 
+You now need to switch the materials with the ones in the "Materials"/"BiRP" folder. Those materials are made with the Built-In renderpipeline in mind (BiRP), yet you can easily [upgrade](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/features/rp-converter.html) them to URP.
+Note that there is no replacement for the ShadowCatcher material (the one being transparent on the floor and just displaying the shadows) as this is an HDRP only feature.
+You also need to change the colour of the Camera Background flag inside the camera object to Color -> black.
 
 Please don't forget to create the used layers (ARObjects [layer 6], VRObjects [layer 7]) and the used tags (Fracture, Pickable), as well to set the Opaque value inside the Varjo SDK to false.
+Also, note that using the Volume objects are also restricted to HDRP which is why you should delete them when switching. 
 
 ## Structure
-There is one main file managing this transition: The deviceManager object, containing three scripts:
-- Device Manager
-- Enable_XR
+There is one main file managing this transition: The deviceManager object, containing following scripts:
+- Device Manager 
 - AR_VR_Toggle
-- Controller Manager Script
 - Load ARVR Objects to Mode Script
+- XR Feature Manager
+  - Varjo Feature
+  - OpenXR Feature
+- Controller Manager Script
 
 
 ## Useage
-For more information about the useage, please have a look at the [README](./Assets/README.md) inside the Asset-folder.
+For more information about the usage, please have a look at the [README](./Assets/README.md) inside the Asset-folder.
 
 
 ## Noticeable mentions
