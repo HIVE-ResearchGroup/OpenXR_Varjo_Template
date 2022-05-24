@@ -8,38 +8,30 @@ namespace Core
 {
     public class LoadARVRObjectsToMode : MonoBehaviour
     {
-        [HideInInspector]
-        public static GameObject[] arObjects;
-        [HideInInspector]
-        public static GameObject[] vrObjects;
-        
-        
-        [Header("Ground Settings")]
-        [SerializeField]
-        private GameObject ground;
-        
-        [SerializeField]
-        private Material shadowCatcher;
-        
-        [SerializeField]
-        private bool setTransparentInAR = true;
-        
-        [SerializeField]
-        private bool setGroundTransparent;
+        [HideInInspector] public static GameObject[] arObjects;
+        [HideInInspector] public static GameObject[] vrObjects;
 
-        [Header("Leap Variables")]
-        [SerializeField]
+
+        [Header("Ground Settings")] [SerializeField]
+        private GameObject ground;
+
+        [SerializeField] private Material shadowCatcher;
+
+        [SerializeField] private bool setTransparentInAR = true;
+
+        [SerializeField] private bool setGroundTransparent;
+
+        [Header("Leap Variables")] [SerializeField]
         private GameObject hands;
-        
-        [SerializeField]
-        private bool setHandsTransparent;
-        
-        
+
+        [SerializeField] private bool setHandsTransparent;
+
+
         private bool _storedGroundTransparent;
         private bool _storedTransparentInAR;
         private bool _storedHandsTransparent;
 
-        private bool _useGround = false;
+        private bool _useGround = true;
         private Renderer _groundRenderer;
         private Material _initialMaterial;
 
@@ -48,13 +40,13 @@ namespace Core
         {
             _storedTransparentInAR = setGroundTransparent;
             _storedHandsTransparent = setHandsTransparent;
-            
+
             GroundInit();
-            
+
             if (_useGround) SetGround();
-            
+
             SetHands();
-            arObjects = FindGameObjectsWithLayer(7);// hardcoded number - not a good solution and might change it later
+            arObjects = FindGameObjectsWithLayer(7); // hardcoded number - not a good solution and might change it later
             vrObjects = FindGameObjectsWithLayer(6);
             UpdateObjects();
         }
@@ -62,7 +54,6 @@ namespace Core
         // Update is called once per frame
         void Update()
         {
-
             if (_storedHandsTransparent != setHandsTransparent)
             {
                 SetHands();
@@ -70,16 +61,18 @@ namespace Core
             }
 
             //set ground
-            if (_useGround && setGroundTransparent != _storedGroundTransparent) // Check if this value changed regarding ground
+            if (_useGround)
             {
-
-                SetGround();
-                _storedGroundTransparent = setGroundTransparent;
-
-            } else if (_useGround && _storedTransparentInAR != setTransparentInAR) // Check if this value changed regarding ground
-            {
-                SetGround();
-                _storedTransparentInAR = setTransparentInAR;
+                if (setGroundTransparent != _storedGroundTransparent) // Check if this value changed regarding ground
+                {
+                    SetGround();
+                    _storedGroundTransparent = setGroundTransparent;
+                }
+                else if (_storedTransparentInAR != setTransparentInAR) // Check if this value changed regarding ground
+                {
+                    SetGround();
+                    _storedTransparentInAR = setTransparentInAR;
+                }
             }
         }
 
@@ -90,7 +83,7 @@ namespace Core
             SetGround();
             SetHands();
         }
-        
+
 
         public void SetGroundTransparent(bool state)
         {
@@ -106,7 +99,8 @@ namespace Core
         {
             if (!shadowCatcher)
             {
-                Debug.LogError("LoadARVRObjectsToMode: Please assign the according material in order to set the ground transparent!");
+                Debug.LogError(
+                    "LoadARVRObjectsToMode: Please assign the according material in order to set the ground transparent!");
             }
 
             if (!ground)
@@ -119,12 +113,13 @@ namespace Core
                     _useGround = false;
                 }
             }
+
             _groundRenderer = ground.GetComponent<Renderer>();
             _initialMaterial = _groundRenderer.material;
         }
 
-        private GameObject[] FindGameObjectsWithLayer(int layer) {
-
+        private GameObject[] FindGameObjectsWithLayer(int layer)
+        {
             var goArray = FindObjectsOfType<GameObject>();
             var goList = new List<GameObject>();
 
@@ -132,8 +127,9 @@ namespace Core
             foreach (var gObject in goArray)
             {
                 // check for layers
-                if (gObject.layer == layer) { 
-                    goList.Add(gObject); 
+                if (gObject.layer == layer)
+                {
+                    goList.Add(gObject);
                 }
 
                 // gonna take advantage of this search and attach the leap scripts if needed
@@ -144,21 +140,24 @@ namespace Core
                     {
                         gObject.AddComponent<InteractionBehaviour>();
                     }
+
                     gObject.GetComponent<InteractionBehaviour>().allowMultiGrasp = true;
                 }
-            } 
-        
-            // if there are no objects, return null
-            if (goList.Count == 0) { 
-                return null; 
-            } 
+            }
 
-            return goList.ToArray(); 
+            // if there are no objects, return null
+            if (goList.Count == 0)
+            {
+                return null;
+            }
+
+            return goList.ToArray();
         }
 
         private void SetGround()
         {
-            if (_useGround && (setGroundTransparent || setTransparentInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR))
+            if (_useGround && (setGroundTransparent ||
+                               setTransparentInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR))
             {
                 _groundRenderer.material = shadowCatcher;
             }
@@ -177,7 +176,7 @@ namespace Core
                     SetObjects(arObjects, true);
                     SetObjects(vrObjects, false);
                     break;
-            
+
                 case XRmode.VR:
                 default:
                     SetObjects(arObjects, false);
@@ -193,10 +192,11 @@ namespace Core
                 case XRmode.AR:
                     hands.SetActive(false);
                     break;
-            
+
                 case XRmode.VR:
                 default:
-                    hands.SetActive(!setHandsTransparent); //if setHandsTransparent == false -> hands true, else setHandstransparent => false
+                    hands.SetActive(
+                        !setHandsTransparent); //if setHandsTransparent == false -> hands true, else setHandstransparent => false
                     break;
             }
         }
@@ -211,7 +211,6 @@ namespace Core
                     goArray[i].SetActive(state);
                 }
             }
-
         }
     }
 }

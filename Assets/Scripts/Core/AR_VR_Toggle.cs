@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-// Axel Bauer, Varjo Dev Team
+// Axel Bauer
 // 2022
 namespace Core
 {

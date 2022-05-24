@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-// Axel Bauer, Varjo Dev Team
+// Axel Bauer
 // 2022
 
 

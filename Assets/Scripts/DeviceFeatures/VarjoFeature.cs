@@ -292,15 +292,12 @@ namespace DeviceFeatures
         
         void OnDisable()
         {
-            if (XRSceneManager.Instance.deviceManager.usedDevice == DeviceList.Varjo)
-            {
-                enableDepthTesting = false;
+            enableDepthTesting = false;
 #if USING_HDRP
-                enableEnvironmentReflections = false;
+            enableEnvironmentReflections = false;
 #endif
-                _videoSeeThrough = false;
-                Varjo.XR.VarjoRendering.SetOpaque(_originalOpaqueValue);
-            }
+            _videoSeeThrough = false;
+            Varjo.XR.VarjoRendering.SetOpaque(_originalOpaqueValue);
         }
     }
     

@@ -1,9 +1,9 @@
 using UnityEngine;
 
 namespace Core
-{
-    // Axel Bauer, Varjo Dev Team
-// 2022
+{ 
+    // Axel Bauer
+    // 2022
     public enum DeviceList
     {
         None,

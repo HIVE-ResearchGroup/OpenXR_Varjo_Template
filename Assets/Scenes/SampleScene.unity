@@ -3122,7 +3122,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7318179825845889500}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7318179825845889503}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77cb07108dfd43f195d28c24be678d2b, type: 3}
@@ -6188,6 +6188,26 @@ PrefabInstance:
       propertyPath: onCubemapUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1577839055524616071, guid: 91b20d5a8c9592a4f9317c2011c37875,
+        type: 3}
+      propertyPath: onCubemapUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1282472698}
+    - target: {fileID: 1577839055524616071, guid: 91b20d5a8c9592a4f9317c2011c37875,
+        type: 3}
+      propertyPath: onCubemapUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RequestRenderNextUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577839055524616071, guid: 91b20d5a8c9592a4f9317c2011c37875,
+        type: 3}
+      propertyPath: onCubemapUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Rendering.HighDefinition.HDProbe, Unity.RenderPipelines.HighDefinition.Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577839055524616071, guid: 91b20d5a8c9592a4f9317c2011c37875,
+        type: 3}
+      propertyPath: onCubemapUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5042812980894634439, guid: 91b20d5a8c9592a4f9317c2011c37875,
         type: 3}
       propertyPath: usedDevice
@@ -6455,42 +6475,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f57800107846741a7113720deb1fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7318179825845889503 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5567684873654945991, guid: 91b20d5a8c9592a4f9317c2011c37875,
-    type: 3}
-  m_PrefabInstance: {fileID: 7318179825845889500}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7318179825845889506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7318179825845889503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77cb07108dfd43f195d28c24be678d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vrEyeOffset: 1
-  enableDepthTesting: 1
-  enableEnvironmentReflections: 0
-  defaultSky: {fileID: 0}
-  skyboxProfile: {fileID: 0}
-  reflectionRefreshRate: 30
-  onCubemapUpdate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

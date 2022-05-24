@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
-using Varjo.XR;
 
+namespace Controller
+{
     public class Controller_XRI : MonoBehaviour
     {
         [Header("Select hand")]
@@ -173,3 +169,4 @@ using Varjo.XR;
             };
         }
     }
+}
