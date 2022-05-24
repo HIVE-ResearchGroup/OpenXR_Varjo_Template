@@ -38,19 +38,21 @@ namespace Core
         private bool _storedGroundTransparent;
         private bool _storedTransparentInAR;
         private bool _storedHandsTransparent;
-        
+
+        private bool _useGround = false;
         private Renderer _groundRenderer;
         private Material _initialMaterial;
 
         // Start is called before the first frame update
         private void Start()
         {
-            _groundRenderer = ground.GetComponent<Renderer>();
             _storedTransparentInAR = setGroundTransparent;
             _storedHandsTransparent = setHandsTransparent;
             
             GroundInit();
-            SetGround();
+            
+            if (_useGround) SetGround();
+            
             SetHands();
             arObjects = FindGameObjectsWithLayer(7);// hardcoded number - not a good solution and might change it later
             vrObjects = FindGameObjectsWithLayer(6);
@@ -68,13 +70,13 @@ namespace Core
             }
 
             //set ground
-            if (setGroundTransparent != _storedGroundTransparent) // Check if this value changed regarding ground
+            if (_useGround && setGroundTransparent != _storedGroundTransparent) // Check if this value changed regarding ground
             {
 
                 SetGround();
                 _storedGroundTransparent = setGroundTransparent;
 
-            } else if (_storedTransparentInAR != setTransparentInAR) // Check if this value changed regarding ground
+            } else if (_useGround && _storedTransparentInAR != setTransparentInAR) // Check if this value changed regarding ground
             {
                 SetGround();
                 _storedTransparentInAR = setTransparentInAR;
@@ -113,11 +115,12 @@ namespace Core
 
                 if (!ground)
                 {
-                    Debug.LogError("LoadARVRObjectsToMode: Couldn't find GameObject with the name ground!");
-
+                    Debug.LogWarning("LoadARVRObjectsToMode: Couldn't find GameObject with the name ground!");
+                    _useGround = false;
                 }
             }
-            _initialMaterial = ground.GetComponent<Renderer>().material;
+            _groundRenderer = ground.GetComponent<Renderer>();
+            _initialMaterial = _groundRenderer.material;
         }
 
         private GameObject[] FindGameObjectsWithLayer(int layer) {
@@ -155,7 +158,7 @@ namespace Core
 
         private void SetGround()
         {
-            if (setGroundTransparent || setTransparentInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR)
+            if (_useGround && (setGroundTransparent || setTransparentInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR))
             {
                 _groundRenderer.material = shadowCatcher;
             }

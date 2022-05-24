@@ -166,7 +166,7 @@ namespace DeviceFeatures
                 enableEnvironmentReflections = true;
 #endif
             }
-            else if (XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.VR) // if Mode set to VR
+            else // if Mode set to VR
             {
                 _videoSeeThrough = false;
 #if USING_HDRP
