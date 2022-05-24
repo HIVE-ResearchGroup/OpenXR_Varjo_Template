@@ -156,6 +156,13 @@ namespace DeviceFeatures
             UpdateEnvironmentReflections();
 #endif
         }
+        
+#if USING_HDRP
+        public void SetEnvironmentReflections(bool state)
+        {
+            enableEnvironmentReflections = state;
+        }
+#endif
 
         public override void SetModeVariables()
         {
@@ -174,8 +181,8 @@ namespace DeviceFeatures
 #endif
             }
         }
-        
-        void UpdateVideoSeeThrough()
+
+        private void UpdateVideoSeeThrough()
         {
             if (_videoSeeThrough != _storedVideoSeeThrough)
             {
@@ -215,7 +222,7 @@ namespace DeviceFeatures
         }
 
 #if USING_HDRP
-        void UpdateEnvironmentReflections()
+        private void UpdateEnvironmentReflections()
         {
             if (_storedEnvironmentReflections != enableEnvironmentReflections)
             {
@@ -282,15 +289,7 @@ namespace DeviceFeatures
             }
         }
 #endif
-
-#if USING_HDRP
-        public void SetEnvironmentReflections(bool state)
-        {
-            enableEnvironmentReflections = state;
-        }
-#endif
-        
-        void OnDisable()
+        private void OnDisable()
         {
             enableDepthTesting = false;
 #if USING_HDRP

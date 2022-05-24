@@ -1,11 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
 // Axel Bauer
 // 2022
-
-
 namespace Core
 {
     public class ControllerManager : MonoBehaviour
@@ -24,8 +23,12 @@ namespace Core
         private ActionBasedController leftControllerScript;
         private ActionBasedController rightControllerScript;
 
+        private List<MeshRenderer> leftControllerMeshes;
+        private List<MeshRenderer> rightControllerMeshes;
+
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
 
             if (!leftController)
@@ -41,66 +44,78 @@ namespace Core
             leftControllerScript = leftController.GetComponent<ActionBasedController>();
             rightControllerScript = rightController.GetComponent<ActionBasedController>();
 
+            leftControllerMeshes = new List<MeshRenderer>();
+            rightControllerMeshes = new List<MeshRenderer>();
+
             //setControllerOffset();
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            bool tempVisibility = checkVisibilty();
+            var tempVisibility = CheckVisibility();
 
             // Check if there is a visibility state change
             if (_controllersVisible != tempVisibility)
             {
                 if (leftController.activeSelf)
                 {
-                    setVisibility(tempVisibility, leftControllerScript.model.GetChild(0));//first child in order to get the object and not the parent
+                    ApplyVisibility(tempVisibility, leftControllerMeshes);//first child in order to get the object and not the parent
                 }
 
                 if (rightController.activeSelf)
                 {
-                    setVisibility(tempVisibility, rightControllerScript.model.GetChild(0));//first child in order to get the object and not the parent
+                    ApplyVisibility(tempVisibility, rightControllerMeshes);//first child in order to get the object and not the parent
                 }
 
                 _controllersVisible = tempVisibility;
             }
         }
 
-        // ----------------------------------------------------------------------------------- CHANGE VISIBILTY OF CONTROLLERS
+        // ----------------------------------------------------------------------------------- CHANGE VISIBILITY OF CONTROLLERS
 
-        public void setVisibility(bool state) //a public function that can be used externally to modify the visibilty
+        public void SetVisibility(bool state) //a public function that can be used externally to modify the visibility
         {
             setVisible = state;
         }
 
-        private void setVisibility(bool state, Transform outpoint) //performs the visibiltiy action
+        private void ApplyVisibility(bool state, List<MeshRenderer> list) //performs the visibility action
         {
-            // set visibility to state
-            if (outpoint.gameObject.GetComponent<MeshRenderer>())
+            foreach (MeshRenderer mr in list)
             {
-                outpoint.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = !state ? 
+                mr.shadowCastingMode = !state ? 
                     UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly : 
                     UnityEngine.Rendering.ShadowCastingMode.On;
             }
+        }
 
-            // check if there are children who need to be set as well - consider storing this information in startup to reduce transition times
+
+        private void FetchControllerMeshes(Transform outpoint, List<MeshRenderer> meshes)
+        {
+            // Check if the current parent object has a meshrenderer - if so, add it
+            if (outpoint.gameObject.GetComponent<MeshRenderer>())
+            {
+                meshes.Add(outpoint.gameObject.GetComponent<MeshRenderer>());
+            }
+            
+            //check for every child and its children
             if (outpoint.childCount > 0)
             {
                 for (int i = 0; i < outpoint.childCount; i++)
                 {
-                    setVisibility(state, outpoint.GetChild(i));
+                    FetchControllerMeshes(outpoint.GetChild(i), meshes);
                 }
             }
         }
+        
 
         // ----------------------------------------------------------------------------------- COMMON FUNCTION
-        private bool checkVisibilty()
+        private bool CheckVisibility() // since the variable 'setVisible' is not 
         {
             if (setInvisibleInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR)
             {
                 return false;
             }
-
             // check user input
             return setVisible;
         }
@@ -108,7 +123,7 @@ namespace Core
         // ----------------------------------------------------------------------------------- DEACTIVATE / ACTIVATE CONTROLLERS
 
     
-        private void setDevice(InputDevice ip, GameObject controller)
+        private void SetDevice(InputDevice ip, GameObject controller)
         {
             if (!ip.isValid)
             {
@@ -139,13 +154,15 @@ namespace Core
         {
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
             {
-                setDevice(device, leftController);
+                SetDevice(device, leftController);
+                FetchControllerMeshes(leftControllerScript.model.GetChild(0), leftControllerMeshes);//first child in order to get the object and not the parent
                 Debug.Log("Left Hand --- " + device.name + " connected!");
             }
 
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
             {
-                setDevice(device, rightController);
+                SetDevice(device, rightController);
+                FetchControllerMeshes(rightControllerScript.model.GetChild(0), rightControllerMeshes);//first child in order to get the object and not the parent
                 Debug.Log("Right Hand --- " + device.name + " connected!");
             }
         }
@@ -154,13 +171,13 @@ namespace Core
         {
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
             {
-                setDevice(device, leftController);
+                SetDevice(device, leftController);
                 Debug.Log("Left Hand --- " + device.name + " disconnected!");
             }
 
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
             {
-                setDevice(device, rightController);
+                SetDevice(device, rightController);
                 Debug.Log("Right Hand --- " + device.name + " disconnected!");
             }
         }

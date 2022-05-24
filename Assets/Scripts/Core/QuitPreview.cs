@@ -20,7 +20,7 @@ namespace Core
             quitAction.Disable();
         }
 
-        void Awake()
+        private void Awake()
         {
             quitAction.started += ctx =>
             {

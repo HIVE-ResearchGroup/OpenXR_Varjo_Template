@@ -96,6 +96,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 535280991371294751, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462750021618781588, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
         type: 3}
       propertyPath: m_RootOrder
@@ -416,6 +426,11 @@ PrefabInstance:
       propertyPath: primary2DAxisTouchAction.m_SingletonActionBindings.Array.data[1].m_Action
       value: Primary 2D Axis Touch
       objectReference: {fileID: 0}
+    - target: {fileID: 3535156650919350504, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4613208511686937127, guid: cff1a64a12aa2294a919bb341b01e2d0,
         type: 3}
       propertyPath: m_IsActive
@@ -436,6 +451,21 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5359498050024517004, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6202972406733109853, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714561544570088561, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6804620189419661334, guid: cff1a64a12aa2294a919bb341b01e2d0,
         type: 3}
       propertyPath: m_Name
@@ -450,6 +480,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261186336134787977, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121399429118177450, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123481095739858321, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8123481095739858321, guid: cff1a64a12aa2294a919bb341b01e2d0,
         type: 3}

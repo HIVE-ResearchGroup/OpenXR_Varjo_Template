@@ -52,7 +52,7 @@ namespace Core
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (_storedHandsTransparent != setHandsTransparent)
             {
@@ -99,8 +99,10 @@ namespace Core
         {
             if (!shadowCatcher)
             {
-                Debug.LogError(
-                    "LoadARVRObjectsToMode: Please assign the according material in order to set the ground transparent!");
+                Debug.LogWarning(
+                    "LoadARVRObjectsToMode: Please assign the according material in order to set the " +
+                    "ground transparent! Continuing without ...");
+                _useGround = false;
             }
 
             if (!ground)
@@ -109,7 +111,8 @@ namespace Core
 
                 if (!ground)
                 {
-                    Debug.LogWarning("LoadARVRObjectsToMode: Couldn't find GameObject with the name ground!");
+                    Debug.LogWarning("LoadARVRObjectsToMode: Couldn't find GameObject with the name ground! " +
+                                     "Continuing without ...");
                     _useGround = false;
                 }
             }
@@ -118,7 +121,7 @@ namespace Core
             _initialMaterial = _groundRenderer.material;
         }
 
-        private GameObject[] FindGameObjectsWithLayer(int layer)
+        private static GameObject[] FindGameObjectsWithLayer(int layer)
         {
             var goArray = FindObjectsOfType<GameObject>();
             var goList = new List<GameObject>();
@@ -156,8 +159,8 @@ namespace Core
 
         private void SetGround()
         {
-            if (_useGround && (setGroundTransparent ||
-                               setTransparentInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR))
+            if (_useGround && 
+                (setGroundTransparent || setTransparentInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR))
             {
                 _groundRenderer.material = shadowCatcher;
             }

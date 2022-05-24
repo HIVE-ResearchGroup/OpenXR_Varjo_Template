@@ -17,15 +17,16 @@ namespace Core
         public DeviceList usedDevice;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             if (usedDevice == DeviceList.None)
             {
-                Debug.LogError("DeviceManager: Please state the type of device your're developing with!");
+                Debug.LogError("DeviceManager: Please state the type of device you're developing with!");
             } else
             {
-                Debug.LogWarning("DeviceManager: You set " + usedDevice + " as your VR-headset!");
-                Debug.LogWarning("DeviceManager: Check if this setting of deviceManager matches your actual VR-headset and the setting in Project-Preferences -> XR-PluginManager");
+                Debug.LogWarning("DeviceManager: You set " + usedDevice + " as your environment!");
+                Debug.LogWarning("DeviceManager: Check if this setting of deviceManager matches your actual " +
+                                 "VR-headset and the setting in Project-Preferences -> XR-PluginManager");
             }
         }
     }

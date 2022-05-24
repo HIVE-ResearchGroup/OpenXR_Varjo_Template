@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Core.Interfaces;
 using UnityEngine;
+using UnityEngine.UIElements;
 #if USING_URP
 using UnityEngine.Rendering.Universal;
 #endif
@@ -27,11 +29,11 @@ namespace Core
         private bool _noDeviceLoaded = true;
         
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             LoadDeviceFeatures();
 
-            if (loadedDevice != null)
+            if (loadedDevice != null) //check if there is a loaded device, else there will be a null reference
             {
                 // Load and set Mode Variables
                 SetModeVariables();
@@ -47,7 +49,7 @@ namespace Core
         }
 
         // Update is called once pe r frame
-        void Update()
+        private void Update()
         {
             if (!_noDeviceLoaded)
                 loadedDevice.XRUpdate();   
@@ -60,20 +62,30 @@ namespace Core
 
         private void LoadDeviceFeatures()
         {
-            switch (XRSceneManager.Instance.deviceManager.usedDevice)
+            if (devices.Count == Enum.GetNames(typeof(DeviceList)).Length-1) // -1, because 'None' is also inside the DeviceList
             {
-                // Set StartUp function
-                case DeviceList.Varjo:
-                    loadedDevice = devices[0];//hardcoded number, should be changed in the future
-                    break;
-                case DeviceList.OpenXR:
-                    loadedDevice = devices[1];
-                    break;
-                case DeviceList.None:
-                default:
-                    Debug.LogWarning("EnableXR: No device specified - 'no-startup' invoked");
-                    break;
+                switch (XRSceneManager.Instance.deviceManager.usedDevice)
+                {
+                    // Set StartUp function
+                    case DeviceList.Varjo:
+                        loadedDevice = devices[0];// TODO hardcoded number, should be changed in the future
+                        break;
+                    case DeviceList.OpenXR:
+                        loadedDevice = devices[1];
+                        break;
+                    case DeviceList.None:
+                    default:
+                        Debug.LogWarning("XRFeatureManager: No device specified - 'no-startup' invoked");
+                        break;
+                }
             }
+            else
+            {
+                Debug.LogError("XRFeatureManager: Number of scripts don't match the number of devices - " +
+                               "probably you might need to add a device into the DeviceList inside GO 'DeviceManager' " +
+                               "or you forgot to add a script in GO 'XRFeatureManager'!");
+            }
+
         }
 
 
