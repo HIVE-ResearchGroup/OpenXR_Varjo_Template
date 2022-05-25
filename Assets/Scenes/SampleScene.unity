@@ -6079,11 +6079,41 @@ PrefabInstance:
       propertyPath: projectileOrigin
       value: 
       objectReference: {fileID: 1260662535}
+    - target: {fileID: 6615378651714154192, guid: 7f726e21f757ee44097f92cb8a0f3c6f,
+        type: 3}
+      propertyPath: shootingAction.m_SingletonActionBindings.Array.data[0].m_Interactions
+      value: SlowTap(duration=0.15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615378651714154192, guid: 7f726e21f757ee44097f92cb8a0f3c6f,
+        type: 3}
+      propertyPath: shootingAction.m_SingletonActionBindings.Array.data[1].m_Interactions
+      value: SlowTap(duration=0.15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615378651714154192, guid: 7f726e21f757ee44097f92cb8a0f3c6f,
+        type: 3}
+      propertyPath: shootingAction.m_SingletonActionBindings.Array.data[2].m_Interactions
+      value: SlowTap(duration=0.15)
+      objectReference: {fileID: 0}
     - target: {fileID: 6615378651714154193, guid: 7f726e21f757ee44097f92cb8a0f3c6f,
         type: 3}
       propertyPath: projectileOrigin
       value: 
       objectReference: {fileID: 1735181201}
+    - target: {fileID: 6615378651714154193, guid: 7f726e21f757ee44097f92cb8a0f3c6f,
+        type: 3}
+      propertyPath: shootingAction.m_SingletonActionBindings.Array.data[0].m_Interactions
+      value: SlowTap(duration=0.15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615378651714154193, guid: 7f726e21f757ee44097f92cb8a0f3c6f,
+        type: 3}
+      propertyPath: shootingAction.m_SingletonActionBindings.Array.data[1].m_Interactions
+      value: SlowTap(duration=0.15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615378651714154193, guid: 7f726e21f757ee44097f92cb8a0f3c6f,
+        type: 3}
+      propertyPath: shootingAction.m_SingletonActionBindings.Array.data[2].m_Interactions
+      value: SlowTap(duration=0.15)
+      objectReference: {fileID: 0}
     - target: {fileID: 7289811055864282725, guid: 7f726e21f757ee44097f92cb8a0f3c6f,
         type: 3}
       propertyPath: m_RootOrder
@@ -6190,6 +6220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1577839055524616071, guid: 91b20d5a8c9592a4f9317c2011c37875,
         type: 3}
+      propertyPath: xrCamera
+      value: 
+      objectReference: {fileID: 48702071}
+    - target: {fileID: 1577839055524616071, guid: 91b20d5a8c9592a4f9317c2011c37875,
+        type: 3}
       propertyPath: onCubemapUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1282472698}
@@ -6211,7 +6246,7 @@ PrefabInstance:
     - target: {fileID: 5042812980894634439, guid: 91b20d5a8c9592a4f9317c2011c37875,
         type: 3}
       propertyPath: usedDevice
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6289023628968672270, guid: 91b20d5a8c9592a4f9317c2011c37875,
         type: 3}

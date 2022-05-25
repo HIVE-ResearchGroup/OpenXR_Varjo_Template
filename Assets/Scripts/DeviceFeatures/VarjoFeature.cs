@@ -16,6 +16,7 @@ namespace DeviceFeatures
         {
         }
         
+        public Camera xrCamera;
         
         [Header("Varjo Variables")] [Range(0f, 1.0f)]
         public float vrEyeOffset = 0.0f;
@@ -61,7 +62,6 @@ namespace DeviceFeatures
         
         public override void XRStart()
         {
-            Camera xrCamera = Camera.main;
 
             if (xrCamera == null)
             {
@@ -166,7 +166,7 @@ namespace DeviceFeatures
 
         public override void SetModeVariables()
         {
-            if (XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR) //if Mode set to AR
+            if (XRSceneManager.Instance.isARVRToggleActive && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR) //if Mode set to AR
             {
                 _videoSeeThrough = true;
 #if USING_HDRP

@@ -1,34 +1,39 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-// Axel Bauer, Varjo Dev Team
+// Axel Bauer
 // 2022
-
-
-namespace Core
+namespace Core.Beta
 {
     public class ControllerManager : MonoBehaviour
     {
         public GameObject leftController;
         public GameObject rightController;
-        public bool setVisible = true;
-
+        
+        [SerializeField]
+        private bool setVisible = true;
+        
         [Header("Overrides visibilityHandler:")]
-        public bool setInvisibleInAR = true;
+        [SerializeField]
+        private bool setInvisibleInAR = true;
 
         private bool _controllersVisible = true; //initial true because all mesh renderers are also set true by default
-
         private ActionBasedController _leftControllerScript;
         private ActionBasedController _rightControllerScript;
 
+        //private List<MeshRenderer> _leftControllerMeshes;
+        //private List<MeshRenderer> _rightControllerMeshes;
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
+
             if (!leftController)
             {
                 Debug.LogError("ControllerManager: Please assign the leftController object!");
-            }
+            } 
 
             if (!rightController)
             {
@@ -38,84 +43,90 @@ namespace Core
             _leftControllerScript = leftController.GetComponent<ActionBasedController>();
             _rightControllerScript = rightController.GetComponent<ActionBasedController>();
 
+            //_leftControllerMeshes = new List<MeshRenderer>();
+            //_rightControllerMeshes = new List<MeshRenderer>();
+
             //setControllerOffset();
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            bool tempVisibility = CheckVisibility();
+            var tempVisibility = CheckVisibility();
 
             // Check if there is a visibility state change
             if (_controllersVisible != tempVisibility)
             {
                 if (leftController.activeSelf)
                 {
-                    ApplyVisibility(tempVisibility,
-                        _leftControllerScript.model
-                            .GetChild(0)); //first child in order to get the object and not the parent
+                    ApplyVisibility(
+                        tempVisibility); //, _leftControllerMeshes);//first child in order to get the object and not the parent
                 }
 
                 if (rightController.activeSelf)
                 {
-                    ApplyVisibility(tempVisibility,
-                        _rightControllerScript.model
-                            .GetChild(0)); //first child in order to get the object and not the parent
+                    ApplyVisibility(
+                        tempVisibility); //, _rightControllerMeshes);//first child in order to get the object and not the parent
                 }
 
                 _controllersVisible = tempVisibility;
             }
         }
 
-        // ----------------------------------------------------------------------------------- CHANGE VISIBILTY OF CONTROLLERS
+        // ----------------------------------------------------------------------------------- CHANGE VISIBILITY OF CONTROLLERS
 
-        public void SetVisibility(bool state) //a public function that can be used externally to modify the visibilty
+        public void SetVisibility(bool state) //a public function that can be used externally to modify the visibility
         {
             setVisible = state;
         }
 
-        private void ApplyVisibility(bool state, Transform outpoint) //performs the visibiltiy action
+        private void ApplyVisibility(bool state)//, List<MeshRenderer> list) //performs the visibility action
         {
-            // set visibility to state
+            _leftControllerScript.modelParent.gameObject.SetActive(state);//basic disabling and enabling - shadow catcher profile not possibly necessary?
+            _rightControllerScript.modelParent.gameObject.SetActive(state);
+
+            /*foreach (MeshRenderer mr in list)
+            {
+                mr.shadowCastingMode = !state ? 
+                    UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly : 
+                    UnityEngine.Rendering.ShadowCastingMode.On;
+            }*/
+        }
+
+
+        private void FetchControllerMeshes(Transform outpoint, List<MeshRenderer> meshes)
+        {
+            // Check if the current parent object has a mesh-renderer - if so, add it
             if (outpoint.gameObject.GetComponent<MeshRenderer>())
             {
-                if (!state)
-                {
-                    outpoint.gameObject.GetComponent<MeshRenderer>().shadowCastingMode =
-                        UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
-                }
-                else
-                {
-                    outpoint.gameObject.GetComponent<MeshRenderer>().shadowCastingMode =
-                        UnityEngine.Rendering.ShadowCastingMode.On;
-                }
-
+                meshes.Add(outpoint.gameObject.GetComponent<MeshRenderer>());
             }
-
-            // check if there are children who need to be set as well - consider storing this information in startup to reduce transition times
+            
+            //check for every child and its children
             if (outpoint.childCount > 0)
             {
                 for (int i = 0; i < outpoint.childCount; i++)
                 {
-                    ApplyVisibility(state, outpoint.GetChild(i));
+                    FetchControllerMeshes(outpoint.GetChild(i), meshes);
                 }
             }
         }
+        
 
         // ----------------------------------------------------------------------------------- COMMON FUNCTION
-        private bool CheckVisibility()
+        private bool CheckVisibility() // since the variable 'setVisible' is not
         {
             if (setInvisibleInAR && XRSceneManager.Instance.isARVRToggleActive && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR)
             {
                 return false;
             }
-
             // check user input
             return setVisible;
         }
 
         // ----------------------------------------------------------------------------------- DEACTIVATE / ACTIVATE CONTROLLERS
 
+    
         private void SetDevice(InputDevice ip, GameObject controller)
         {
             if (!ip.isValid)
@@ -126,10 +137,9 @@ namespace Core
             else
             {
                 Debug.Log("Set " + controller.name + " (" + ip.name + ") to true");
-                controller.SetActive(true);
+                controller.SetActive(true); 
             }
-
-            _controllersVisible = !_controllersVisible; // trigger a check for visibility
+            _controllersVisible = !_controllersVisible;// trigger a check for visibility
         }
 
         private void OnEnable()
@@ -149,12 +159,14 @@ namespace Core
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
             {
                 SetDevice(device, leftController);
+                //FetchControllerMeshes(_leftControllerScript.model.GetChild(0), _leftControllerMeshes);//first child in order to get the object and not the parent
                 Debug.Log("Left Hand --- " + device.name + " connected!");
             }
 
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
             {
                 SetDevice(device, rightController);
+                //FetchControllerMeshes(_rightControllerScript.model.GetChild(0), _rightControllerMeshes);//first child in order to get the object and not the parent
                 Debug.Log("Right Hand --- " + device.name + " connected!");
             }
         }

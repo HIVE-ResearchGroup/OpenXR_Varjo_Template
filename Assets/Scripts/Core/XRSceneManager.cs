@@ -11,6 +11,12 @@ namespace Core
         public LoadARVRObjectsToMode loadArvrObjectsToMode { get; private set; }
         public XRFeatureManager xrFeatureManager { get; private set; }
         public ControllerManager controllerManager { get; private set; }
+
+        public bool isARVRToggleActive = true;
+
+        public bool isDeviceManagerActive = true;
+
+        public bool isFeatureManagerActive = true;
         
         // Start is called before the first frame update
         void Start()
@@ -42,6 +48,22 @@ namespace Core
                 loadArvrObjectsToMode = GetComponentInChildren<LoadARVRObjectsToMode>();
                 xrFeatureManager = GetComponentInChildren<XRFeatureManager>();
                 controllerManager = GetComponentInChildren<ControllerManager>();
+
+
+                if (arVRToggle == null)
+                {
+                    isARVRToggleActive = false;
+                }
+
+                if (deviceManager == null)
+                {
+                    isDeviceManagerActive = false;
+                }
+
+                if (xrFeatureManager == null)
+                {
+                    isFeatureManagerActive = false;
+                }
             }
         }
     }

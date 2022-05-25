@@ -136,14 +136,15 @@ namespace Core
                 }
 
                 // gonna take advantage of this search and attach the leap scripts if needed
-                if (gObject.CompareTag("Pickable") && XRSceneManager.Instance.xrFeatureManager.enableLeapFunctionality)
+                if (gObject.CompareTag("Pickable") && XRSceneManager.Instance.isFeatureManagerActive &&
+                    XRSceneManager.Instance.xrFeatureManager.enableLeapFunctionality)
                 {
                     // TODO ---------------------------------------------------------------------------------------------------------------------------- gets selected two times
                     if (!gObject.GetComponent<InteractionBehaviour>())
                     {
                         gObject.AddComponent<InteractionBehaviour>();
                     }
-
+                    
                     gObject.GetComponent<InteractionBehaviour>().allowMultiGrasp = true;
                 }
             }

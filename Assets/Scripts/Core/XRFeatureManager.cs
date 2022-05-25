@@ -56,13 +56,14 @@ namespace Core
         }
 
         public void SetModeVariables()
-        { 
-            loadedDevice.SetModeVariables();
+        {             
+            if (!_noDeviceLoaded)
+                loadedDevice.SetModeVariables();
         }
 
         private void LoadDeviceFeatures()
         {
-            if (devices.Count == Enum.GetNames(typeof(DeviceList)).Length-1) // -1, because 'None' is also inside the DeviceList
+            if (XRSceneManager.Instance.isDeviceManagerActive && devices.Count == Enum.GetNames(typeof(DeviceList)).Length-1) // -1, because 'None' is also inside the DeviceList
             {
                 switch (XRSceneManager.Instance.deviceManager.usedDevice)
                 {
