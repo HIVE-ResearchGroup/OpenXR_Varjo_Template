@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5726634075162625661
 Transform:
@@ -63,7 +63,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8994337190085805656
 Transform:
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cb07108dfd43f195d28c24be678d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xrCamera: {fileID: 0}
   vrEyeOffset: 1
   enableDepthTesting: 1
   enableEnvironmentReflections: 0
@@ -128,7 +129,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5652476986786672925
 Transform:
@@ -173,7 +174,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8121183428185716915
 Transform:
@@ -297,7 +298,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7318179826651402835
 Transform:
@@ -359,6 +360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e26ed3e6c866b741af2f4f3093b6e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isARVRToggleActive: 1
+  isDeviceManagerActive: 1
+  isFeatureManagerActive: 1
 --- !u!1 &8717893994433693020
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +378,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4904557524875223059
 Transform:
@@ -419,7 +423,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6771894592195447694
 Transform:
