@@ -160,49 +160,62 @@ namespace Core
 
         private void SetGround()
         {
-            if (_useGround && 
-                (setGroundTransparent || setTransparentInAR && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR))
+            if (_groundRenderer && _initialMaterial && shadowCatcher)
             {
-                _groundRenderer.material = shadowCatcher;
+                if (_useGround && 
+                    (setGroundTransparent || setTransparentInAR && (XRSceneManager.Instance && XRSceneManager.Instance.isARVRToggleActive)
+                                                                && XRSceneManager.Instance.arVRToggle.selectedMode == XRmode.AR))
+                {
+                    _groundRenderer.material = shadowCatcher;
+                }
+                else
+                {
+                    _groundRenderer.material = _initialMaterial;
+                }
             }
-            else
-            {
-                _groundRenderer.material = _initialMaterial;
-            }
+            
         }
 
         // Checks which updates should be updated
         private void UpdateObjects()
         {
-            switch (XRSceneManager.Instance.arVRToggle.selectedMode)
+            if (XRSceneManager.Instance && XRSceneManager.Instance.isARVRToggleActive)
             {
-                case XRmode.AR:
-                    SetObjects(arObjects, true);
-                    SetObjects(vrObjects, false);
-                    break;
+                switch (XRSceneManager.Instance.arVRToggle.selectedMode)
+                {
+                    case XRmode.AR:
+                        SetObjects(arObjects, true);
+                        SetObjects(vrObjects, false);
+                        break;
 
-                case XRmode.VR:
-                default:
-                    SetObjects(arObjects, false);
-                    SetObjects(vrObjects, true);
-                    break;
+                    case XRmode.VR:
+                    default:
+                        SetObjects(arObjects, false);
+                        SetObjects(vrObjects, true);
+                        break;
+                } 
             }
         }
 
         private void SetHands()
         {
-            switch (XRSceneManager.Instance.arVRToggle.selectedMode)
+            if (
+                XRSceneManager.Instance && XRSceneManager.Instance.isARVRToggleActive)
             {
-                case XRmode.AR:
-                    hands.SetActive(false);
-                    break;
+                switch (XRSceneManager.Instance.arVRToggle.selectedMode)
+                {
+                    case XRmode.AR:
+                        hands.SetActive(false);
+                        break;
 
-                case XRmode.VR:
-                default:
-                    hands.SetActive(
-                        !setHandsTransparent); //if setHandsTransparent == false -> hands true, else setHandstransparent => false
-                    break;
+                    case XRmode.VR:
+                    default:
+                        hands.SetActive(
+                            !setHandsTransparent); //if setHandsTransparent == false -> hands true, else setHandstransparent => false
+                        break;
+                }
             }
+            
         }
 
         // Updates the objects regarding the mode

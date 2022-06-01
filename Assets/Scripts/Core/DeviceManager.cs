@@ -21,7 +21,7 @@ namespace Core
         {
             if (usedDevice == DeviceList.None)
             {
-                Debug.LogError("DeviceManager: Please state the type of device you're developing with!");
+                Debug.LogError("DeviceManager: Please state the type of environment you're developing with!");
             } else
             {
                 Debug.LogWarning("DeviceManager: You set " + usedDevice + " as your environment!");

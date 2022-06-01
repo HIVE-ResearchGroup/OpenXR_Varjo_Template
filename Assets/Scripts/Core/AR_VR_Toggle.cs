@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -55,6 +56,11 @@ namespace Core
         private void OnDisable()
         {
             xrToggleAction.Disable();
+        }
+
+        private void OnValidate()
+        {
+            toggleEvent.Invoke();
         }
 
         public void SetMode(XRmode mode)

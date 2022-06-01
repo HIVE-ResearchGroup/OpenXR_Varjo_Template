@@ -12,10 +12,13 @@ namespace Core
         public XRFeatureManager xrFeatureManager { get; private set; }
         public ControllerManager controllerManager { get; private set; }
 
+        [HideInInspector]
         public bool isARVRToggleActive = true;
 
+        [HideInInspector]
         public bool isDeviceManagerActive = true;
 
+        [HideInInspector]
         public bool isFeatureManagerActive = true;
         
         // Start is called before the first frame update
