@@ -25,7 +25,9 @@ Note that there is no replacement for the ShadowCatcher material (the one being 
 You also need to change the colour of the Camera Background flag inside the camera object to Color -> black.
 
 Please don't forget to create the used layers (ARObjects [layer 6], VRObjects [layer 7]) and the used tags (Fracture, Pickable), as well to set the Opaque value inside the Varjo SDK to false.
-Also, note that using the Volume objects are also restricted to HDRP which is why you should delete them when switching. 
+Also, note that using the Volume objects are also restricted to HDRP which is why you should delete them when switching.
+
+Important notice: If you choose to "Update all materials to HDRP", the materials inside the BiRP folders will also update and not be able to be used with the BiRP!
 
 ## Structure
 There is one main file managing this transition: The deviceManager object, containing following scripts:
@@ -39,7 +41,20 @@ There is one main file managing this transition: The deviceManager object, conta
 
 
 ## Useage
-For more information about the usage, please have a look at the [README](./Assets/README.md) inside the Asset-folder.
+For more information about the usage, please have a look at the [README](USEAGE.md).
+
+## How to install the package
+Make sure to install the Varjo OpenXR (tutorial) and the Ultraleap (tutorial) plugins first. Import the samples of the Ultraleap plugin. (You don't need to import the Varjo Samples but can, if you want/need to, since this package uses some of the materials/models of the package.) If you use the HDRP pipeline, you might need to update the materials of the sample folders (only those materials, see "What about other pipelines").
+
+Don't forget to import the Sample folder of the Interaction Toolkit Plugin (which was installed automatically) as well.
+
+- Add the LeftHand and RightHand Controller of the XR Origin to the Controller Manager of the XR Scene Manager.
+- Assign the "Main Camera" object for the XR Feature Manager and Varjo Feature.
+- Add the "Low Poly Hands" Gameobject to the AR_VR_Toggle object (LoadARVRObjectsToMode.cs)
+- Add the Ground GameObject to the AR_VR_Toggle object (LoadARVRObjectsToMode.cs)
+
+
+Note: You might want to switch the Input System to "Both" inside Project Settings -> Player -> Others, if you want to use scripts that use the old Input System.
 
 
 ## Noticeable mentions
@@ -53,8 +68,7 @@ For more information about the usage, please have a look at the [README](./Asset
 ### Known Issues
 - It's possible that SteamVR (regarding input and tracking using the Varjo headset, even outside the project) might have some issues after switching headsets. In this case, either restart the headset using the Varjo Base Program or/and restart SteamVR. If it won't appear, try starting SteamVR from inside the Varjo-Base-Program. If that won't do, restart your computer.
 - In some cases, the output to an OpenXR headset might not work on some machines. In this cases, try switching to MultiPass rendering (Project Settings -> XR Plug-in Management -> OpenXR). Note that in this mode, the CPU and power consumption will be higher.
-- Interestingly, there is an offset between the input tracking of the Varjo SDK and OpenXR. This offset (as you might've read above) is managed inside the AR_VR_Toggle-Script. If ever the offset is getting changed in the future, these values should be adjusted inside this script.
-- <bold>There are interesting differences between the Varjo package and the OpenXR package regarding input! Please have a look at the other [README](./Assets/README.md#differences-between-varjo-and-openxr-package) in this regard!</bold>
+- <bold>There are interesting differences between the Varjo package and the OpenXR package regarding input! Please have a look at the other [README](USEAGE.md#differences-between-varjo-and-openxr-package) in this regard!</bold>
 - In OpenXR mode, there is a bug which prevents the controller to disconnect properly which results into the controllers not being able to disable correctly (ControllerManager.cs)
 - AR_VR_Toggle: Since there is a delay in switching the depth testing on and off, the implementation is made that depth testing is enabled on startup when checked. This leads to an error in the Varjo SDK that depth testing is also enabled inside VR. This should resolve when switching to AR and back again to VR. It is thus mostly recommended to start your scene in AR when using depth testing or deactivate it when using VR. Of course you might also use this behaviour in VR to interact with your real hands but not recommended as it could be fixed in a future release.
 
