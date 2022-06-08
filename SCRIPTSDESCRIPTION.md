@@ -32,6 +32,6 @@ If you want to extend the list of features, have a look at [this tutorial](CREAT
 ### Varjo Feature
 Using HDRP, you should set your settings like the following picture:
 
-<img src="Images/VarjoFeature.png" style="max-width: 600px" alt="Make sure that you use the Planar Reflection probe inside the OnCubemapUpdate method and call the 'RequestRenderNextUpdate() method of the Planar Reflection probe.'">
+<img src="./Assets/Images/VarjoFeature.png" style="max-width: 600px" alt="Make sure that you use the Planar Reflection probe inside the OnCubemapUpdate method and call the 'RequestRenderNextUpdate() method of the Planar Reflection probe.'">
 
 There is a setting called Eye offset which is set to 1 by default (see noticable mentions). Notice that there are cases where in VR, 0 might be a better choice.

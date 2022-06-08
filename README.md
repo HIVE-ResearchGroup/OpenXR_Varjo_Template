@@ -46,8 +46,10 @@ For more information about the usage, please have a look at the [README](USEAGE.
 ## How to install the package
 Make sure to install the Varjo OpenXR (tutorial) and the Ultraleap (tutorial) plugins first. Import the samples of the Ultraleap plugin. (You don't need to import the Varjo Samples but can, if you want/need to, since this package uses some of the materials/models of the package.) If you use the HDRP pipeline, you might need to update the materials of the sample folders (only those materials, see "What about other pipelines").
 
-Don't forget to import the Sample folder of the Interaction Toolkit Plugin (which was installed automatically) as well.
+Don't forget to import the Sample folder of the Interaction Toolkit Plugin (which was installed automatically) as well. With this object, you need to add all the different components to the assets and then change (with both the XRI LeftHand Interaction and XRI RightHand Interaction) "Select" (to triggerPressed), "Select Value" (to trigger).
 
+- Add the layers (6: VRObjects, 7: ARObjects, 8: Raycasts) and the "Fraction" tag
+- Go to either RightHand or LeftHand Ray and to the Raycast object, go to "Interaction Layer Mask", tick "Add layer" and add "Raycasts" as Interaction Layer.
 - Add the LeftHand and RightHand Controller of the XR Origin to the Controller Manager of the XR Scene Manager.
 - Assign the "Main Camera" object for the XR Feature Manager and Varjo Feature.
 - Add the "Low Poly Hands" Gameobject to the AR_VR_Toggle object (LoadARVRObjectsToMode.cs)
