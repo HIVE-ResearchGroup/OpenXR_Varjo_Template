@@ -51,10 +51,10 @@ If you want to use the features in an already existing project or want to custom
 
 1. Make sure to install the Varjo OpenXR (tutorial) and the Ultraleap (tutorial) plugins first. 
 2. Import the samples of the Ultraleap plugin. (You don't need to import the Varjo Samples but can, if you want/need to, since this package uses some of the materials/models of the package.) If you use the HDRP pipeline, you might need to update the materials of the sample folders (only those materials, see "What about other pipelines").
-3. Don't forget to import the Sample folder of the Interaction Toolkit Plugin (which was installed automatically) as well. With this object, you need to add all the different components to the assets and then change (with both the XRI LeftHand Interaction and XRI RightHand Interaction) "Select" (to triggerPressed), "Select Value" (to trigger).
+3. Don't forget to import the Sample folder of the Interaction Toolkit Plugin (which was installed automatically - if it doesn't show up in the Package Manager, install it by typing "com.unity.xr.interaction.toolkit") as well. With this object, you need to add all the different components to the assets and then change (with both the XRI LeftHand Interaction and XRI RightHand Interaction) "Select" (to triggerPressed), "Select Value" (to trigger).
 4. After this, go this package and download the samples you need.
 In order to just use the prefabs, download the "Core Prefabs" samples. If you want to get an example scene, download the "Simple Scene" sample. There are also some Asset models you might want to use.
-5. Add the layers (6: VRObjects, 7: ARObjects, 8: Raycasts) and the "Fraction", "Pickable" tag, if it doesn't exist already
+5. Add the layers (6: VRObjects, 7: ARObjects, 8: Raycasts) and the "Fraction", "Pickable" tag, if it doesn't exist already.
 6. Go to either RightHand or LeftHand Ray and to the Raycast object, go to "Interaction Layer Mask", tick "Add layer" and add "Raycasts" as Interaction Layer.
 
 Note: You might want to switch the Input System to "Both" inside Project Settings -> Player -> Others, if you want to use scripts that use the old Input System.
