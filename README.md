@@ -61,7 +61,15 @@ Note: You might want to switch the Input System to "Both" inside Project Setting
 
 
 ### If you want to start from scratch (with the prefabs and without the scene)
+Drag and drop the following prefabs into your scene:
+- XR Scene Manager (have a look at the [scripts](SCRIPTSDESCRIPTION.md) to find out more)
+- XR Origin (XR Rig with Camera)
+- XR Interaction Manager
+- Post Processing Volume (optional but good advice if you want to save time fixing the eye gazing with the Varjo)
 
+The other prefabs ("Controller Left" and "Controller Right") are only needed to be added inside the XR Rig -> Left/RightHand Controller -> XRController script -> Model Prefab.
+
+Add the relations to the Prefab:
 - Add the LeftHand and RightHand Controller of the XR Origin to the Controller Manager of the XR Scene Manager.
 - Assign the "Main Camera" object for the XR Feature Manager and Varjo Feature.
 - Add the "Low Poly Hands" Gameobject to the AR_VR_Toggle object (LoadARVRObjectsToMode.cs)
