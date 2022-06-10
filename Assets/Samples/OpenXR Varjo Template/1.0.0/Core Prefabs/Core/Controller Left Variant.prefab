@@ -1,0 +1,578 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4834216380275258795
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: XRNode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: bodyGeo
+      value: 
+      objectReference: {fileID: 2584168389010030282}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: bodyMesh
+      value: 
+      objectReference: {fileID: 2584168389010030282}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1712056076138851907}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: triggerGeo
+      value: 
+      objectReference: {fileID: 6321689678804662054}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: touchPadGeo
+      value: 
+      objectReference: {fileID: 2133244135930666372}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: gripButtonGeo
+      value: 
+      objectReference: {fileID: 5064829841075496546}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: menubuttonGeo
+      value: 
+      objectReference: {fileID: 8209162617510438174}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: bodyGameobject
+      value: 
+      objectReference: {fileID: 2584168389010030282}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: systemButtonGeo
+      value: 
+      objectReference: {fileID: 4685493428816902026}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: highlightMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b683cb38ee7561248886e5852a96da19, type: 2}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: triggerGameobject
+      value: 
+      objectReference: {fileID: 6321689678804662054}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: controllerMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 5b14d809baeeab2408cdcbe12707ca29, type: 2}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: touchPadGameobject
+      value: 
+      objectReference: {fileID: 2133244135930666372}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: gripButtonGameobject
+      value: 
+      objectReference: {fileID: 5064829841075496546}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: menubuttonGameobject
+      value: 
+      objectReference: {fileID: 8209162617510438174}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: buttonPressedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b683cb38ee7561248886e5852a96da19, type: 2}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: systemButtonGameobject
+      value: 
+      objectReference: {fileID: 4685493428816902026}
+    - target: {fileID: 2028317801, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: touchpadTouchedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 946e7ac5bca00664685b27df1281c7a0, type: 2}
+    - target: {fileID: 2028317802, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: m_PoseSource
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028317802, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+      propertyPath: m_UseRelativeTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 148796211722224161, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 535280991371294751, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497616254833105214, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619214551587813359, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: XRNode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerAction.m_Id
+      value: 6bf9ca70-13cb-4f3d-9b21-11b8386e0cb6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerAction.m_Name
+      value: Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: gripButtonAction.m_Id
+      value: a6bf723c-abc8-42b3-89d9-ba7d3949cfe3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: gripButtonAction.m_Name
+      value: Grip Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_Id
+      value: 5db0bb7d-4e24-4d65-8c5b-a178b0f44586
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_Id
+      value: 8bd99424-e4c8-497d-8222-34d03b855adf
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_Name
+      value: Primary Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_Name
+      value: Trigger Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_Id
+      value: 2195ff6b-1ff6-4107-b723-60b4a87e7d32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_Id
+      value: 0a67d48f-cfe8-44db-9641-5bbf5695e0db
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_Name
+      value: Primary 2D Axis Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_Name
+      value: Primary 2D Axis Touch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: gripButtonAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: ae35d855-edda-45ae-8dce-dfd2db8a92a0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRController>{LeftHand}/trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: gripButtonAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 186d529b-2f81-4927-a8c6-a2fd2f3f2c6b
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: gripButtonAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRController>{LeftHand}/gripButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 162618b8-94d6-4afa-b805-e1c768b3a374
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: a8d28ba9-e786-4813-9049-42e5cddb5130
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: a60ec81d-d082-43a8-a4de-6528270b584c
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: fcb1b1ef-64ee-4784-8f2f-ca2d0f546824
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: gripButtonAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Grip Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRController>{LeftHand}/primary
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <XRController>{LeftHand}/primaryButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRController>{LeftHand}/triggerPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <XRController>{LeftHand}/triggerButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Primary Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primaryButtonAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Primary Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Trigger Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: triggerButtonAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Trigger Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 6025ab9f-52f9-4e72-aa1b-038e1f83da2a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 448dda0a-b8b5-4c35-b12d-b81de887eb2a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 5c7f6fbc-b35d-4b20-ade8-5a16bb2268d7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 66461cd8-8d56-4120-bc10-76072eb74338
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_SingletonActionBindings.Array.data[1].m_Id
+      value: eb57f7e9-811e-4db3-b856-d66e45e5000a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRController>{LeftHand}/primary2DAxisClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <XRController>{LeftHand}/trackpadClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <XRController>{LeftHand}/trackpadPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRController>{LeftHand}/primary2DAxisTouch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <XRController>{LeftHand}/trackpadTouched
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Primary 2D Axis Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Primary 2D Axis Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisClickAction.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Primary 2D Axis Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Primary 2D Axis Touch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316331677721546367, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: primary2DAxisTouchAction.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Primary 2D Axis Touch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613208511686937127, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888299991728125261, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888299991728125261, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888299991728125261, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6202972406733109853, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 6714561544570088561, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 6804620189419661334, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Name
+      value: Controller Left Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804620189419661334, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7102104154720872955, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261186336134787977, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 8121399429118177450, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    - target: {fileID: 8123481095739858321, guid: cff1a64a12aa2294a919bb341b01e2d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e0ed354e173ca454081c209146cc9a42, type: 2}
+    m_RemovedComponents:
+    - {fileID: 2028317802, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: cff1a64a12aa2294a919bb341b01e2d0, type: 3}
+--- !u!1 &1712056076138851907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6112765411644693480, guid: cff1a64a12aa2294a919bb341b01e2d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4834216380275258795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2123526586247486909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6804620189419661334, guid: cff1a64a12aa2294a919bb341b01e2d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4834216380275258795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &682081933
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123526586247486909}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &682081936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123526586247486909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.03, z: 0.15}
+  m_Center: {x: 0, y: -0.01, z: -0.09}
+--- !u!138 &682081931
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123526586247486909}
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!1 &2133244135930666372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6812917172197353519, guid: cff1a64a12aa2294a919bb341b01e2d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4834216380275258795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2584168389010030282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6974485216875383649, guid: cff1a64a12aa2294a919bb341b01e2d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4834216380275258795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4685493428816902026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 148796211722224161, guid: cff1a64a12aa2294a919bb341b01e2d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4834216380275258795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5064829841075496546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 387157597057455049, guid: cff1a64a12aa2294a919bb341b01e2d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4834216380275258795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6321689678804662054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490042127076934285, guid: cff1a64a12aa2294a919bb341b01e2d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4834216380275258795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8209162617510438174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3673349358370050229, guid: cff1a64a12aa2294a919bb341b01e2d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4834216380275258795}
+  m_PrefabAsset: {fileID: 0}

@@ -1,0 +1,51 @@
+{
+  "name": "com.hive.openxr-varjo-template",
+  "version": "1.0.0",
+  "displayName": "OpenXR Varjo Template",
+  "description": "An Unity template using HDRP which uses OpenXR, the new Unity Input System with support of all Varjo features. ",
+  "unity": "2021.3",
+  "unityRelease": "2f1",
+  "documentationUrl": "https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template",
+  "changelogUrl": "https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/releases",
+  "licensesUrl": "",
+    "dependencies": {
+        "com.unity.xr.management": "4.0.7",
+        "com.unity.xr.openxr": "1.4.2",
+        "com.unity.inputsystem": "1.3.0",
+        "com.varjo.xr": "3.0.0",
+        "com.unity.textmeshpro": "3.0.6",
+        "com.ultraleap.tracking": "5.9.0",
+        "com.unity.xr.interaction.toolkit": "2.0.2"
+    },
+ "keywords": [
+    "OpenXR",
+    "Varjo",
+    "Template",
+    "VR",
+    "AR",
+    "XR",
+    "Unity"
+  ],
+  "author": {
+    "name": "HIVE",
+    "email": "hive@fh-hagenberg.at",
+    "url": "https://hive.fh-hagenberg.at/"
+  },
+  "samples": [
+    {
+      "displayName": "Core Prefabs",
+      "description": "All the necessary core prefabs to use the template",
+      "path": "Samples~/Prefabs"
+    },
+    {
+        "displayName": "Simple Scene",
+        "description": "Contains a sample scene in order to test the prefabs",
+        "path": "Samples~/SimpleScene"
+    },
+    {
+      "displayName": "Assets",
+      "description": "",
+      "path": "Samples~/Assets"
+    }
+  ]
+}
