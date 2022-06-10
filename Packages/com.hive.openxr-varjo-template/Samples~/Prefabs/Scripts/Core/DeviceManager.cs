@@ -11,6 +11,9 @@ namespace Core
         Varjo
     };
 
+    /**
+     * Script that sets the used device
+     */
     public class DeviceManager : MonoBehaviour
     {
         [Header("Make sure the right device is set in XR-PluginManagement first!")]

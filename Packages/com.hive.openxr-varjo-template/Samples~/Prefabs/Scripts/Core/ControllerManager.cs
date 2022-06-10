@@ -8,6 +8,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Core
 {
+    /**
+     * Manages the controller display behaviour.
+     * This script is not performant and should be replaced someday with the "Beta" version since it calls GetComponent
+     * during runtime. However, OpenXR loads the model prefabs during runtime which is why loading the Meshes beforehand
+     * is not possible. Most likely, you could simply solve this by not turning the MeshRenderers into "Shadows Only" and
+     * setting the whole GameObject to "not active".
+     */
     public class ControllerManager : MonoBehaviour
     {
         public GameObject leftController;

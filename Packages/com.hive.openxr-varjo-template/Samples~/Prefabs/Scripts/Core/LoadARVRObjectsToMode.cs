@@ -6,6 +6,9 @@ using UnityEngine;
 // 2022
 namespace Core
 {
+    /**
+     * Script that loads the object according to the set mode inside "AR_VR_Toggle"
+     */
     public class LoadARVRObjectsToMode : MonoBehaviour
     {
         [HideInInspector] public static GameObject[] arObjects;

@@ -1,6 +1,6 @@
 {
   "name": "com.hive.openxr-varjo-template",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "displayName": "OpenXR Varjo Template",
   "description": "An Unity template using HDRP which uses OpenXR, the new Unity Input System with support of all Varjo features. ",
   "unity": "2021.3",

@@ -3,10 +3,11 @@
 ## Introduction
 This project focuses on combining two workflows (OpenXR and Varjo SDK) into one project and making it easy to switch between those two headset just as by ticking two checkboxes.
 It features:
-- Direct- and rayinteractors (for interacting with far away objects as well as grabbing objects),
-- Teleportation
-- Ultraleap Handtracking support
-- Automatic controller disabling/activating
+- OpenXR Rig
+  - Direct- and rayinteractors (for interacting with far away objects as well as grabbing objects),
+  - Teleportation
+  - Ultraleap Handtracking support
+  - Automatic controller disabling/activating
 - ARobjects/VRobjects toggling (by using layers)
 - The new [Unity XRI](https://docs.unity3d.com/Manual/xr_input.html) (as well as demo scripts),
 - Varjo features (AR mode, environment reflections)
@@ -19,8 +20,7 @@ It features:
 - Unity 2021.3.2*
 
 ### What about other render pipelines?
-It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. If you still want to continue, please export the prefabs and the scripts (scenes are also possible) from the template as an Asset and import it in your preferred environment. (Or use the Asset coming with every release.) 
-You now need to switch the materials with the ones in the "Materials"/"BiRP" folder. Those materials are made with the Built-In renderpipeline in mind (BiRP), yet you can easily [upgrade](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/features/rp-converter.html) them to URP.
+It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. You now need to switch the materials with the ones in the "Materials"/"BiRP" folder. Those materials are made with the Built-In renderpipeline in mind (BiRP), yet you can easily [upgrade](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/features/rp-converter.html) them to URP.
 Note that there is no replacement for the ShadowCatcher material (the one being transparent on the floor and just displaying the shadows) as this is an HDRP only feature.
 You also need to change the colour of the Camera Background flag inside the camera object to Color -> black.
 
@@ -43,20 +43,30 @@ There is one main file managing this transition: The deviceManager object, conta
 ## Useage
 For more information about the usage, please have a look at the [README](USEAGE.md).
 
+## Use the Unity project
+If you intend not to start from scratch, download this project and use it as a starting point. The project already uses the package and the project/input settings are already set - no further configuration needed.
+
 ## How to install the package
-Make sure to install the Varjo OpenXR (tutorial) and the Ultraleap (tutorial) plugins first. Import the samples of the Ultraleap plugin. (You don't need to import the Varjo Samples but can, if you want/need to, since this package uses some of the materials/models of the package.) If you use the HDRP pipeline, you might need to update the materials of the sample folders (only those materials, see "What about other pipelines").
+If you want to use the features in an already existing project or want to custom-build your scenes, you might want to go with just installing the package.
 
-Don't forget to import the Sample folder of the Interaction Toolkit Plugin (which was installed automatically) as well. With this object, you need to add all the different components to the assets and then change (with both the XRI LeftHand Interaction and XRI RightHand Interaction) "Select" (to triggerPressed), "Select Value" (to trigger).
+1. Make sure to install the Varjo OpenXR (tutorial) and the Ultraleap (tutorial) plugins first. 
+2. Import the samples of the Ultraleap plugin. (You don't need to import the Varjo Samples but can, if you want/need to, since this package uses some of the materials/models of the package.) If you use the HDRP pipeline, you might need to update the materials of the sample folders (only those materials, see "What about other pipelines").
+3. Don't forget to import the Sample folder of the Interaction Toolkit Plugin (which was installed automatically) as well. With this object, you need to add all the different components to the assets and then change (with both the XRI LeftHand Interaction and XRI RightHand Interaction) "Select" (to triggerPressed), "Select Value" (to trigger).
+4. After this, go this package and download the samples you need.
+In order to just use the prefabs, download the "Core Prefabs" samples. If you want to get an example scene, download the "Simple Scene" sample. There are also some Asset models you might want to use.
+5. Add the layers (6: VRObjects, 7: ARObjects, 8: Raycasts) and the "Fraction", "Pickable" tag, if it doesn't exist already
+6. Go to either RightHand or LeftHand Ray and to the Raycast object, go to "Interaction Layer Mask", tick "Add layer" and add "Raycasts" as Interaction Layer.
 
-- Add the layers (6: VRObjects, 7: ARObjects, 8: Raycasts) and the "Fraction" tag
-- Go to either RightHand or LeftHand Ray and to the Raycast object, go to "Interaction Layer Mask", tick "Add layer" and add "Raycasts" as Interaction Layer.
+Note: You might want to switch the Input System to "Both" inside Project Settings -> Player -> Others, if you want to use scripts that use the old Input System.
+
+
+### If you want to start from scratch (with the prefabs and without the scene)
+
 - Add the LeftHand and RightHand Controller of the XR Origin to the Controller Manager of the XR Scene Manager.
 - Assign the "Main Camera" object for the XR Feature Manager and Varjo Feature.
 - Add the "Low Poly Hands" Gameobject to the AR_VR_Toggle object (LoadARVRObjectsToMode.cs)
 - Add the Ground GameObject to the AR_VR_Toggle object (LoadARVRObjectsToMode.cs)
 
-
-Note: You might want to switch the Input System to "Both" inside Project Settings -> Player -> Others, if you want to use scripts that use the old Input System.
 
 
 ## Noticeable mentions

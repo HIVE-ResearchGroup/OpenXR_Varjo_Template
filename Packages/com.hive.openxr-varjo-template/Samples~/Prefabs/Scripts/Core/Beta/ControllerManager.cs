@@ -5,8 +5,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 // Axel Bauer
 // 2022
+// This script doesn't work because OpenXR loads the controller prefabs just when needed and thus, there are no meshes to fetch onStartup to improve performance
 namespace Core.Beta
 {
+    /**
+     * Manages the controller display behaviour
+     */
     public class ControllerManager : MonoBehaviour
     {
         public GameObject leftController;
@@ -23,8 +27,8 @@ namespace Core.Beta
         private ActionBasedController _leftControllerScript;
         private ActionBasedController _rightControllerScript;
 
-        //private List<MeshRenderer> _leftControllerMeshes;
-        //private List<MeshRenderer> _rightControllerMeshes;
+        private List<MeshRenderer> _leftControllerMeshes;
+        private List<MeshRenderer> _rightControllerMeshes;
 
         // Start is called before the first frame update
         private void Start()
@@ -43,10 +47,8 @@ namespace Core.Beta
             _leftControllerScript = leftController.GetComponent<ActionBasedController>();
             _rightControllerScript = rightController.GetComponent<ActionBasedController>();
 
-            //_leftControllerMeshes = new List<MeshRenderer>();
-            //_rightControllerMeshes = new List<MeshRenderer>();
-
-            //setControllerOffset();
+            _leftControllerMeshes = new List<MeshRenderer>();
+            _rightControllerMeshes = new List<MeshRenderer>();
         }
 
         // Update is called once per frame
@@ -60,13 +62,13 @@ namespace Core.Beta
                 if (leftController.activeSelf)
                 {
                     ApplyVisibility(
-                        tempVisibility); //, _leftControllerMeshes);//first child in order to get the object and not the parent
+                        tempVisibility, _leftControllerMeshes);//first child in order to get the object and not the parent
                 }
 
                 if (rightController.activeSelf)
                 {
                     ApplyVisibility(
-                        tempVisibility); //, _rightControllerMeshes);//first child in order to get the object and not the parent
+                        tempVisibility, _rightControllerMeshes);//first child in order to get the object and not the parent
                 }
 
                 _controllersVisible = tempVisibility;
@@ -80,17 +82,17 @@ namespace Core.Beta
             setVisible = state;
         }
 
-        private void ApplyVisibility(bool state)//, List<MeshRenderer> list) //performs the visibility action
+        private void ApplyVisibility(bool state, List<MeshRenderer> list) //performs the visibility action
         {
             _leftControllerScript.modelParent.gameObject.SetActive(state);//basic disabling and enabling - shadow catcher profile not possibly necessary?
             _rightControllerScript.modelParent.gameObject.SetActive(state);
 
-            /*foreach (MeshRenderer mr in list)
+            foreach (MeshRenderer mr in list)
             {
                 mr.shadowCastingMode = !state ? 
                     UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly : 
                     UnityEngine.Rendering.ShadowCastingMode.On;
-            }*/
+            }
         }
 
 
@@ -159,14 +161,14 @@ namespace Core.Beta
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Left))
             {
                 SetDevice(device, leftController);
-                //FetchControllerMeshes(_leftControllerScript.model.GetChild(0), _leftControllerMeshes);//first child in order to get the object and not the parent
+                FetchControllerMeshes(_leftControllerScript.model.GetChild(0), _leftControllerMeshes);//first child in order to get the object and not the parent
                 Debug.Log("Left Hand --- " + device.name + " connected!");
             }
 
             if (device.characteristics.HasFlag(InputDeviceCharacteristics.Right))
             {
                 SetDevice(device, rightController);
-                //FetchControllerMeshes(_rightControllerScript.model.GetChild(0), _rightControllerMeshes);//first child in order to get the object and not the parent
+                FetchControllerMeshes(_rightControllerScript.model.GetChild(0), _rightControllerMeshes);//first child in order to get the object and not the parent
                 Debug.Log("Right Hand --- " + device.name + " connected!");
             }
         }

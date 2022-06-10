@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Core
 {
+    /**
+     * Singleton for player
+     */
     public class Player : MonoBehaviour
     {
         public static Player Instance { get; private set; }

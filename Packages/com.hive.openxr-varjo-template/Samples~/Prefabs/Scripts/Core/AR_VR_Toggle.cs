@@ -13,10 +13,12 @@ namespace Core
         VR
     };
 
+    /**
+     * Script that sets the xr mode. You might do so with the InputActions you can specify inside the editor
+     */
     public class AR_VR_Toggle : MonoBehaviour
     {
         public XRmode selectedMode;
-    
         public InputAction xrToggleAction;
         public UnityEvent toggleEvent;
 

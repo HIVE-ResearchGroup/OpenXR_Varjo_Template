@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-
+    /**
+     * Singleton for the ground
+     */
     public static Ground Instance { get; private set; }
 
 

@@ -1,7 +1,12 @@
 using UnityEngine;
 
+// Axel Bauer
+// 2022
 namespace Core
 {
+    /**
+     * Singleton that stores a reference to the different scripts.
+     */
     public class XRSceneManager : MonoBehaviour
     {
         public static XRSceneManager Instance { get; private set;}

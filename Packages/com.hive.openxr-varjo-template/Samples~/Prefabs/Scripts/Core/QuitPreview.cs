@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 namespace Core
 {
+    /**
+     * Short script for ending preview
+     */
     public class QuitPreview : MonoBehaviour
     {
 
@@ -29,7 +32,7 @@ namespace Core
                 // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
                 UnityEditor.EditorApplication.isPlaying = false;
 #else
-                     Application.Quit();
+                Application.Quit();
 #endif
             };
         }

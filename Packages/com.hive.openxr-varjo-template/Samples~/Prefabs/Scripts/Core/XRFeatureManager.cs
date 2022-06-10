@@ -13,6 +13,9 @@ using UnityEngine.Rendering.Universal;
 
 namespace Core
 {
+    /**
+     * Manages all the device features and stores it inside the List<AbstractDeviceFeature>
+     */
     public class XRFeatureManager : MonoBehaviour
     {
         //Varjo devices - maybe reuse them for ZED?

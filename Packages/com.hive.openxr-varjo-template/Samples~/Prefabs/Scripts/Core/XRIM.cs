@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Core
 {
+    /**
+     * Singleton for the Interaction Manager
+     */
     public class XRIM : MonoBehaviour
     {
 

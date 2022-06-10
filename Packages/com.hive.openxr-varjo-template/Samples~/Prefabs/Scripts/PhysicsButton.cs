@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+/**
+ * Script for the physicsButton to work. Checks if triggered/pushed to trigger and makes sure that the button stays
+ * in the correct position.
+ */
 public class PhysicsButton : MonoBehaviour
 {
 
