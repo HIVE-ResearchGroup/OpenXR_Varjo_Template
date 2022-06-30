@@ -14,10 +14,16 @@ It features:
 
 
 ## Dependencies
+Make sure to have the following programs installed before starting:
+- Unity 2021.3.2*
+- Varjo Base (required for Varjo headset use and hand tracking) OR UltraLeap Gemini (for hand tracking)
+- Git
+
+Included dependencies:
 - Varjo SDK
     - In order to use the template, the Varjo SDK has to be imported into your project. This template does not need the Sample folder to be imported anymore and thus can be operated without. However, you are free to use the Samples in order to get in touch with other Varjo features such as Markers or "Windows". If you search for a version of the template that might be more flexible, have a look at the version release of [0.2.0.](https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/releases/tag/v0.2.0).
+- Ultraleap plugin
 - HDRP Pipeline
-- Unity 2021.3.2*
 
 ### What about other render pipelines?
 It is possible to use the scripts and prefabs inside this template to use some of the Varjo features also in your SRP/URP project. Note, that you will only have support for AR mode and Depth testing. Please be aware that you will have to set your own settings for lights, shaders, materials, reflections. You now need to switch the materials with the ones in the "Materials"/"BiRP" folder. Those materials are made with the Built-In renderpipeline in mind (BiRP), yet you can easily [upgrade](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/features/rp-converter.html) them to URP.
@@ -49,7 +55,7 @@ If you intend not to start from scratch, download this project and use it as a s
 ## How to install the package
 If you want to use the features in an already existing project or want to custom-build your scenes, you might want to go with just installing the package.
 
-1. Make sure to install the Varjo OpenXR (tutorial) and the Ultraleap (tutorial) plugins first. 
+1. Make sure to install the Varjo OpenXR ([tutorial](https://github.com/varjocom/VarjoUnityXRPlugin)) and the Ultraleap ([tutorial](https://developer.leapmotion.com/unity#setup-openupm)) plugins first. 
 2. Import the samples of the Ultraleap plugin. (You don't need to import the Varjo Samples but can, if you want/need to, since this package uses some of the materials/models of the package.) If you use the HDRP pipeline, you might need to update the materials of the sample folders (only those materials, see "What about other pipelines").
 3. Don't forget to import the Sample folder of the Interaction Toolkit Plugin (which was installed automatically - if it doesn't show up in the Package Manager, install it by typing "com.unity.xr.interaction.toolkit") as well. With this object, you need to add all the different components to the assets and then change (with both the XRI LeftHand Interaction and XRI RightHand Interaction) "Select" (to triggerPressed), "Select Value" (to trigger).
 4. After this, go this package and download the samples you need.
@@ -79,7 +85,7 @@ Add the relations to the Prefab:
 
 ## Noticeable mentions
 - Sky and Fog Volume: I tweaked the it slightly in order to match the requirements of the Varjo SDK. (Now, the focus-rectangle shouldn't be visible). If the scene doesn't match your lighting conditions, you may turn the exposure down inside the Sky and Fog Volume.
-- If there's a slight flickering around your focus displays on your Varjo headset, try adding/changing the override regarding "motion blur" in your project. If this still doesn't help out and don't have the time to further testing, you may deactivate "Forveated Rendering" (Project Settings -> XR Plug-in Management -> Varjo). This option controls if the focus of the display should be restricted on a small rectangle (checked - increases performance) or should cover the whole display (unchecked). You may uncheck it for a smoother experience but maybe get not the best performance.
+- If there's a slight flickering around your focus displays on your Varjo headset, try adding/changing the override regarding "motion blur" in your project. If this still doesn't help out and don't have the time to further testing, you may deactivate "Foveated Rendering" (Project Settings -> XR Plug-in Management -> Varjo). This option controls if the focus of the display should be restricted on a small rectangle (checked - increases performance) or should cover the whole display (unchecked).
 - By default, the Eye Offset is set to 1 because otherwise, there would be a noticeable object drift of your objects inside your AR scene. If it happens that you notice this behaviour, make sure to check this setting first.
 - Since this project uses the HDRP pipeline, you probably should get used in using the physical based lighting setup (have a look at this [tutorial](https://www.youtube.com/watch?v=yqCHiZrgKzs)). Right now, the Exposure (inside the Post Process Volume) is set (statically because of VR quality reasons) to 6.5 which resembles a sunset brightness and the Sun object light being set to 1300 lux which however should be set to 111,000 lux to resemble a real sun. This was done to resemble an indoor lighting situation.
 - When setting the shadow resolution of the directional light to "Ultra" the transparent ground material will be visible.
@@ -92,6 +98,5 @@ Add the relations to the Prefab:
 - In OpenXR mode, there is a bug which prevents the controller to disconnect properly which results into the controllers not being able to disable correctly (ControllerManager.cs)
 - AR_VR_Toggle: Since there is a delay in switching the depth testing on and off, the implementation is made that depth testing is enabled on startup when checked. This leads to an error in the Varjo SDK that depth testing is also enabled inside VR. This should resolve when switching to AR and back again to VR. It is thus mostly recommended to start your scene in AR when using depth testing or deactivate it when using VR. Of course you might also use this behaviour in VR to interact with your real hands but not recommended as it could be fixed in a future release.
 
-#### There is an tracking issue with the Varjo system currently - further information will be added into this documentation.
 
-- Refer to the [GitHub](https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/issues) page for further information about current issues.
+Refer to the [GitHub](https://github.com/HIVE-ResearchGroup/OpenXR_Varjo_Template/issues) page for further information about current issues.
